@@ -1,0 +1,9 @@
+{
+  "scripts": {
+    "dev": "wp-scripts start ./assets/settings/main.js --output-path=./assets/js/settings",
+    "build": "wp-scripts build"
+  },
+  "devDependencies": {
+    "@wordpress/scripts": "^30.12.0"
+  }
+}

@@ -1,0 +1,19 @@
+{
+    "name": "pixels/login-prime",
+    "description": "Login Prime is a powerful and secure authentication plugin for WordPress, offering seamless login and user management with enhanced security features.",
+    "type": "wordpress-plugin",
+    "autoload": {
+        "psr-4": {
+            "LoginPrime\\Includes\\": "includes/"
+        },
+        "files": []
+    },
+    "authors": [
+        {
+            "name": "shabbir3g",
+            "email": "mostafizshabbir@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}

@@ -24,6 +24,9 @@ namespace LoginPrime\Includes;
                 'src'           => LOGIN_PRIME_URL ."/assets/js/settings/index.js", 
                 'deps'          => $main_asset['dependencies'],
                 'version'       => $main_asset['version'],
+                'position'  => [
+                    'in_footer' => false
+                ]
             ]
         ];
     }
@@ -35,9 +38,7 @@ namespace LoginPrime\Includes;
 
         foreach ($scripts as $handle => $script) {
             $deps = isset( $script['deps'] ) ? $script['deps']  : false;
-            wp_enqueue_script($handle , $script['src'], $deps , $script['version'], [
-               'in_footer' => true
-            ] );
+            wp_register_script($handle , $script['src'], $deps , $script['version'], $script['position'] );
         }
 
        

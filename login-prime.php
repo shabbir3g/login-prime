@@ -56,6 +56,9 @@ final class Login_Prime{
 	}
 
     public function init_login_prime(){
+
+        new LoginPrime\Includes\Assets();
+        
         // plugin initialization code goes here
         if(is_admin()){
             new LoginPrime\Includes\Admin();
@@ -84,7 +87,7 @@ final class Login_Prime{
     }
 
 	public function Login_Prime_load_textdomain(){
-		load_plugin_textdomain('login-prime', false, LOGIN_PRIME_DIR_PATH . "/languages");
+		load_plugin_textdomain('login-prime', false, LOGIN_PRIME_PATH . "/languages");
 	}
 
 	private function define_constants(){
@@ -94,12 +97,12 @@ final class Login_Prime{
 		$version = $plugin_data['Version'];
 
 		define('LOGIN_PRIME_VERSION', $version );
-        define('LOGIN_PRIME_DIR_PATH', plugin_dir_path(__FILE__));
-        define('LOGIN_PRIME_DIR_URL', plugin_dir_url(__FILE__));
-        define('LOGIN_PRIME_ASSETS_DIR_URL', LOGIN_PRIME_DIR_URL. '/assets');
+        define('LOGIN_PRIME_PATH', plugin_dir_path(__FILE__));
+        define('LOGIN_PRIME_URL', plugin_dir_url(__FILE__));
+        define('LOGIN_PRIME_ASSETS', LOGIN_PRIME_URL. '/assets');
 
         // define('LOGIN_PRIME_INC_DIR', trailingslashit( LOGIN_PRIME_DIR_PATH. 'includes'));
-        // define('LOGIN_PRIME_ASSETS_DIR_URL', LOGIN_PRIME_DIR_URL. 'assets');
+        // define('LOGIN_PRIME_ASSETS_DIR_URL', LOGIN_PRIME_URL. 'assets');
 
 	}
 

@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "dev": "wp-scripts start ./assets/settings/main.js --output-path=./assets/js/settings",
+    "dev": "wp-scripts start ./assets/settings/index.js --output-path=./assets/js/settings",
     "build": "wp-scripts build"
   },
   "devDependencies": {

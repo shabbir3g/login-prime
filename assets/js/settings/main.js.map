@@ -1,1 +1,0 @@
-{"version":3,"file":"main.js","mappings":";;;;AAAAA,OAAO,CAACC,GAAG,CAAC,6BAA6B,CAAC,C","sources":["webpack:///./assets/settings/main.js"],"sourcesContent":["console.log(\"hello from Mostafiz shabbir\");\n"],"names":["console","log"],"sourceRoot":""}

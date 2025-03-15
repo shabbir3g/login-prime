@@ -1,28 +1,29 @@
 import React from "react";
-import { Outlet, NavLink, Link } from "react-router";
+import { Outlet, NavLink } from "react-router";
 
 const App = () => {
   return (
-    <>
-      <h1>Hello Login Prime Mostafiz</h1>
-      <ul>
+    <div className="login-prime-container">
+      <ul className="loginprime-menu">
         <li>
-          <Link to="/">Setting</Link>
-          <li>
-            <Link to="/style">Style</Link>
-          </li>
-          <li>
-            <Link to="/advanced">Advanced</Link>
-          </li>
+          <NavLink to="/">Setting</NavLink>
+        </li>
+        <li>
+          <NavLink to="/style">Style</NavLink>
+        </li>
+        <li>
+          <NavLink to="/advanced">Advanced</NavLink>
+        </li>
+        <li>
           <NavLink to="/info">Info</NavLink>
         </li>
         <li>
-          <Link to="/add-ons">Add-Ons</Link>
+          <NavLink to="/add-ons">Add-Ons</NavLink>
         </li>
       </ul>
 
       <Outlet />
-    </>
+    </div>
   );
 };
 

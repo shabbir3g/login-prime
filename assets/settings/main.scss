@@ -1,0 +1,69 @@
+.login-prime-container{
+    width: 100%;
+    background-color: #fff;
+    padding: 20px;
+    box-sizing: border-box;
+
+    .loginprime-menu {
+        width: 59%;
+        margin-bottom: 20px;
+        background-color: #F0F0F0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 13px 81px 13px 13px;
+        li{
+            list-style: none;
+            margin: 0;
+            text-align: center;
+            a{
+                color: #000;
+                text-decoration: none;
+                padding: 16px 34px;
+                display: inline-block;
+                font-size: 20px;
+                background-color: #fff;
+                width: 100%;
+                &.active{
+                    background-color: #34495E;
+                    color: #fff;
+                }
+                &:hover{
+                    background-color: #34495E;
+                    color: #fff;
+                }
+            }
+            
+        }
+    }
+    .lp-settings-notification{
+        width: 63%;
+        padding: 10px;
+        margin-bottom: 10px;
+    }
+    .lp-settings-section{
+        width: 63%;
+        padding: 10px;
+        border-radius: 12px;
+        margin-bottom: 40px;
+        box-shadow: 4px 4px 14px 0 rgba(0, 0, 0, 0.25);
+        h2{
+            color: #2B8FBB;
+        }
+        .form-table{
+            td {
+                text-align: right;
+                width: 70%;
+                select{
+                    max-width: inherit;
+                    border-radius: 8px;
+                    padding: 10px;
+                }
+                input{
+                    border-radius: 8px;
+                    padding: 10px;
+                }
+            }
+        }
+    }
+}

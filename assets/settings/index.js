@@ -7,6 +7,7 @@ import Style from "./components/Style";
 import Advanced from "./components/Advanced";
 import AddOns from "./components/AddOns";
 import Info from "./components/Info";
+import "./main.scss";
 
 const router = createHashRouter([
   {

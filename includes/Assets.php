@@ -31,6 +31,16 @@ namespace LoginPrime\Includes;
         ];
     }
 
+    public function get_style(){
+        return[
+            'login-prime-style-settings' => [
+                'src'           => LOGIN_PRIME_URL ."/assets/js/settings/index.css", 
+                'version'       => filemtime(LOGIN_PRIME_PATH ."/assets/js/settings/index.css")
+
+            ]
+        ];
+    }
+
 
     public function lp_enqueue_assets(){
 
@@ -39,6 +49,11 @@ namespace LoginPrime\Includes;
         foreach ($scripts as $handle => $script) {
             $deps = isset( $script['deps'] ) ? $script['deps']  : false;
             wp_register_script($handle , $script['src'], $deps , $script['version'], $script['position'] );
+        }
+
+        $styles = $this->get_style();
+        foreach ($styles as $handle => $style) {
+            wp_register_style($handle , $style['src'], $style['version'] );
         }
 
        

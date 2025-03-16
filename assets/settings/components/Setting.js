@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { FormToggle, Notice } from "@wordpress/components";
+import { ToastContainer, toast } from "react-toastify";
 
 const Setting = () => {
   // Enable Registration
@@ -29,6 +30,8 @@ const Setting = () => {
   });
   const [notice, setNotice] = useState({ message: "", type: "" });
 
+  // const notify = () => toast("Wow so easy!");
+
   const resetForm = () => {
     setEnableRegistration(false);
     setUserRole("subscriber");
@@ -39,8 +42,12 @@ const Setting = () => {
     setRegisterRedirect("");
     setLogoutRedirect("");
 
-    setData({ data: { plugin_name: "", user_role: "" } });
-    setNotice({ message: "", type: "" });
+    // setData({ data: { plugin_name: "", user_role: "" } });
+    setNotice({
+      message:
+        "All data has been reset. Please click the ‘Save’ button to preserve your changes.",
+      type: "info",
+    });
   };
 
   useEffect(() => {
@@ -142,10 +149,7 @@ const Setting = () => {
       .then((res) => res.json()) // Directly parse JSON if response is correct
       .then((data) => {
         if (data.success) {
-          setNotice({
-            message: "Settings saved successfully!",
-            type: "success",
-          });
+          toast.success("Settings saved successfully!");
         } else {
           setNotice({ message: "Error: " + data.message, type: "error" });
         }
@@ -158,7 +162,8 @@ const Setting = () => {
 
   return (
     <div className="settings-container">
-      {notice.message && (
+      <ToastContainer position="top-right" autoClose={3000} />
+      {/* {notice.message && (
         <div className="lp-settings-notification">
           <Notice
             status={notice.type} // "success" or "error"
@@ -167,7 +172,7 @@ const Setting = () => {
             {notice.message}
           </Notice>
         </div>
-      )}
+      )} */}
 
       <form onSubmit={onSubmit}>
         <div className="lp-settings-section lp-settings-setting-section">
@@ -619,7 +624,16 @@ const Setting = () => {
             </tbody>
           </table>
         </div>
-
+        {notice.message && (
+          <div className="lp-settings-notification">
+            <Notice
+              status={notice.type} // "success" or "error"
+              onRemove={() => setNotice({ message: "", type: "" })} // Dismiss notice
+            >
+              {notice.message}
+            </Notice>
+          </div>
+        )}
         <div className="lp-settings-submit">
           <table className="form-table">
             <tbody>
@@ -627,17 +641,17 @@ const Setting = () => {
                 <th></th>
                 <td>
                   <button
-                    className="components-button is-primary"
-                    type="submit"
-                  >
-                    Save
-                  </button>
-                  <button
                     type="button"
                     className="components-button button-secondary"
                     onClick={resetForm}
                   >
                     Reset
+                  </button>
+                  <button
+                    className="components-button is-primary"
+                    type="submit"
+                  >
+                    Save
                   </button>
                 </td>
               </tr>

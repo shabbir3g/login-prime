@@ -296,7 +296,7 @@ const AddOns = () => {
         </div>
 
         <div className="lp-settings-section lp-settings-setting-section">
-          <h2>Default Login Page</h2>
+          <h2>Custom User Role</h2>
           <hr />
           <table className="form-table">
             <tbody>

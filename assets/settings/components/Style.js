@@ -56,7 +56,7 @@ const Style = () => {
 
               <tr>
                 <th>
-                  <label htmlFor="form_pattern">Design</label>
+                  <label htmlFor="form_pattern">Form Pattern</label>
                 </th>
                 <td>
                   <select
@@ -66,7 +66,9 @@ const Style = () => {
                     defaultValue={formPattern} // ✅ Set selected value
                     onChange={(e) => setFormPattern(e.target.value)} // ✅ Update state on change
                   >
-                    <option value="">Custom</option>
+                    <option value="">
+                      Separate Login and Registration Forms
+                    </option>
                     <option
                       selected={formPattern === "template-1"}
                       value="template-1"
@@ -78,6 +80,24 @@ const Style = () => {
                       value="template-2"
                     >
                       Login and Registration Template 02
+                    </option>
+                    <option
+                      selected={formPattern === "template-3"}
+                      value="template-3"
+                    >
+                      Login and Registration Template 03
+                    </option>
+                    <option
+                      selected={formPattern === "template-4"}
+                      value="template-4"
+                    >
+                      Login and Registration Template 04
+                    </option>
+                    <option
+                      selected={formPattern === "template-5"}
+                      value="template-5"
+                    >
+                      Login and Registration Template 05
                     </option>
                   </select>
                 </td>

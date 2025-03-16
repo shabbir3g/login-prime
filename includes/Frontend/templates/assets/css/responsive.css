@@ -1,0 +1,41 @@
+@media (max-width: 768px) {
+  .lp-login-container {
+    width: 376px;
+    padding: 36px;
+  }
+  .lp-login-container .lp-tabs, .lp-login-container .lp-input-field, .lp-login-container .lp-terms, .lp-login-container .lp-register-text, .lp-login-container .lp-title {
+    margin-bottom: 20px;
+  }
+  .login-prime-container {
+    flex-direction: column-reverse;
+    align-items: center;
+    margin-top: 50px;
+  }
+  .login-prime-container .image-section img {
+    width: 356px;
+    height: 256px;
+    border-radius: 12px;
+  }
+  .back-login-container {
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+  .back-login-container .image-section img {
+    width: 356px;
+    height: 256px;
+    border-radius: 12px;
+  }
+  .lp-demo-6-container {
+    flex-direction: column;
+  }
+  .lp-demo-6-container .image-section {
+    order: 1;
+  }
+  .lp-demo-6-container .image-section img {
+    width: 356px;
+    border-radius: 12px;
+  }
+  .lp-demo-6-container .form-section {
+    order: 2;
+  }
+}/*# sourceMappingURL=responsive.css.map */

@@ -73,8 +73,11 @@
   padding: 0;
 }
 .login-prime-container .lp-settings-submit {
-  width: 63%;
+  width: 65%;
 }
 .login-prime-container .lp-settings-submit .form-table td {
   text-align: left;
+}
+.login-prime-container .lp-settings-submit .form-table td .button-secondary {
+  margin-left: 20px;
 }

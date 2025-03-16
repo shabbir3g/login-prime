@@ -73,10 +73,13 @@
         }
     }
     .lp-settings-submit{
-        width: 63%;
+        width: 65%;
         .form-table{
             td {
                 text-align: right;
+                .button-secondary{
+                    margin-right: 20px;
+                }
             }
         }
     }

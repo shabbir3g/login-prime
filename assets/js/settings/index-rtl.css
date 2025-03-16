@@ -8,27 +8,29 @@
   box-sizing: border-box;
 }
 .login-prime-container .loginprime-menu {
-  width: 59%;
+  width: 63%;
   margin-bottom: 20px;
   background-color: #F0F0F0;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 13px 13px 13px 81px;
+  padding: 13px 13px 13px 13px;
 }
 .login-prime-container .loginprime-menu li {
   list-style: none;
-  margin: 0;
   text-align: center;
+  width: 100%;
+  background: #fff;
+  margin: 0px 7px;
+  display: block;
 }
 .login-prime-container .loginprime-menu li a {
   color: #000;
   text-decoration: none;
-  padding: 16px 34px;
+  padding: 16px 35px;
   display: inline-block;
   font-size: 20px;
-  background-color: #fff;
-  width: 100%;
+  width: 60%;
 }
 .login-prime-container .loginprime-menu li a.active {
   background-color: #34495E;
@@ -44,11 +46,11 @@
   margin-bottom: 10px;
 }
 .login-prime-container .lp-settings-section {
-  width: 63%;
-  padding: 10px;
+  width: 61%;
+  padding: 30px;
   border-radius: 12px;
   margin-bottom: 40px;
-  box-shadow: -4px 4px 14px 0 rgba(0, 0, 0, 0.25);
+  box-shadow: -2px 2px 7px 0 rgba(0, 0, 0, 0.25);
 }
 .login-prime-container .lp-settings-section h2 {
   color: #2B8FBB;
@@ -65,4 +67,14 @@
 .login-prime-container .lp-settings-section .form-table td input {
   border-radius: 8px;
   padding: 10px;
+}
+.login-prime-container .lp-settings-section .form-table td input[type=color] {
+  border-radius: 0;
+  padding: 0;
+}
+.login-prime-container .lp-settings-submit {
+  width: 63%;
+}
+.login-prime-container .lp-settings-submit .form-table td {
+  text-align: left;
 }

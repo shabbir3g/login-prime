@@ -14,6 +14,30 @@ namespace LoginPrime\Includes\Frontend;
 
     public function __construct(){
         add_shortcode('login-prime', [$this, 'render_shortcode']);
+        add_action('wp_head', [$this, 'login_prime_custom_dynamic_css']);
+    }
+
+    public function login_prime_custom_dynamic_css(){
+        $dynamic_css = get_option('login_prime_style_settings', ['red']);
+    
+        echo "<style>
+            :root {
+             --btn-bg-color: " . (isset($dynamic_css['btn_bg_color']) ? $dynamic_css['btn_bg_color'] : '#5948d6') . ";
+             --btn-text-color: " . (isset($dynamic_css['btn_text_color']) ? $dynamic_css['btn_text_color'] : '#ffffff') . ";
+
+             --btn-hover-bg: " . (isset($dynamic_css['hover_btn_bg']) ? $dynamic_css['hover_btn_bg'] : '#5948d6') . ";
+            --btn-hover-text: " . (isset($dynamic_css['hover_btn_text_color']) ? $dynamic_css['hover_btn_text_color'] : '#5948d6') . ";
+             --btn-border-width: " . (isset($dynamic_css['btn_border_width']) ? $dynamic_css['btn_border_width'].'px' : '') . ";
+            --btn-border-type: " . (isset($dynamic_css['btn_border_type']) ? $dynamic_css['btn_border_type'] : 'none') . ";
+            --btn-border-color: " . (isset($dynamic_css['btn_border_color']) ? $dynamic_css['btn_border_color'] : 'none') . ";
+
+            
+
+             
+
+
+            }
+        </style>";
     }
 
     /**
@@ -23,7 +47,7 @@ namespace LoginPrime\Includes\Frontend;
     public function render_shortcode($atts, $content=''){
 
         wp_enqueue_style('login-prime-template_style');
-        $data = get_option( 'login_prime_save_settings', []);
+        $data = get_option( 'login_prime_style_settings', []);
 
         // print_r($data);
 
@@ -40,17 +64,17 @@ namespace LoginPrime\Includes\Frontend;
 
         // Condition to choose the template file
         if ($data['form_pattern'] == 'template-1') {
-            $template = 'login-demo-1.php';
+            $template = 'login-demo-6.php';
         } elseif ($data['form_pattern'] == 'template-2') {
-            $template = 'login-demo-2.php';
+            $template = 'login-demo-1.php';
         } elseif ($data['form_pattern'] == 'template-3') {
-            $template = 'login-demo-dark-3.php';
-        } elseif ($data['form_pattern'] == 'template-4') {
             $template = 'login-demo-light-3.php';
-        } elseif ($data['form_pattern'] == 'template-5') {
+        } elseif ($data['form_pattern'] == 'template-4') {
             $template = 'login-demo-4.php';
+        } elseif ($data['form_pattern'] == 'template-5') {
+            $template = 'login-demo-5.php';
         }else {
-            $template = 'login-demo-1.php'; // Default template if nothing matches
+            $template = 'login-demo-6.php'; // Default template if nothing matches
         }
         // Get template path
         $template_path = plugin_dir_path(__FILE__) . 'templates/' . $template;

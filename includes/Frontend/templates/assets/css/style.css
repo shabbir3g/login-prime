@@ -14,21 +14,6 @@
   --lt-black-color: #333333;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: var(--body-font-family);
-  background-color: var(--grey-bg);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-}
-
 .lp-main-container {
   background: var(--white-bg);
   padding: 50px;
@@ -36,6 +21,7 @@ body {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   text-align: center;
   width: 476px;
+  margin: auto;
 }
 .lp-main-container .lp-title {
   font-size: var(--title-font);
@@ -55,32 +41,34 @@ body {
   border: none;
   background: none;
   cursor: pointer;
-  border: 2px solid var(--lt-black-color);
+  border-width: 2px;
+  border-style: solid;
+  border-color: var(--btn-border-color);
   border-radius: 4px;
   color: var(--black-color);
   text-decoration: none;
 }
 .lp-main-container .lp-tabs .lp-tab.active {
   font-weight: bold;
-  background: var(--black-color);
+  background: var(--btn-bg-color);
   color: var(--white-color);
   border-radius: 4px;
 }
 .lp-main-container .lp-tabs .lp-tab.lp-red-btn {
-  border: 2px solid var(--red-bg);
+  border: 2px solid var(--btn-bg-color);
 }
 .lp-main-container .lp-tabs .lp-tab.lp-red-btn.active {
-  background: var(--red-bg);
-  color: var(--white-color);
+  background: var(--btn-bg-color);
+  color: var(--btn-text-color);
   border: 2px solid var(--red-bg);
 }
 .lp-main-container .lp-tabs .lp-tab.lp-red-btn:hover {
   background-color: var(--red-bg);
-  color: var(--white-color) !important;
+  color: var(--btn-text-color) !important;
 }
 .lp-main-container .lp-tabs .lp-tab:hover {
-  background-color: var(--lt-black-color);
-  color: var(--white-color) !important;
+  background-color: var(--btn-bg-color);
+  color: var(--btn-text-color) !important;
 }
 .lp-main-container .lp-tabs .lp-tab:visited {
   color: var(--black-color);
@@ -111,15 +99,16 @@ body {
 .lp-main-container .lp-form .lp-btn {
   width: 100%;
   padding: 20px 10px;
-  background: var(--black-color);
-  color: var(--white-color);
+  background: var(--btn-bg-color);
+  color: var(--btn-text-color);
   border: none;
   border-radius: 5px;
   font-size: 16px;
   cursor: pointer;
 }
 .lp-main-container .lp-form .lp-btn:hover {
-  background: var(--lt-black-color);
+  background: var(--btn-hover-bg);
+  color: var(--btn-hover-text);
 }
 .lp-main-container .lp-form .lp-red-btn {
   background: var(--red-bg);
@@ -174,6 +163,7 @@ body {
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   width: 400px;
+  margin: auto;
 }
 .lp-3rd-form-container.lp-dark {
   background-color: #131316;
@@ -326,14 +316,17 @@ body {
   width: 100%;
   padding: 10px;
   font-size: 16px;
-  color: var(--white-color);
-  background-color: var(--blue-link);
-  border: none;
+  background-color: var(--btn-bg-color);
+  color: var(--btn-text-color);
+  border-width: var(--btn-border-width);
+  border-style: var(--btn-border-type);
+  border-color: var(--btn-border-color);
   border-radius: 5px;
   cursor: pointer;
 }
 .lp-3rd-form-container .button:hover {
-  background-color: #0056b3;
+  background-color: var(--btn-hover-bg);
+  color: var(--btn-hover-text);
 }
 .lp-3rd-form-container .signup {
   text-align: center;
@@ -527,9 +520,11 @@ body {
 .login-prime-container .form-section .form-container form .submit-button {
   width: 100%;
   padding: 10px;
-  background-color: #3A5B22;
-  color: #fff;
-  border: none;
+  background: var(--btn-bg-color);
+  color: var(--btn-text-color);
+  border-width: var(--btn-border-width);
+  border-style: var(--btn-border-type);
+  border-color: var(--btn-border-color);
   border-radius: 5px;
   font-size: 16px;
   font-weight: 600;
@@ -538,7 +533,8 @@ body {
   margin-bottom: 8px;
 }
 .login-prime-container .form-section .form-container form .submit-button:hover {
-  background-color: #444;
+  background: var(--btn-hover-bg);
+  color: var(--btn-hover-text);
 }
 .login-prime-container .form-section .form-container form p {
   text-align: center;
@@ -683,9 +679,11 @@ body {
 .back-login-container .form-section .form-container form .submit-button {
   width: 100%;
   padding: 10px;
-  background-color: #3A5B22;
-  color: #fff;
-  border: none;
+  background: var(--btn-bg-color);
+  color: var(--btn-text-color);
+  border-width: var(--btn-border-width);
+  border-style: var(--btn-border-type);
+  border-color: var(--btn-border-color);
   border-radius: 5px;
   font-size: 16px;
   font-weight: 600;
@@ -694,7 +692,8 @@ body {
   margin-bottom: 8px;
 }
 .back-login-container .form-section .form-container form .submit-button:hover {
-  background-color: #444;
+  background: var(--btn-hover-bg);
+  color: var(--btn-hover-text);
 }
 .back-login-container .form-section .form-container form p {
   text-align: center;
@@ -754,6 +753,7 @@ body {
   background: #ffffff;
   border-radius: 10px;
   overflow: hidden;
+  margin: auto;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 .lp-demo-6-container .image-section {
@@ -841,7 +841,6 @@ body {
   left: 10px;
   transform: translateY(-50%);
   width: 20px;
-  height: 20px;
 }
 .lp-demo-6-container .without-icons .form-group input {
   padding: 10px;
@@ -863,17 +862,20 @@ body {
 .lp-demo-6-container .submit-button {
   width: 100%;
   padding: 10px;
-  background: #6a5af9;
-  color: #ffffff;
+  background: var(--btn-bg-color);
+  color: var(--btn-text-color);
   font-size: 16px;
   font-weight: bold;
-  border: none;
+  border-width: var(--btn-border-width);
+  border-style: var(--btn-border-type);
+  border-color: var(--btn-border-color);
   border-radius: 5px;
   cursor: pointer;
   transition: 0.2s;
 }
 .lp-demo-6-container .submit-button:hover {
-  background: #5948d6;
+  background: var(--btn-hover-bg);
+  color: var(--btn-hover-text);
 }
 .lp-demo-6-container .register-link {
   margin-top: 20px;

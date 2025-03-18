@@ -15,7 +15,7 @@ const Setting = () => {
   // Handle Reset Password
   const [handleResetPassword, setHandleResetPassword] = useState(false);
   // Form Pattern
-  const [formPattern, setFormPattern] = useState("");
+  // const [formPattern, setFormPattern] = useState("");
   // All pages load
   const [pages, setPages] = useState([]);
   //Login Redirect
@@ -26,7 +26,7 @@ const Setting = () => {
   const [logoutRedirect, setLogoutRedirect] = useState("");
 
   const [data, setData] = useState({
-    data: { plugin_name: "", user_role: "" },
+    data: { plugin_name: "", user_role: "", register_tab_text: "Register" },
   });
   const [notice, setNotice] = useState({ message: "", type: "" });
 
@@ -37,12 +37,24 @@ const Setting = () => {
     setUserRole("subscriber");
     setAutoLoginUserSignUp(false);
     setHandleResetPassword(false);
-    setFormPattern("");
+    // setFormPattern("");
     setLoginRedirect("");
     setRegisterRedirect("");
     setLogoutRedirect("");
 
-    // setData({ data: { plugin_name: "", user_role: "" } });
+    setData({
+      data: {
+        login_tab_text: "Login",
+        register_tab_text: "Register",
+        login_button_text: "Login",
+        register_button_text: "Register",
+        reset_password_button_text: "Forget password",
+        username_label_text: "Username/Email",
+        username_placeholder_text: "Email Or Username",
+        password_label_text: "Password",
+        password_placeholder_text: "Password",
+      },
+    });
     setNotice({
       message:
         "All data has been reset. Please click the ‘Save’ button to preserve your changes.",
@@ -96,7 +108,7 @@ const Setting = () => {
         );
 
         // Form Pattern
-        setFormPattern(responseData?.data?.form_pattern || "");
+        // setFormPattern(responseData?.data?.form_pattern || "");
 
         // Login Redirect
         setLoginRedirect(responseData?.data?.login_redirect || "");
@@ -131,7 +143,7 @@ const Setting = () => {
     formData.append("handle_reset_password", handleResetPassword ? "1" : "0");
 
     // Form Pattern
-    formData.append("form_pattern", formPattern);
+    // formData.append("form_pattern", formPattern);
 
     // Login Redirect
     formData.append("login_redirect", loginRedirect);
@@ -162,7 +174,7 @@ const Setting = () => {
 
   return (
     <div className="settings-container">
-      <ToastContainer position="top-right" autoClose={3000} />
+      <ToastContainer position="bottom-right" autoClose={3000} />
       {/* {notice.message && (
         <div className="lp-settings-notification">
           <Notice
@@ -265,7 +277,7 @@ const Setting = () => {
                 </td>
               </tr>
 
-              <tr>
+              {/* <tr>
                 <th>
                   <label htmlFor="form_pattern">Form Pattern</label>
                 </th>
@@ -312,7 +324,7 @@ const Setting = () => {
                     </option>
                   </select>
                 </td>
-              </tr>
+              </tr> */}
             </tbody>
           </table>
         </div>
@@ -490,7 +502,7 @@ const Setting = () => {
               <tr>
                 <th>
                   <label htmlFor="reset_password_button_text">
-                    Reset Password Button Text
+                    Reset Password Link Text
                   </label>
                 </th>
                 <td>

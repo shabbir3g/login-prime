@@ -1,13 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Responsive Login Form</title>
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/responsive.css">
-  </head>
-  <body>
+
     <div class="back-login-container">
       <section class="form-section">
         <div class="form-container">
@@ -18,12 +9,12 @@
           <!-- social login -->
           <div class="social-login social-login-direction">
             <div class="social-button">
-              <img src="images/Google - Original.png" alt="Google Logo" />
+              <img src="<?php echo LOGIN_PRIME_URL  ?>includes/Frontend/templates/images/google.png" alt="Google Logo" />
               Sign in with Google
             </div>
             <div class="social-button">
               <img
-                src="https://upload.wikimedia.org/wikipedia/commons/0/05/Facebook_Logo_%282019%29.png"
+                src="<?php echo LOGIN_PRIME_URL  ?>includes/Frontend/templates/images/facebook.png"
                 alt="Facebook Logo"
               />
               Sign in with Facebook
@@ -65,8 +56,6 @@
         </div>
       </section>
       <section class="image-section">
-        <img src="images/login-art.png" alt="Decorative Flowers" />
+        <img src="<?php echo LOGIN_PRIME_URL  ?>includes/Frontend/templates/images/login-art.png" alt="Decorative Flowers" />
       </section>
     </div>
-  </body>
-</html>

@@ -15,20 +15,6 @@
   }
   
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-  
-body {
-    font-family: var(--body-font-family);
-    background-color: var(--grey-bg);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-}
 
 // Login Demo 01 Sytle
 
@@ -39,6 +25,7 @@ body {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     text-align: center;
     width: 476px;
+    margin: auto;
     .lp-title {
         font-size: var(--title-font);
         font-weight: bold;
@@ -56,31 +43,33 @@ body {
             border: none;
             background: none;
             cursor: pointer;
-            border: 2px solid var(--lt-black-color);
+            border-width: 2px;
+            border-style: solid;
+            border-color: var(--btn-border-color);
             border-radius: 4px;
             color: var(--black-color);
             text-decoration: none;
             &.active {
                 font-weight: bold;
-                background: var(--black-color);
+                background: var(--btn-bg-color);
                 color: var(--white-color);
                 border-radius: 4px;
             }
             &.lp-red-btn{
-                border: 2px solid var(--red-bg);
+                border: 2px solid var(--btn-bg-color);
                 &.active {
-                    background: var(--red-bg);
-                    color: var(--white-color);
+                    background: var(--btn-bg-color);
+                    color: var(--btn-text-color);
                     border: 2px solid var(--red-bg);
                 }
                 &:hover{
                     background-color: var(--red-bg);
-                    color: var(--white-color) !important;
+                    color: var(--btn-text-color) !important;
                 }
             }
             &:hover{
-                background-color: var(--lt-black-color);
-                color: var(--white-color) !important;
+                background-color: var(--btn-bg-color);
+                color: var(--btn-text-color) !important;
             }
             &:visited{
                 color: var(--black-color);
@@ -117,14 +106,15 @@ body {
         .lp-btn { 
             width: 100%;
             padding: 20px 10px;
-            background: var(--black-color);
-            color: var(--white-color);
+            background: var(--btn-bg-color);
+            color: var(--btn-text-color);
             border: none;
             border-radius: 5px;
             font-size: 16px;
             cursor: pointer;
             &:hover {
-                background: var(--lt-black-color);
+                background: var(--btn-hover-bg);
+                color: var(--btn-hover-text);
             }
         }
         .lp-red-btn { 
@@ -191,6 +181,7 @@ body {
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     width: 400px;
+    margin: auto;
     &.lp-dark{
         background-color: #131316;
         box-sizing: content-box;
@@ -347,13 +338,16 @@ body {
         width: 100%;
         padding: 10px;
         font-size: 16px;
-        color: var(--white-color);
-        background-color: var(--blue-link);
-        border: none;
+        background-color: var(--btn-bg-color);
+        color: var(--btn-text-color);
+        border-width: var(--btn-border-width);
+        border-style: var(--btn-border-type);
+        border-color: var(--btn-border-color);
         border-radius: 5px;
         cursor: pointer;
         &:hover {
-            background-color: #0056b3;
+            background-color: var(--btn-hover-bg);
+            color: var(--btn-hover-text);
         }
     }
     .signup {
@@ -561,9 +555,11 @@ body {
                   .submit-button {
                     width: 100%;
                     padding: 10px;
-                    background-color: #3A5B22;
-                    color: #fff;
-                    border: none;
+                    background: var(--btn-bg-color);
+                    color: var( --btn-text-color);   
+                    border-width: var(--btn-border-width);
+                    border-style: var(--btn-border-type);
+                    border-color: var(--btn-border-color);
                     border-radius: 5px;
                     font-size: 16px;
                     font-weight: 600;
@@ -571,7 +567,8 @@ body {
                     margin-top: 8px;
                     margin-bottom: 8px;
                     &:hover {
-                        background-color: #444;
+                        background: var(--btn-hover-bg); 
+                        color: var(--btn-hover-text);
                       }
                   }
                  p {
@@ -735,9 +732,11 @@ body {
                   .submit-button {
                     width: 100%;
                     padding: 10px;
-                    background-color: #3A5B22;
-                    color: #fff;
-                    border: none;
+                    background: var(--btn-bg-color);
+                    color: var( --btn-text-color);   
+                    border-width: var(--btn-border-width);
+                    border-style: var(--btn-border-type);
+                    border-color: var(--btn-border-color);
                     border-radius: 5px;
                     font-size: 16px;
                     font-weight: 600;
@@ -745,7 +744,8 @@ body {
                     margin-top: 8px;
                     margin-bottom: 8px;
                     &:hover {
-                        background-color: #444;
+                        background: var(--btn-hover-bg);   
+                        color: var(--btn-hover-text);
                       }
                   }
                  p {
@@ -820,6 +820,7 @@ body {
     background: #ffffff;
     border-radius: 10px;
     overflow: hidden;
+    margin: auto;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         .image-section {
             flex: 1;
@@ -908,7 +909,6 @@ body {
             left: 10px;
             transform: translateY(-50%);
             width: 20px;
-            height: 20px;
         }
         
     }
@@ -937,16 +937,19 @@ body {
     .submit-button {
         width: 100%;
         padding: 10px;
-        background: #6a5af9;
-        color: #ffffff;
+        background: var(--btn-bg-color);
+        color: var( --btn-text-color);
         font-size: 16px;
         font-weight: bold;
-        border: none;
+        border-width: var(--btn-border-width);
+        border-style: var(--btn-border-type);
+        border-color: var(--btn-border-color);
         border-radius: 5px;
         cursor: pointer;
         transition:  0.2s;
         &:hover {
-            background: #5948d6;
+            background: var(--btn-hover-bg);
+            color: var(--btn-hover-text);
           }
       }
     .register-link {

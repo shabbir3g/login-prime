@@ -1,3 +1,13 @@
+.dark-mode {
+    --body-bg-color: #000;
+    color: #fff;
+}
+
+body{
+    font-family: Arial, sans-serif;
+    background-color: var(--body-bg-color);
+}
+
 .login-prime-container{
     width: 100%;
     background-color: #fff;

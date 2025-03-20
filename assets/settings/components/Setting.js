@@ -44,6 +44,8 @@ const Setting = () => {
 
     setData({
       data: {
+        login_form_header_text: "Login",
+        registration_form_header_text: "Registration",
         login_tab_text: "Login",
         register_tab_text: "Register",
         login_button_text: "Login",
@@ -408,6 +410,58 @@ const Setting = () => {
           <hr />
           <table className="form-table">
             <tbody>
+              <tr>
+                <th>
+                  <label htmlFor="login_form_header_text">
+                    Login Form Header Text
+                  </label>
+                </th>
+                <td>
+                  <input
+                    name="login_form_header_text"
+                    type="text"
+                    id="login_form_header_text"
+                    className="widefat"
+                    defaultValue={data?.data?.login_form_header_text || ""}
+                    onChange={(e) =>
+                      setData({
+                        ...data,
+                        data: {
+                          ...data.data,
+                          login_form_header_text: e.target.value,
+                        },
+                      })
+                    }
+                  />
+                </td>
+              </tr>
+              <tr>
+                <th>
+                  <label htmlFor="registration_form_header_text">
+                    Registration Form Header Text
+                  </label>
+                </th>
+                <td>
+                  <input
+                    name="registration_form_header_text"
+                    type="text"
+                    id="registration_form_header_text"
+                    className="widefat"
+                    defaultValue={
+                      data?.data?.registration_form_header_text || ""
+                    }
+                    onChange={(e) =>
+                      setData({
+                        ...data,
+                        data: {
+                          ...data.data,
+                          registration_form_header_text: e.target.value,
+                        },
+                      })
+                    }
+                  />
+                </td>
+              </tr>
               <tr>
                 <th>
                   <label htmlFor="login_tab_text">Login Tab Text</label>

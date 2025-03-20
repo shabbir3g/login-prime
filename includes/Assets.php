@@ -66,18 +66,36 @@ namespace LoginPrime\Includes;
                 'src'           => LOGIN_PRIME_URL ."/includes/Frontend/templates/assets/css/style.css", 
                 'version'       => filemtime(LOGIN_PRIME_PATH ."/includes/Frontend/templates/assets/css/style.css")
 
+            ],
+            'login-prime-darkmode' => [
+                'src'           => LOGIN_PRIME_URL ."/includes/Frontend/templates/assets/dark-mode/style.css", 
+                'version'       => filemtime(LOGIN_PRIME_PATH ."/includes/Frontend/templates/assets/dark-mode/style.css")
+
+            ]
+        ];
+    }
+
+    public function wp_get_scripts(){
+        return[
+            'login-prime-darkmode' => [
+                'src'           => LOGIN_PRIME_URL ."/includes/Frontend/templates/assets/dark-mode/script.js", 
+                'deps'          => ['jquery'],
+                'version'       => filemtime(LOGIN_PRIME_PATH ."/includes/Frontend/templates/assets/dark-mode/script.js"),
+                'position'  => [
+                    'in_footer' => true
+                ]
             ]
         ];
     }
 
     public function frontend_enqueue_assets(){
 
-        // $scripts = $this->wp_get_scripts();
+        $scripts = $this->wp_get_scripts();
 
-        // foreach ($scripts as $handle => $script) {
-        //     $deps = isset( $script['deps'] ) ? $script['deps']  : false;
-        //     wp_register_script($handle , $script['src'], $deps , $script['version'], $script['position'] );
-        // }
+        foreach ($scripts as $handle => $script) {
+            $deps = isset( $script['deps'] ) ? $script['deps']  : false;
+            wp_register_script($handle , $script['src'], $deps , $script['version'], $script['position'] );
+        }
 
         $styles = $this->wp_get_style();
         foreach ($styles as $handle => $style) {

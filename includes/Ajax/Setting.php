@@ -32,9 +32,8 @@ class Setting{
             'login_redirect' => isset($_POST['login_redirect']) ? sanitize_text_field($_POST['login_redirect']) : "",
             'register_redirect' => isset($_POST['register_redirect']) ? sanitize_text_field($_POST['register_redirect']) : "",
             'logout_redirect' => isset($_POST['logout_redirect']) ? sanitize_text_field($_POST['logout_redirect']) : "",
-            
-            
-            
+            'login_form_header_text' => isset($_POST['login_form_header_text']) ? sanitize_text_field($_POST['login_form_header_text']) : "",
+            'registration_form_header_text' => isset($_POST['registration_form_header_text']) ? sanitize_text_field($_POST['registration_form_header_text']) : "",
             'login_tab_text' => isset($_POST['login_tab_text']) ? sanitize_text_field($_POST['login_tab_text']) : "",
             'register_tab_text' => isset($_POST['register_tab_text']) ? sanitize_text_field($_POST['register_tab_text']) : "",'login_button_text' => isset($_POST['login_button_text']) ? sanitize_text_field($_POST['login_button_text']) : "",
             'register_button_text' => isset($_POST['register_button_text']) ? sanitize_text_field($_POST['register_button_text']) : "",

@@ -22,14 +22,22 @@ namespace LoginPrime\Includes\Frontend;
     
         echo "<style>
             :root {
-             --btn-bg-color: " . (isset($dynamic_css['btn_bg_color']) ? $dynamic_css['btn_bg_color'] : '#5948d6') . ";
+             --btn-bg-color: " . (isset($dynamic_css['btn_bg_color']) ? $dynamic_css['btn_bg_color'] : '#000000') . ";
              --btn-text-color: " . (isset($dynamic_css['btn_text_color']) ? $dynamic_css['btn_text_color'] : '#ffffff') . ";
 
-             --btn-hover-bg: " . (isset($dynamic_css['hover_btn_bg']) ? $dynamic_css['hover_btn_bg'] : '#5948d6') . ";
-            --btn-hover-text: " . (isset($dynamic_css['hover_btn_text_color']) ? $dynamic_css['hover_btn_text_color'] : '#5948d6') . ";
+             --btn-hover-bg: " . (isset($dynamic_css['hover_btn_bg']) ? $dynamic_css['hover_btn_bg'] : '#111111') . ";
+            --btn-hover-text: " . (isset($dynamic_css['hover_btn_text_color']) ? $dynamic_css['hover_btn_text_color'] : '#ffffff') . ";
              --btn-border-width: " . (isset($dynamic_css['btn_border_width']) ? $dynamic_css['btn_border_width'].'px' : '') . ";
             --btn-border-type: " . (isset($dynamic_css['btn_border_type']) ? $dynamic_css['btn_border_type'] : 'none') . ";
-            --btn-border-color: " . (isset($dynamic_css['btn_border_color']) ? $dynamic_css['btn_border_color'] : 'none') . ";
+            --btn-border-color: " . (isset($dynamic_css['btn_border_color']) ? $dynamic_css['btn_border_color'] : '#000000') . ";
+            --header-tab-bg: " . (isset($dynamic_css['header_tab_bg']) ? $dynamic_css['header_tab_bg'] : '#ffffff') . ";
+            --header-tab-text: " . (isset($dynamic_css['header_tab_text']) ? $dynamic_css['header_tab_text'] : '#000000') . ";
+            --header-active-tab-bg: " . (isset($dynamic_css['header_active_tab_bg']) ? $dynamic_css['header_active_tab_bg'] : '#000000') . ";
+            --header-active-tab-text: " . (isset($dynamic_css['header_active_tab_text']) ? $dynamic_css['header_active_tab_text'] : '#ffffff') . ";
+
+            --header-front-size: " . (isset($dynamic_css['header_front_size']) ? $dynamic_css['header_front_size'].'px' : '') . ";
+
+            --header-tab-padding: " . (isset($dynamic_css['header_tab_padding']) ? $dynamic_css['header_tab_padding'] : '10px 0px') . ";
 
             
 
@@ -47,6 +55,9 @@ namespace LoginPrime\Includes\Frontend;
     public function render_shortcode($atts, $content=''){
 
         wp_enqueue_style('login-prime-template_style');
+        wp_enqueue_script('login-prime-darkmode');
+        wp_enqueue_style('login-prime-darkmode');
+        
         $data = get_option( 'login_prime_style_settings', []);
 
         // print_r($data);
@@ -60,21 +71,30 @@ namespace LoginPrime\Includes\Frontend;
         // echo $atts['form_pattern'];
         // print_r($atts);
 
+        ?>
+        <header class="header">
+                <label class="switch">
+                    <input type="checkbox" id="darkModeToggle">
+                    <span class="slider round"></span>
+                </label>
+            </header>
+        <?php 
+
         $template = '';
 
         // Condition to choose the template file
         if ($data['form_pattern'] == 'template-1') {
-            $template = 'login-demo-6.php';
+            $template = 'template-1.php';
         } elseif ($data['form_pattern'] == 'template-2') {
-            $template = 'login-demo-1.php';
+            $template = 'template-2.php';
         } elseif ($data['form_pattern'] == 'template-3') {
-            $template = 'login-demo-light-3.php';
+            $template = 'template-3.php';
         } elseif ($data['form_pattern'] == 'template-4') {
-            $template = 'login-demo-4.php';
+            $template = 'template-4.php';
         } elseif ($data['form_pattern'] == 'template-5') {
-            $template = 'login-demo-5.php';
+            $template = 'template-5.php';
         }else {
-            $template = 'login-demo-6.php'; // Default template if nothing matches
+            $template = 'template-1.php'; // Default template if nothing matches
         }
         // Get template path
         $template_path = plugin_dir_path(__FILE__) . 'templates/' . $template;

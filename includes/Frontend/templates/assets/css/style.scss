@@ -38,28 +38,28 @@
         gap: 20px;
         .lp-tab {
             width: 50%;
-            padding: 10px 0;
-            font-size: 16px;
+            padding: var(--header-tab-padding);
+            font-size: var(--header-front-size);
             border: none;
-            background: none;
+            background: var(--header-tab-bg);
             cursor: pointer;
             border-width: 2px;
             border-style: solid;
             border-color: var(--btn-border-color);
             border-radius: 4px;
-            color: var(--black-color);
+            color: var(--header-tab-text);
             text-decoration: none;
             &.active {
                 font-weight: bold;
-                background: var(--btn-bg-color);
-                color: var(--white-color);
+                background: var(--header-active-tab-bg);
+                color: var(--header-active-tab-text);
                 border-radius: 4px;
             }
             &.lp-red-btn{
                 border: 2px solid var(--btn-bg-color);
                 &.active {
-                    background: var(--btn-bg-color);
-                    color: var(--btn-text-color);
+                    background: var(--header-active-tab-bg);
+                    color: var(--header-active-tab-text);
                     border: 2px solid var(--red-bg);
                 }
                 &:hover{
@@ -68,11 +68,10 @@
                 }
             }
             &:hover{
-                background-color: var(--btn-bg-color);
-                color: var(--btn-text-color) !important;
+                background-color: var(--header-active-tab-bg);
+                color: var(--header-active-tab-text) !important;
             }
             &:visited{
-                color: var(--black-color);
                 text-decoration: none;
             }
            
@@ -364,7 +363,7 @@
     .terms {
         display: flex;
         align-items: center;
-        margin-bottom: 20px;
+        margin-bottom: 8px;
         font-size: 16px;
         input {
             margin-right: 10px;
@@ -844,6 +843,8 @@
             font-size: 28px;
             color: #333333;
             margin-bottom: 10px;
+            text-align: center;
+        
             span {
                 color: #6a5af9;
               }

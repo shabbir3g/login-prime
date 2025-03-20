@@ -5,29 +5,50 @@ import { ToastContainer, toast } from "react-toastify";
 const Style = () => {
   const [notice, setNotice] = useState({ message: "", type: "" });
   // Form Pattern
-  const [formPattern, setFormPattern] = useState("");
-  const [btnBgColor, setBtnBgColor] = useState("#6a5af9");
+  const [formPattern, setFormPattern] = useState("template-1");
+  const [btnBgColor, setBtnBgColor] = useState("#000000");
   const [btnTextColor, setBtnTextColor] = useState("#ffffff");
   const [hoverBtnBg, setHoverBtnBg] = useState("#5948d6");
   const [hoverBtnTextColor, setHoverBtnTextColor] = useState("#ffffff");
   const [btnBorderType, setBtnBorderType] = useState("none");
   const [btnBorderColor, setBtnBorderColor] = useState("#6a5af9");
+  const [headerTabBg, setHeaderTabBg] = useState("#ffffff");
+  const [headerTabText, setHeaderTabText] = useState("#000000");
+  const [headerActiveTabBg, setHeaderActiveTabBg] = useState("#000000");
+  const [headerActiveTabText, setHeaderActiveTabText] = useState("#ffffff");
 
   // Default color
 
   const [data, setData] = useState({
-    data: { form_pattern: "", btn_border_width: "" },
+    data: {
+      form_pattern: "",
+      btn_border_width: "",
+      header_front_size: "",
+      header_tab_padding: "",
+    },
   });
 
   const resetForm = () => {
-    setFormPattern("");
-    setBtnBgColor();
-    setBtnTextColor();
-    setHoverBtnBg();
-    setHoverBtnTextColor();
+    setFormPattern("template-1");
+    setBtnBgColor("#000000");
+    setBtnTextColor("#ffffff");
+    setHoverBtnBg("#111111");
+    setHoverBtnTextColor("#ffffff");
+    setBtnBorderColor("#000000");
     setBtnBorderType("");
+    setHeaderTabBg("#ffffff");
+    setHeaderTabText("#000000");
+    setHeaderActiveTabBg("#000000");
+    setHeaderActiveTabText("#ffffff");
 
-    setData({ data: { form_pattern: "", btn_border_width: "" } });
+    setData({
+      data: {
+        form_pattern: "",
+        btn_border_width: "",
+        header_front_size: "16",
+        header_tab_padding: "10px 0",
+      },
+    });
     setNotice({
       message:
         "All data has been reset. Please click the ‘Save’ button to preserve your changes.",
@@ -51,6 +72,12 @@ const Style = () => {
         // Button Border Type
         setBtnBorderType(responseData?.data?.btn_border_type || "");
         setBtnBorderColor(responseData?.data?.btn_border_color || "");
+        setHeaderTabBg(responseData?.data?.header_tab_bg || "");
+        setHeaderTabText(responseData?.data?.header_tab_text || "");
+        setHeaderActiveTabBg(responseData?.data?.header_active_tab_bg || "");
+        setHeaderActiveTabText(
+          responseData?.data?.header_active_tab_text || ""
+        );
       })
       .catch((error) => console.error("Fetch error:", error));
   }, []);
@@ -83,16 +110,6 @@ const Style = () => {
   return (
     <div className="settings-container">
       <ToastContainer position="bottom-right" autoClose={3000} />
-      {notice.message && (
-        <div className="lp-settings-notification">
-          <Notice
-            status={notice.type} // "success" or "error"
-            onRemove={() => setNotice({ message: "", type: "" })} // Dismiss notice
-          >
-            {notice.message}
-          </Notice>
-        </div>
-      )}
 
       <form onSubmit={onStyleSubmit}>
         <div className="lp-settings-section lp-settings-setting-section">
@@ -318,60 +335,107 @@ const Style = () => {
 
               <tr>
                 <th>
-                  <label htmlFor="tabgg">Tab background</label>
-                </th>
-                <td>
-                  <input type="color" value={"#000000"} name="" id="" />
-                </td>
-              </tr>
-              <tr>
-                <th>
-                  <label htmlFor="ddd">Tab Text</label>
-                </th>
-                <td>
-                  <input type="color" value={"#000000"} name="" id="" />
-                </td>
-              </tr>
-              <tr>
-                <th>
-                  <label htmlFor="sss">Active Tab Background</label>
-                </th>
-                <td>
-                  <input type="color" value={"#000000"} name="" id="" />
-                </td>
-              </tr>
-              <tr>
-                <th>
-                  <label htmlFor="dddd">Active Tab Text</label>
-                </th>
-                <td>
-                  <input type="color" value={"#000000"} name="" id="" />
-                </td>
-              </tr>
-
-              <tr>
-                <th>
-                  <label htmlFor="dddd">Font Size (px)</label>
+                  <label htmlFor="header_tab_bg">Tab background</label>
                 </th>
                 <td>
                   <input
-                    name="login_tab_text2"
-                    type="text"
-                    id="login_tab_text2"
+                    type="color"
+                    value={headerTabBg}
+                    name="header_tab_bg"
+                    id="header_tab_bg"
+                    onChange={(e) => setHeaderTabBg(e.target.value)} // Update state on change
                   />
                 </td>
               </tr>
               <tr>
                 <th>
-                  <label htmlFor="ffssds">Padding </label>
+                  <label htmlFor="header_tab_text">Tab Text</label>
                 </th>
                 <td>
                   <input
-                    name="login_tab_text3"
+                    type="color"
+                    value={headerTabText}
+                    name="header_tab_text"
+                    id="header_tab_text"
+                    onChange={(e) => setHeaderTabText(e.target.value)} // Update state on change
+                  />
+                </td>
+              </tr>
+              <tr>
+                <th>
+                  <label htmlFor="header_active_tab_bg">
+                    Active Tab Background
+                  </label>
+                </th>
+                <td>
+                  <input
+                    type="color"
+                    value={headerActiveTabBg}
+                    name="header_active_tab_bg"
+                    id="header_active_tab_bg"
+                    onChange={(e) => setHeaderActiveTabBg(e.target.value)} // Update state on change
+                  />
+                </td>
+              </tr>
+              <tr>
+                <th>
+                  <label htmlFor="header_active_tab_text">
+                    Active Tab Text
+                  </label>
+                </th>
+                <td>
+                  <input
+                    type="color"
+                    value={headerActiveTabText}
+                    name="header_active_tab_text"
+                    id="header_active_tab_text"
+                    onChange={(e) => setHeaderActiveTabText(e.target.value)} // Update state on change
+                  />
+                </td>
+              </tr>
+
+              <tr>
+                <th>
+                  <label htmlFor="header_front_size">Font Size (px)</label>
+                </th>
+                <td>
+                  <input
+                    name="header_front_size"
+                    type="number"
+                    id="header_front_size"
+                    defaultValue={data?.data?.header_front_size || ""}
+                    onChange={(e) =>
+                      setData({
+                        ...data,
+                        data: {
+                          ...data.data,
+                          header_front_size: e.target.value,
+                        },
+                      })
+                    }
+                  />
+                </td>
+              </tr>
+              <tr>
+                <th>
+                  <label htmlFor="header_tab_padding">Padding </label>
+                </th>
+                <td>
+                  <input
+                    name="header_tab_padding"
                     type="text"
-                    id="login_tab_text3"
-                    className="widefat"
-                    placeholder="Ex. 10px 10px"
+                    id="header_tab_padding"
+                    placeholder="Ex: 10px 10px"
+                    defaultValue={data?.data?.header_tab_padding || ""}
+                    onChange={(e) =>
+                      setData({
+                        ...data,
+                        data: {
+                          ...data.data,
+                          header_tab_padding: e.target.value,
+                        },
+                      })
+                    }
                   />
                 </td>
               </tr>
@@ -469,6 +533,16 @@ const Style = () => {
             </tbody>
           </table>
         </div>
+        {notice.message && (
+          <div className="lp-settings-notification">
+            <Notice
+              status={notice.type} // "success" or "error"
+              onRemove={() => setNotice({ message: "", type: "" })} // Dismiss notice
+            >
+              {notice.message}
+            </Notice>
+          </div>
+        )}
 
         <div className="lp-settings-submit">
           <table className="form-table">

@@ -1081,6 +1081,8 @@ const Setting = () => {
     setLogoutRedirect("");
     setData({
       data: {
+        login_form_header_text: "Login",
+        registration_form_header_text: "Registration",
         login_tab_text: "Login",
         register_tab_text: "Register",
         login_button_text: "Login",
@@ -1367,6 +1369,50 @@ const Setting = () => {
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("tr", {
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("th", {
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("label", {
+                  htmlFor: "login_form_header_text",
+                  children: "Login Form Header Text"
+                })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+                  name: "login_form_header_text",
+                  type: "text",
+                  id: "login_form_header_text",
+                  className: "widefat",
+                  defaultValue: data?.data?.login_form_header_text || "",
+                  onChange: e => setData({
+                    ...data,
+                    data: {
+                      ...data.data,
+                      login_form_header_text: e.target.value
+                    }
+                  })
+                })
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("tr", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("th", {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("label", {
+                  htmlFor: "registration_form_header_text",
+                  children: "Registration Form Header Text"
+                })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+                  name: "registration_form_header_text",
+                  type: "text",
+                  id: "registration_form_header_text",
+                  className: "widefat",
+                  defaultValue: data?.data?.registration_form_header_text || "",
+                  onChange: e => setData({
+                    ...data,
+                    data: {
+                      ...data.data,
+                      registration_form_header_text: e.target.value
+                    }
+                  })
+                })
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("tr", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("th", {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("label", {
                   htmlFor: "login_tab_text",
                   children: "Login Tab Text"
                 })
@@ -1643,33 +1689,46 @@ const Style = () => {
     type: ""
   });
   // Form Pattern
-  const [formPattern, setFormPattern] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("");
-  const [btnBgColor, setBtnBgColor] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("#6a5af9");
+  const [formPattern, setFormPattern] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("template-1");
+  const [btnBgColor, setBtnBgColor] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("#000000");
   const [btnTextColor, setBtnTextColor] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("#ffffff");
   const [hoverBtnBg, setHoverBtnBg] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("#5948d6");
   const [hoverBtnTextColor, setHoverBtnTextColor] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("#ffffff");
   const [btnBorderType, setBtnBorderType] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("none");
   const [btnBorderColor, setBtnBorderColor] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("#6a5af9");
+  const [headerTabBg, setHeaderTabBg] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("#ffffff");
+  const [headerTabText, setHeaderTabText] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("#000000");
+  const [headerActiveTabBg, setHeaderActiveTabBg] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("#000000");
+  const [headerActiveTabText, setHeaderActiveTabText] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("#ffffff");
 
   // Default color
 
   const [data, setData] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
     data: {
       form_pattern: "",
-      btn_border_width: ""
+      btn_border_width: "",
+      header_front_size: "",
+      header_tab_padding: ""
     }
   });
   const resetForm = () => {
-    setFormPattern("");
-    setBtnBgColor();
-    setBtnTextColor();
-    setHoverBtnBg();
-    setHoverBtnTextColor();
+    setFormPattern("template-1");
+    setBtnBgColor("#000000");
+    setBtnTextColor("#ffffff");
+    setHoverBtnBg("#111111");
+    setHoverBtnTextColor("#ffffff");
+    setBtnBorderColor("#000000");
     setBtnBorderType("");
+    setHeaderTabBg("#ffffff");
+    setHeaderTabText("#000000");
+    setHeaderActiveTabBg("#000000");
+    setHeaderActiveTabText("#ffffff");
     setData({
       data: {
         form_pattern: "",
-        btn_border_width: ""
+        btn_border_width: "",
+        header_front_size: "16",
+        header_tab_padding: "10px 0"
       }
     });
     setNotice({
@@ -1691,6 +1750,10 @@ const Style = () => {
       // Button Border Type
       setBtnBorderType(responseData?.data?.btn_border_type || "");
       setBtnBorderColor(responseData?.data?.btn_border_color || "");
+      setHeaderTabBg(responseData?.data?.header_tab_bg || "");
+      setHeaderTabText(responseData?.data?.header_tab_text || "");
+      setHeaderActiveTabBg(responseData?.data?.header_active_tab_bg || "");
+      setHeaderActiveTabText(responseData?.data?.header_active_tab_text || "");
     }).catch(error => console.error("Fetch error:", error));
   }, []);
   const onStyleSubmit = event => {
@@ -1720,18 +1783,6 @@ const Style = () => {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_toastify__WEBPACK_IMPORTED_MODULE_2__.ToastContainer, {
       position: "bottom-right",
       autoClose: 3000
-    }), notice.message && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-      className: "lp-settings-notification",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Notice, {
-        status: notice.type // "success" or "error"
-        ,
-        onRemove: () => setNotice({
-          message: "",
-          type: ""
-        }) // Dismiss notice
-        ,
-        children: notice.message
-      })
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("form", {
       onSubmit: onStyleSubmit,
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
@@ -1949,85 +2000,104 @@ const Style = () => {
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("tr", {
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("th", {
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("label", {
-                  htmlFor: "tabgg",
+                  htmlFor: "header_tab_bg",
                   children: "Tab background"
                 })
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
                   type: "color",
-                  value: "#000000",
-                  name: "",
-                  id: ""
+                  value: headerTabBg,
+                  name: "header_tab_bg",
+                  id: "header_tab_bg",
+                  onChange: e => setHeaderTabBg(e.target.value) // Update state on change
                 })
               })]
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("tr", {
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("th", {
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("label", {
-                  htmlFor: "ddd",
+                  htmlFor: "header_tab_text",
                   children: "Tab Text"
                 })
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
                   type: "color",
-                  value: "#000000",
-                  name: "",
-                  id: ""
+                  value: headerTabText,
+                  name: "header_tab_text",
+                  id: "header_tab_text",
+                  onChange: e => setHeaderTabText(e.target.value) // Update state on change
                 })
               })]
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("tr", {
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("th", {
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("label", {
-                  htmlFor: "sss",
+                  htmlFor: "header_active_tab_bg",
                   children: "Active Tab Background"
                 })
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
                   type: "color",
-                  value: "#000000",
-                  name: "",
-                  id: ""
+                  value: headerActiveTabBg,
+                  name: "header_active_tab_bg",
+                  id: "header_active_tab_bg",
+                  onChange: e => setHeaderActiveTabBg(e.target.value) // Update state on change
                 })
               })]
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("tr", {
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("th", {
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("label", {
-                  htmlFor: "dddd",
+                  htmlFor: "header_active_tab_text",
                   children: "Active Tab Text"
                 })
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
                   type: "color",
-                  value: "#000000",
-                  name: "",
-                  id: ""
+                  value: headerActiveTabText,
+                  name: "header_active_tab_text",
+                  id: "header_active_tab_text",
+                  onChange: e => setHeaderActiveTabText(e.target.value) // Update state on change
                 })
               })]
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("tr", {
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("th", {
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("label", {
-                  htmlFor: "dddd",
+                  htmlFor: "header_front_size",
                   children: "Font Size (px)"
                 })
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
-                  name: "login_tab_text2",
-                  type: "text",
-                  id: "login_tab_text2"
+                  name: "header_front_size",
+                  type: "number",
+                  id: "header_front_size",
+                  defaultValue: data?.data?.header_front_size || "",
+                  onChange: e => setData({
+                    ...data,
+                    data: {
+                      ...data.data,
+                      header_front_size: e.target.value
+                    }
+                  })
                 })
               })]
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("tr", {
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("th", {
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("label", {
-                  htmlFor: "ffssds",
+                  htmlFor: "header_tab_padding",
                   children: "Padding "
                 })
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
-                  name: "login_tab_text3",
+                  name: "header_tab_padding",
                   type: "text",
-                  id: "login_tab_text3",
-                  className: "widefat",
-                  placeholder: "Ex. 10px 10px"
+                  id: "header_tab_padding",
+                  placeholder: "Ex: 10px 10px",
+                  defaultValue: data?.data?.header_tab_padding || "",
+                  onChange: e => setData({
+                    ...data,
+                    data: {
+                      ...data.data,
+                      header_tab_padding: e.target.value
+                    }
+                  })
                 })
               })]
             })]
@@ -2141,6 +2211,18 @@ const Style = () => {
             })]
           })
         })]
+      }), notice.message && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+        className: "lp-settings-notification",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Notice, {
+          status: notice.type // "success" or "error"
+          ,
+          onRemove: () => setNotice({
+            message: "",
+            type: ""
+          }) // Dismiss notice
+          ,
+          children: notice.message
+        })
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
         className: "lp-settings-submit",
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("table", {

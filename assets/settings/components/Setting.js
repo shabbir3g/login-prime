@@ -6,6 +6,9 @@ const Setting = () => {
   // Enable Registration
   const [enableRegistration, setEnableRegistration] = useState(false);
 
+  // Enable Darkmode
+  const [enableDarkmode, setEnableDarkmode] = useState(false);
+
   // Load all User Role
   const [userRoles, setUserRoles] = useState([]);
   // User Role
@@ -96,6 +99,9 @@ const Setting = () => {
 
         // Enable Registration
         setEnableRegistration(responseData?.data?.enable_registration === "1");
+
+        // Enable eDarkmode
+        setEnableDarkmode(responseData?.data?.enable_darkmode === "1");
         // User Role
         setUserRole(responseData?.data?.user_role || "");
 
@@ -133,6 +139,9 @@ const Setting = () => {
 
     // Enable Registration
     formData.append("enable_registration", enableRegistration ? "1" : "0");
+
+    // Enable Registration
+    formData.append("enable_darkmode", enableDarkmode ? "1" : "0");
 
     // User Role
     formData.append("user_role", userRole);
@@ -207,6 +216,21 @@ const Setting = () => {
                     name="enable_registration"
                     checked={enableRegistration}
                     onChange={() => setEnableRegistration(!enableRegistration)}
+                  />
+                </td>
+              </tr>
+
+              {/* Enable Darkmode */}
+              <tr>
+                <th>
+                  <label htmlFor="enable_darkmode">Enable Darkmode</label>
+                </th>
+                <td>
+                  <FormToggle
+                    id="enable_darkmode"
+                    name="enable_darkmode"
+                    checked={enableDarkmode}
+                    onChange={() => setEnableDarkmode(!enableDarkmode)}
                   />
                 </td>
               </tr>

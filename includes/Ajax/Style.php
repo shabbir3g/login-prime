@@ -19,6 +19,27 @@ class Style{
         header("Content-Type: application/json");
     
         check_ajax_referer('login-prime-nonce', '_wpnonce'); // ✅ Fix nonce name
+
+        // // Handle image upload
+        // if (!empty($_FILES['image']) && $_FILES['image']['error'] === 0) {
+        //     $image_id = $this->upload_image($_FILES['image']);
+        //     if ($image_id) {
+        //         $data['image_url'] = wp_get_attachment_url($image_id);
+        //     }
+        // }
+
+        $image_url = '';
+
+        if (isset($_FILES['image']) && !empty($_FILES['image']['name'])) {
+            require_once(ABSPATH . 'wp-admin/includes/file.php');
+            require_once(ABSPATH . 'wp-admin/includes/image.php');
+
+            $uploaded = media_handle_upload('image', 0);
+
+            if (!is_wp_error($uploaded)) {
+                $image_url = wp_get_attachment_url($uploaded); // ✅ real image URL
+            }
+        }
     
         $data = [
            
@@ -38,17 +59,54 @@ class Style{
             'header_front_size' => isset($_POST['header_front_size']) ? sanitize_text_field($_POST['header_front_size']) : "16",
             'header_tab_padding' => isset($_POST['header_tab_padding']) ? sanitize_text_field($_POST['header_tab_padding']) : "10px 0px",
 
+            'sidebar_position' => isset($_POST['sidebar_position']) ? sanitize_text_field($_POST['sidebar_position']) : "right",
+            'sidebar_background' => $image_url, // ✅ set the correct uploaded image URL
+
+            
+
             
             
             
         ];
+
     
         update_option('login_prime_style_settings', $data, false);
-    
-        wp_send_json_success(["message" => "Settings saved successfully"]);
 
-         // Always exit after sending JSON
+        wp_send_json_success([
+          "message" => "Settings saved successfully",
+          "image_url" => $image_url
+        ]);
+        
         wp_die();
+    }
+
+
+    private function upload_image($file) {
+        if (!function_exists('wp_handle_upload')) {
+            require_once ABSPATH . 'wp-admin/includes/file.php';
+        }
+
+        $upload_overrides = ['test_form' => false];
+        $movefile = wp_handle_upload($file, $upload_overrides);
+
+        if ($movefile && !isset($movefile['error'])) {
+            $attachment = [
+                'guid'           => $movefile['url'],
+                'post_mime_type' => $movefile['type'],
+                'post_title'     => sanitize_file_name($file['name']),
+                'post_content'   => '',
+                'post_status'    => 'inherit'
+            ];
+
+            $attach_id = wp_insert_attachment($attachment, $movefile['file']);
+            require_once ABSPATH . 'wp-admin/includes/image.php';
+            $attach_data = wp_generate_attachment_metadata($attach_id, $movefile['file']);
+            wp_update_attachment_metadata($attach_id, $attach_data);
+
+            return $attach_id;
+        }
+
+        return false;
     }
 
     public function login_prime_get_style(){

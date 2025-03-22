@@ -77,4 +77,14 @@
 }
 .login-prime-container .lp-settings-submit .form-table td .button-secondary {
   margin-right: 20px;
+}
+
+.components-form-file-upload {
+  margin-bottom: 10px;
+  float: right;
+  margin-left: 46px;
+}
+
+.components-form-file-upload button {
+  border: 1px solid #111;
 }/*# sourceMappingURL=main.css.map */

@@ -1038,6 +1038,9 @@ const Setting = () => {
   // Enable Registration
   const [enableRegistration, setEnableRegistration] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
 
+  // Enable Darkmode
+  const [enableDarkmode, setEnableDarkmode] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
+
   // Load all User Role
   const [userRoles, setUserRoles] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]);
   // User Role
@@ -1122,6 +1125,9 @@ const Setting = () => {
 
       // Enable Registration
       setEnableRegistration(responseData?.data?.enable_registration === "1");
+
+      // Enable eDarkmode
+      setEnableDarkmode(responseData?.data?.enable_darkmode === "1");
       // User Role
       setUserRole(responseData?.data?.user_role || "");
 
@@ -1152,6 +1158,9 @@ const Setting = () => {
 
     // Enable Registration
     formData.append("enable_registration", enableRegistration ? "1" : "0");
+
+    // Enable Registration
+    formData.append("enable_darkmode", enableDarkmode ? "1" : "0");
 
     // User Role
     formData.append("user_role", userRole);
@@ -1218,6 +1227,20 @@ const Setting = () => {
                   name: "enable_registration",
                   checked: enableRegistration,
                   onChange: () => setEnableRegistration(!enableRegistration)
+                })
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("tr", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("th", {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("label", {
+                  htmlFor: "enable_darkmode",
+                  children: "Enable Darkmode"
+                })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.FormToggle, {
+                  id: "enable_darkmode",
+                  name: "enable_darkmode",
+                  checked: enableDarkmode,
+                  onChange: () => setEnableDarkmode(!enableDarkmode)
                 })
               })]
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("tr", {
@@ -1700,6 +1723,10 @@ const Style = () => {
   const [headerTabText, setHeaderTabText] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("#000000");
   const [headerActiveTabBg, setHeaderActiveTabBg] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("#000000");
   const [headerActiveTabText, setHeaderActiveTabText] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("#ffffff");
+  // Sidebar Position
+  const [sidebarPosition, setSidebarPosition] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("row");
+  const [image, setImage] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null);
+  const [imageURL, setImageURL] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("");
 
   // Default color
 
@@ -1708,7 +1735,8 @@ const Style = () => {
       form_pattern: "",
       btn_border_width: "",
       header_front_size: "",
-      header_tab_padding: ""
+      header_tab_padding: "",
+      sidebar_background: ""
     }
   });
   const resetForm = () => {
@@ -1723,12 +1751,14 @@ const Style = () => {
     setHeaderTabText("#000000");
     setHeaderActiveTabBg("#000000");
     setHeaderActiveTabText("#ffffff");
+    setSidebarPosition("row");
     setData({
       data: {
         form_pattern: "",
         btn_border_width: "",
         header_front_size: "16",
-        header_tab_padding: "10px 0"
+        header_tab_padding: "10px 0",
+        sidebar_background: ""
       }
     });
     setNotice({
@@ -1754,13 +1784,24 @@ const Style = () => {
       setHeaderTabText(responseData?.data?.header_tab_text || "");
       setHeaderActiveTabBg(responseData?.data?.header_active_tab_bg || "");
       setHeaderActiveTabText(responseData?.data?.header_active_tab_text || "");
+      // Sidebar Position
+      setSidebarPosition(responseData?.data?.sidebar_position || "");
+
+      // Sidebar Position
+      setImageURL(responseData?.data?.sidebar_background || "");
     }).catch(error => console.error("Fetch error:", error));
   }, []);
   const onStyleSubmit = event => {
     event.preventDefault();
+    if (!image) {
+      alert("Please select an image first.");
+      return;
+    }
     let formData = new FormData(event.target);
     formData.append("action", "login_prime_save_style");
     formData.append("_wpnonce", LoginPrime.nonce);
+    formData.append("image", image); // ✅ append image file
+
     // Form Pattern
 
     fetch(LoginPrime.ajaxurl, {
@@ -1770,6 +1811,7 @@ const Style = () => {
     .then(data => {
       if (data.success) {
         react_toastify__WEBPACK_IMPORTED_MODULE_2__.toast.success("Settings saved successfully!");
+        setImageURL(data.image_url); // ✅ use correct image URL
       } else {
         react_toastify__WEBPACK_IMPORTED_MODULE_2__.toast.error("Error: " + data.message);
       }
@@ -2144,28 +2186,62 @@ const Style = () => {
                   htmlFor: "form_patternasdfadsf",
                   children: "Image"
                 })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
-                  type: "file",
-                  name: "",
-                  id: ""
-                })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("td", {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.FormFileUpload, {
+                  __next40pxDefaultSize: true,
+                  accept: "image/*",
+                  icon: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.SVG, {
+                    viewBox: "0 0 24 24",
+                    xmlns: "http://www.w3.org/2000/svg",
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Path, {
+                      d: "M18.5 15v3.5H13V6.7l4.5 4.1 1-1.1-6.2-5.8-5.8 5.8 1 1.1 4-4v11.7h-6V15H4v5h16v-5z"
+                    })
+                  }),
+                  onChange: event => {
+                    const file = event.target.files[0];
+                    if (file) {
+                      setImage(file);
+                      setImageURL(URL.createObjectURL(file));
+                    }
+                  },
+                  children: "Select"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+                  type: "hidden",
+                  name: "sidebar_background",
+                  value: imageURL
+                }), imageURL && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("img", {
+                  src: imageURL,
+                  alt: "Preview",
+                  width: "100"
+                })]
               })]
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("tr", {
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("th", {
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("label", {
-                  htmlFor: "form_patternwerqwer",
+                  htmlFor: "sidebar_position",
                   children: "Position"
                 })
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("select", {
-                  name: "form_patternwerqwer",
-                  id: "form_patternwerqwer",
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("select", {
+                  name: "sidebar_position",
+                  id: "sidebar_position",
                   className: "widefat",
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
-                    value: "template-1",
+                  defaultValue: sidebarPosition // ✅ Set selected value
+                  ,
+                  onChange: e => setSidebarPosition(e.target.value) // ✅ Update state on change
+                  ,
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+                    value: "",
+                    children: "Set Sidebar Position"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+                    selected: sidebarPosition === "row-reverse",
+                    value: "row-reverse",
                     children: "Left"
-                  })
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+                    selected: sidebarPosition === "row",
+                    value: "row",
+                    children: "Right"
+                  })]
                 })
               })]
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("tr", {

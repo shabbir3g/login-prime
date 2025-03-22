@@ -467,6 +467,7 @@
 
 .login-prime-container {
     display: flex;
+    flex-direction: var(--sidebar-position);
     width: 90%;
     max-width: 1200px;
     background: #fff;
@@ -643,6 +644,7 @@
 
 .back-login-container{
     display: flex;
+    flex-direction: var(--sidebar-position);
     width: 90%;
     max-width: 1200px;
     background: #fff;
@@ -813,7 +815,7 @@
 
   .lp-demo-6-container {
     display: flex;
-    flex-direction: row;
+    flex-direction: var(--sidebar-position);
     max-width: 900px;
     width: 100%;
     background: #ffffff;

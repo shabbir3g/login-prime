@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { FormToggle, Notice } from "@wordpress/components";
+import { FormFileUpload, Notice, SVG, Path } from "@wordpress/components";
 import { ToastContainer, toast } from "react-toastify";
 
 const Style = () => {
@@ -16,6 +16,11 @@ const Style = () => {
   const [headerTabText, setHeaderTabText] = useState("#000000");
   const [headerActiveTabBg, setHeaderActiveTabBg] = useState("#000000");
   const [headerActiveTabText, setHeaderActiveTabText] = useState("#ffffff");
+  // Sidebar Position
+  const [sidebarPosition, setSidebarPosition] = useState("row");
+
+  const [image, setImage] = useState(null);
+  const [imageURL, setImageURL] = useState("");
 
   // Default color
 
@@ -25,6 +30,7 @@ const Style = () => {
       btn_border_width: "",
       header_front_size: "",
       header_tab_padding: "",
+      sidebar_background: "",
     },
   });
 
@@ -40,6 +46,7 @@ const Style = () => {
     setHeaderTabText("#000000");
     setHeaderActiveTabBg("#000000");
     setHeaderActiveTabText("#ffffff");
+    setSidebarPosition("row");
 
     setData({
       data: {
@@ -47,6 +54,7 @@ const Style = () => {
         btn_border_width: "",
         header_front_size: "16",
         header_tab_padding: "10px 0",
+        sidebar_background: "",
       },
     });
     setNotice({
@@ -78,6 +86,11 @@ const Style = () => {
         setHeaderActiveTabText(
           responseData?.data?.header_active_tab_text || ""
         );
+        // Sidebar Position
+        setSidebarPosition(responseData?.data?.sidebar_position || "");
+
+        // Sidebar Position
+        setImageURL(responseData?.data?.sidebar_background || "");
       })
       .catch((error) => console.error("Fetch error:", error));
   }, []);
@@ -85,9 +98,16 @@ const Style = () => {
   const onStyleSubmit = (event) => {
     event.preventDefault();
 
+    if (!image) {
+      alert("Please select an image first.");
+      return;
+    }
+
     let formData = new FormData(event.target);
     formData.append("action", "login_prime_save_style");
     formData.append("_wpnonce", LoginPrime.nonce);
+    formData.append("image", image); // ✅ append image file
+
     // Form Pattern
 
     fetch(LoginPrime.ajaxurl, {
@@ -98,6 +118,7 @@ const Style = () => {
       .then((data) => {
         if (data.success) {
           toast.success("Settings saved successfully!");
+          setImageURL(data.image_url); // ✅ use correct image URL
         } else {
           toast.error("Error: " + data.message);
         }
@@ -471,20 +492,65 @@ const Style = () => {
                   <label htmlFor="form_patternasdfadsf">Image</label>
                 </th>
                 <td>
-                  <input type="file" name="" id="" />
+                  {/* <div>
+                    <input
+                      className="widefat"
+                      type="text"
+                      value={image ? image.name : ""}
+                      readOnly
+                    />
+                  </div> */}
+                  <FormFileUpload
+                    __next40pxDefaultSize
+                    accept="image/*"
+                    icon={
+                      <SVG
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <Path d="M18.5 15v3.5H13V6.7l4.5 4.1 1-1.1-6.2-5.8-5.8 5.8 1 1.1 4-4v11.7h-6V15H4v5h16v-5z" />
+                      </SVG>
+                    }
+                    onChange={(event) => {
+                      const file = event.target.files[0];
+                      if (file) {
+                        setImage(file);
+                        setImageURL(URL.createObjectURL(file));
+                      }
+                    }}
+                  >
+                    Select
+                  </FormFileUpload>
+                  <input
+                    type="hidden"
+                    name="sidebar_background"
+                    value={imageURL}
+                  />
+                  {imageURL && <img src={imageURL} alt="Preview" width="100" />}
                 </td>
               </tr>
               <tr>
                 <th>
-                  <label htmlFor="form_patternwerqwer">Position</label>
+                  <label htmlFor="sidebar_position">Position</label>
                 </th>
                 <td>
                   <select
-                    name="form_patternwerqwer"
-                    id="form_patternwerqwer"
+                    name="sidebar_position"
+                    id="sidebar_position"
                     className="widefat"
+                    defaultValue={sidebarPosition} // ✅ Set selected value
+                    onChange={(e) => setSidebarPosition(e.target.value)} // ✅ Update state on change
                   >
-                    <option value="template-1">Left</option>
+                    <option value="">Set Sidebar Position</option>
+                    <option
+                      selected={sidebarPosition === "row-reverse"}
+                      value="row-reverse"
+                    >
+                      Left
+                    </option>
+                    <option selected={sidebarPosition === "row"} value="row">
+                      Right
+                    </option>
                   </select>
                 </td>
               </tr>

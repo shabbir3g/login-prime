@@ -1,15 +1,15 @@
 <?php 
 $data = get_option( 'login_prime_save_settings', []);
+$datastyle = get_option( 'login_prime_style_settings', []);
+
 
 $is_register = isset($_GET['register']) && $_GET['register'] === 'true';
 
 ?>
 
 <div class="lp-demo-6-container">
-  <!-- Image Section -->
-  <div class="image-section">
-    <img src="<?php echo LOGIN_PRIME_URL  ?>includes/Frontend/templates/images/Illustration.png" alt="Illustration" />
-  </div>
+
+
 
   <div class="form-section">
         <h1>
@@ -120,6 +120,20 @@ $is_register = isset($_GET['register']) && $_GET['register'] === 'true';
     </div>
  
 
+  <?php endif; ?>
+
+  </div>
+
+   <!-- Image Section -->
+   <div class="image-section">
+
+   <?php
+  $sidebar_bg = isset($datastyle['sidebar_background']) ? esc_url($datastyle['sidebar_background']) : '';
+
+  if (!empty($sidebar_bg)) : ?>
+      <img src="<?php echo $sidebar_bg; ?>" alt="Sidebar Background" />
+  <?php else : ?>
+      <img src="<?php echo esc_url(LOGIN_PRIME_URL . 'includes/Frontend/templates/images/Illustration.png'); ?>" alt="Illustration" />
   <?php endif; ?>
 
   </div>

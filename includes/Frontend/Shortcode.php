@@ -39,6 +39,10 @@ namespace LoginPrime\Includes\Frontend;
 
             --header-tab-padding: " . (isset($dynamic_css['header_tab_padding']) ? $dynamic_css['header_tab_padding'] : '10px 0px') . ";
 
+            --sidebar-position: " . (isset($dynamic_css['sidebar_position']) ? $dynamic_css['sidebar_position'] : 'right') . ";
+
+            
+
             
 
              
@@ -54,12 +58,20 @@ namespace LoginPrime\Includes\Frontend;
 
     public function render_shortcode($atts, $content=''){
 
-        wp_enqueue_style('login-prime-template_style');
-        wp_enqueue_script('login-prime-darkmode');
-        wp_enqueue_style('login-prime-darkmode');
-        
         $data = get_option( 'login_prime_style_settings', []);
 
+        $savesettings = get_option( 'login_prime_save_settings', []);
+
+
+        wp_enqueue_style('login-prime-template_style');
+
+        if($savesettings['enable_darkmode']){
+            wp_enqueue_script('login-prime-darkmode');
+            wp_enqueue_style('login-prime-darkmode');
+            wp_enqueue_script('login-prime-darkmode-script');
+        }
+        
+       
         // print_r($data);
 
         
@@ -70,15 +82,6 @@ namespace LoginPrime\Includes\Frontend;
         // echo $data['form_pattern'];
         // echo $atts['form_pattern'];
         // print_r($atts);
-
-        ?>
-        <header class="header">
-                <label class="switch">
-                    <input type="checkbox" id="darkModeToggle">
-                    <span class="slider round"></span>
-                </label>
-            </header>
-        <?php 
 
         $template = '';
 

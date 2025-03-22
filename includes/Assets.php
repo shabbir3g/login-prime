@@ -68,8 +68,8 @@ namespace LoginPrime\Includes;
 
             ],
             'login-prime-darkmode' => [
-                'src'           => LOGIN_PRIME_URL ."/includes/Frontend/templates/assets/dark-mode/style.css", 
-                'version'       => filemtime(LOGIN_PRIME_PATH ."/includes/Frontend/templates/assets/dark-mode/style.css")
+                'src'           => LOGIN_PRIME_URL ."/includes/Frontend/templates/assets/dark-mode/css/darkmode.css", 
+                'version'       => filemtime(LOGIN_PRIME_PATH ."/includes/Frontend/templates/assets/dark-mode/css/darkmode.css")
 
             ]
         ];
@@ -78,13 +78,23 @@ namespace LoginPrime\Includes;
     public function wp_get_scripts(){
         return[
             'login-prime-darkmode' => [
-                'src'           => LOGIN_PRIME_URL ."/includes/Frontend/templates/assets/dark-mode/script.js", 
+                'src'           => LOGIN_PRIME_URL ."/includes/Frontend/templates/assets/dark-mode/js/darkmode-js.min.js", 
                 'deps'          => ['jquery'],
-                'version'       => filemtime(LOGIN_PRIME_PATH ."/includes/Frontend/templates/assets/dark-mode/script.js"),
+                'version'       => filemtime(LOGIN_PRIME_PATH ."/includes/Frontend/templates/assets/dark-mode/js/darkmode-js.min.js"),
                 'position'  => [
                     'in_footer' => true
                 ]
-            ]
+            ], 
+            'login-prime-darkmode-script' => [
+                'src'           => LOGIN_PRIME_URL ."/includes/Frontend/templates/assets/dark-mode/js/darkmode-custom.js", 
+                'deps'          => ['jquery'],
+                'version'       => filemtime(LOGIN_PRIME_PATH ."/includes/Frontend/templates/assets/dark-mode/js/darkmode-custom.js"),
+                'position'  => [
+                    'in_footer' => true
+                ]
+            ], 
+
+                
         ];
     }
 

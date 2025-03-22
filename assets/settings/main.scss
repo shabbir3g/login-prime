@@ -1,13 +1,3 @@
-.dark-mode {
-    --body-bg-color: #000;
-    color: #fff;
-}
-
-body{
-    font-family: Arial, sans-serif;
-    background-color: var(--body-bg-color);
-}
-
 .login-prime-container{
     width: 100%;
     background-color: #fff;
@@ -93,4 +83,13 @@ body{
             }
         }
     }
+}
+
+.components-form-file-upload {
+    margin-bottom: 10px;
+    float: right;
+    margin-left: 46px;
+}
+.components-form-file-upload button {
+    border: 1px solid #111;
 }

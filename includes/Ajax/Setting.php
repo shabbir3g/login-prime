@@ -26,6 +26,7 @@ class Setting{
     
         $data = [
             'enable_registration' => isset($_POST['enable_registration']) && $_POST['enable_registration'] === "1" ? "1" : "0",
+            'enable_darkmode' => isset($_POST['enable_darkmode']) && $_POST['enable_darkmode'] === "1" ? "1" : "0",
             'user_role' => isset($_POST['user_role']) ? sanitize_text_field($_POST['user_role']) : "",
             'auto_login_user_on_signup' => isset($_POST['auto_login_user_on_signup']) && $_POST['auto_login_user_on_signup'] === "1" ? "1" : "0",'handle_reset_password' => isset($_POST['handle_reset_password']) && $_POST['handle_reset_password'] === "1" ? "1" : "0",
             'form_pattern' => isset($_POST['form_pattern']) ? sanitize_text_field($_POST['form_pattern']) : "",

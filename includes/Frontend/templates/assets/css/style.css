@@ -223,6 +223,7 @@
   font-size: 24px;
   color: var(--lt-black-color);
   text-align: center;
+  font-weight: bold;
 }
 .lp-3rd-form-container .social-login {
   display: flex;
@@ -440,7 +441,22 @@
   overflow: hidden;
 }
 .login-prime-container .image-section {
-  flex: 1;
+  width: var(--sidebar-width);
+  background: var(--sidebar-bg-color);
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.login-prime-container .image-section .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--sidebar-overlay-color);
+  opacity: var(--sidebar-overlay-opacity);
+  pointer-events: none;
 }
 .login-prime-container .image-section img {
   width: 100%;
@@ -469,6 +485,7 @@
 .login-prime-container .form-section .form-container h1 {
   font-size: 32px;
   margin-bottom: 10px;
+  font-weight: bold;
 }
 .login-prime-container .form-section .form-container p {
   color: #666;
@@ -599,7 +616,22 @@
   overflow: hidden;
 }
 .back-login-container .image-section {
-  flex: 1;
+  width: var(--sidebar-width);
+  background: var(--sidebar-bg-color);
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.back-login-container .image-section .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--sidebar-overlay-color);
+  opacity: var(--sidebar-overlay-opacity);
+  pointer-events: none;
 }
 .back-login-container .image-section img {
   width: 100%;
@@ -620,6 +652,7 @@
 .back-login-container .form-section .form-container {
   max-width: 400px;
   margin: 0 auto;
+  width: 100%;
 }
 .back-login-container .form-section .form-container .login-sub-title {
   font-size: 16px;
@@ -629,6 +662,7 @@
 .back-login-container .form-section .form-container h1 {
   font-size: 32px;
   margin-bottom: 10px;
+  font-weight: bold;
 }
 .back-login-container .form-section .form-container p {
   color: #666;
@@ -758,8 +792,10 @@
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 .lp-demo-6-container .image-section {
-  flex: 1;
-  background: #f7f8fa;
+  position: relative;
+  width: var(--sidebar-width);
+  background: var(--sidebar-bg-color);
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -768,6 +804,16 @@
 .lp-demo-6-container .image-section img {
   max-width: 100%;
   height: auto;
+}
+.lp-demo-6-container .image-section .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--sidebar-overlay-color);
+  opacity: var(--sidebar-overlay-opacity);
+  pointer-events: none;
 }
 .lp-demo-6-container .form-section {
   flex: 1;
@@ -781,6 +827,7 @@
   color: #333333;
   margin-bottom: 10px;
   text-align: center;
+  font-weight: bold;
 }
 .lp-demo-6-container .form-section h1 span {
   color: #6a5af9;

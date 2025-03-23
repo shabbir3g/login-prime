@@ -58,9 +58,16 @@ class Style{
 
             'header_front_size' => isset($_POST['header_front_size']) ? sanitize_text_field($_POST['header_front_size']) : "16",
             'header_tab_padding' => isset($_POST['header_tab_padding']) ? sanitize_text_field($_POST['header_tab_padding']) : "10px 0px",
-
             'sidebar_position' => isset($_POST['sidebar_position']) ? sanitize_text_field($_POST['sidebar_position']) : "right",
-            'sidebar_background' => $image_url, // ✅ set the correct uploaded image URL
+            'sidebar_background' => isset($_POST['sidebar_background']) ? sanitize_text_field($_POST['sidebar_background']) : "",
+
+            'sidebar_bg_color' => isset($_POST['sidebar_bg_color']) ? sanitize_text_field($_POST['sidebar_bg_color']) : "#000000",
+
+            'sidebar_overlay_color' => isset($_POST['sidebar_overlay_color']) ? sanitize_text_field($_POST['sidebar_overlay_color']) : "#000000",
+
+            'sidebar_width' => isset($_POST['sidebar_width']) ? sanitize_text_field($_POST['sidebar_width']) : "50%",
+
+            'sidebar_overlay_opacity' => isset($_POST['sidebar_overlay_opacity']) ? sanitize_text_field($_POST['sidebar_overlay_opacity']) : "0",
 
             
 

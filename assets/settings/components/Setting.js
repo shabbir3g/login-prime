@@ -48,6 +48,7 @@ const Setting = () => {
     setData({
       data: {
         login_form_header_text: "Login",
+        login_form_subheader_text: "Welcome to the Login Prime",
         registration_form_header_text: "Registration",
         login_tab_text: "Login",
         register_tab_text: "Register",
@@ -374,6 +375,7 @@ const Setting = () => {
                     onChange={(e) => setLoginRedirect(e.target.value)}
                   >
                     <option value="">Select a Page</option>
+                    {console.log(pages)}
                     {pages.map((page) => (
                       <option key={page.ID} value={page.ID}>
                         {page.title}
@@ -446,6 +448,7 @@ const Setting = () => {
                     type="text"
                     id="login_form_header_text"
                     className="widefat"
+                    placeholder="Enter header login form text. Example: Login"
                     defaultValue={data?.data?.login_form_header_text || ""}
                     onChange={(e) =>
                       setData({
@@ -453,6 +456,32 @@ const Setting = () => {
                         data: {
                           ...data.data,
                           login_form_header_text: e.target.value,
+                        },
+                      })
+                    }
+                  />
+                </td>
+              </tr>
+              <tr>
+                <th>
+                  <label htmlFor="login_form_subheader_text">
+                    Login Form Sub Header Text
+                  </label>
+                </th>
+                <td>
+                  <input
+                    name="login_form_subheader_text"
+                    type="text"
+                    id="login_form_subheader_text"
+                    className="widefat"
+                    placeholder="Enter sub header login form text. Example: Welcome to the Login Prime"
+                    defaultValue={data?.data?.login_form_subheader_text || ""}
+                    onChange={(e) =>
+                      setData({
+                        ...data,
+                        data: {
+                          ...data.data,
+                          login_form_subheader_text: e.target.value,
                         },
                       })
                     }
@@ -471,6 +500,7 @@ const Setting = () => {
                     type="text"
                     id="registration_form_header_text"
                     className="widefat"
+                    placeholder="Enter registration form header text. Example: Sign up"
                     defaultValue={
                       data?.data?.registration_form_header_text || ""
                     }
@@ -496,6 +526,7 @@ const Setting = () => {
                     type="text"
                     id="login_tab_text"
                     className="widefat"
+                    placeholder="Enter text for login tab. Example: Login"
                     defaultValue={data?.data?.login_tab_text || ""}
                     onChange={(e) =>
                       setData({
@@ -516,6 +547,7 @@ const Setting = () => {
                     type="text"
                     id="register_tab_text"
                     className="widefat"
+                    placeholder="Enter text for register tab. Example: Register"
                     defaultValue={data?.data?.register_tab_text || ""}
                     onChange={(e) =>
                       setData({
@@ -539,6 +571,7 @@ const Setting = () => {
                     type="text"
                     id="login_button_text"
                     className="widefat"
+                    placeholder="Enter login button text. Example: Sign In"
                     defaultValue={data?.data?.login_button_text || ""}
                     onChange={(e) =>
                       setData({
@@ -564,6 +597,7 @@ const Setting = () => {
                     type="text"
                     id="register_button_text"
                     className="widefat"
+                    placeholder="Enter register button text. Example: Sign Up"
                     defaultValue={data?.data?.register_button_text || ""}
                     onChange={(e) =>
                       setData({
@@ -589,6 +623,7 @@ const Setting = () => {
                     type="text"
                     id="reset_password_button_text"
                     className="widefat"
+                    placeholder="Enter reset password Link text. Example: Forgot Password?"
                     defaultValue={data?.data?.reset_password_button_text || ""}
                     onChange={(e) =>
                       setData({
@@ -623,6 +658,7 @@ const Setting = () => {
                     type="text"
                     id="username_label_text"
                     className="widefat"
+                    placeholder="Enter Username/Email field. Example: Email or Username"
                     defaultValue={data?.data?.username_label_text || ""}
                     onChange={(e) =>
                       setData({
@@ -648,6 +684,7 @@ const Setting = () => {
                     type="text"
                     id="username_placeholder_text"
                     className="widefat"
+                    placeholder="Enter placeholder Text For Username/Email input. Example: example@mail.com"
                     defaultValue={data?.data?.username_placeholder_text || ""}
                     onChange={(e) =>
                       setData({
@@ -673,6 +710,7 @@ const Setting = () => {
                     type="text"
                     id="password_label_text"
                     className="widefat"
+                    placeholder="Enter password field label. Example: Password"
                     defaultValue={data?.data?.password_label_text || ""}
                     onChange={(e) =>
                       setData({
@@ -698,6 +736,7 @@ const Setting = () => {
                     type="text"
                     id="password_placeholder_text"
                     className="widefat"
+                    placeholder="Enter placeholder for password input. Example: At least 8 characters"
                     defaultValue={data?.data?.password_placeholder_text || ""}
                     onChange={(e) =>
                       setData({

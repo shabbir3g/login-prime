@@ -38,6 +38,7 @@ class Menu{
         ]);
         wp_enqueue_style('wp-components');
         wp_enqueue_style('login-prime-style-settings');
+        wp_enqueue_media();
 
         
        

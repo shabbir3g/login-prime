@@ -84,8 +84,30 @@
 
 .components-form-file-upload {
   margin-bottom: 10px;
-  float: left;
-  margin-right: 46px;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+}
+
+button.closebtn {
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: #000;
+  color: red;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+  z-index: 999;
+  cursor: pointer;
+}
+
+button.closebtn:hover {
+  opacity: 0.5;
+}
+
+.sidebar-image {
+  position: relative;
 }
 
 .components-form-file-upload button {

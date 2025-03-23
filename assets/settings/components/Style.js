@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { FormFileUpload, Notice, SVG, Path } from "@wordpress/components";
 import { ToastContainer, toast } from "react-toastify";
+import MediaUploader from "./MediaUploader";
 
 const Style = () => {
   const [notice, setNotice] = useState({ message: "", type: "" });
@@ -19,6 +20,10 @@ const Style = () => {
   // Sidebar Position
   const [sidebarPosition, setSidebarPosition] = useState("row");
 
+  const [sidebarBgColor, setSidebarBgColor] = useState("#000000");
+
+  const [sidebarOverlayColor, setSidebarOverlayColor] = useState("#000000");
+
   const [image, setImage] = useState(null);
   const [imageURL, setImageURL] = useState("");
 
@@ -31,6 +36,8 @@ const Style = () => {
       header_front_size: "",
       header_tab_padding: "",
       sidebar_background: "",
+      sidebar_width: "",
+      sidebar_overlay_opacity: "",
     },
   });
 
@@ -47,6 +54,8 @@ const Style = () => {
     setHeaderActiveTabBg("#000000");
     setHeaderActiveTabText("#ffffff");
     setSidebarPosition("row");
+    setSidebarBgColor("#000000");
+    setSidebarOverlayColor("#000000");
 
     setData({
       data: {
@@ -55,6 +64,8 @@ const Style = () => {
         header_front_size: "16",
         header_tab_padding: "10px 0",
         sidebar_background: "",
+        sidebar_width: "50",
+        sidebar_overlay_opacity: "0",
       },
     });
     setNotice({
@@ -89,7 +100,11 @@ const Style = () => {
         // Sidebar Position
         setSidebarPosition(responseData?.data?.sidebar_position || "");
 
-        // Sidebar Position
+        setSidebarBgColor(responseData?.data?.sidebar_bg_color || "");
+
+        setSidebarOverlayColor(responseData?.data?.sidebar_overlay_color || "");
+
+        // Sidebar Image
         setImageURL(responseData?.data?.sidebar_background || "");
       })
       .catch((error) => console.error("Fetch error:", error));
@@ -98,12 +113,15 @@ const Style = () => {
   const onStyleSubmit = (event) => {
     event.preventDefault();
 
-    if (!image) {
-      alert("Please select an image first.");
-      return;
-    }
+    // if (!image) {
+    //   alert("Please select an image first.");
+    //   return;
+    // }
 
     let formData = new FormData(event.target);
+
+    const submittedImageURL = formData.get("sidebar_background");
+
     formData.append("action", "login_prime_save_style");
     formData.append("_wpnonce", LoginPrime.nonce);
     formData.append("image", image); // ✅ append image file
@@ -118,7 +136,7 @@ const Style = () => {
       .then((data) => {
         if (data.success) {
           toast.success("Settings saved successfully!");
-          setImageURL(data.image_url); // ✅ use correct image URL
+          setImageURL(submittedImageURL); // ✅ use correct image URL
         } else {
           toast.error("Error: " + data.message);
         }
@@ -252,6 +270,7 @@ const Style = () => {
                   <input
                     name="btn_border_width"
                     type="number"
+                    placeholder="Example: 2"
                     id="btn_border_width"
                     defaultValue={data?.data?.btn_border_width || ""}
                     onChange={(e) =>
@@ -424,6 +443,7 @@ const Style = () => {
                     name="header_front_size"
                     type="number"
                     id="header_front_size"
+                    placeholder="Example: 20"
                     defaultValue={data?.data?.header_front_size || ""}
                     onChange={(e) =>
                       setData({
@@ -473,18 +493,16 @@ const Style = () => {
 
               <tr>
                 <th>
-                  <label htmlFor="asdfadsfasd">Background</label>
+                  <label htmlFor="sidebar_bg_color">Background</label>
                 </th>
                 <td>
-                  <input type="color" value={"#000000"} name="" id="" />
-                </td>
-              </tr>
-              <tr>
-                <th>
-                  <label htmlFor="asdfasdfasdfasdf">Text</label>
-                </th>
-                <td>
-                  <input type="color" value={"#000000"} name="" id="" />
+                  <input
+                    type="color"
+                    value={sidebarBgColor}
+                    name="sidebar_bg_color"
+                    id="sidebar_bg_color"
+                    onChange={(e) => setSidebarBgColor(e.target.value)} // Update state on change
+                  />
                 </td>
               </tr>
               <tr>
@@ -492,41 +510,13 @@ const Style = () => {
                   <label htmlFor="form_patternasdfadsf">Image</label>
                 </th>
                 <td>
-                  {/* <div>
-                    <input
-                      className="widefat"
-                      type="text"
-                      value={image ? image.name : ""}
-                      readOnly
-                    />
-                  </div> */}
-                  <FormFileUpload
-                    __next40pxDefaultSize
-                    accept="image/*"
-                    icon={
-                      <SVG
-                        viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <Path d="M18.5 15v3.5H13V6.7l4.5 4.1 1-1.1-6.2-5.8-5.8 5.8 1 1.1 4-4v11.7h-6V15H4v5h16v-5z" />
-                      </SVG>
-                    }
-                    onChange={(event) => {
-                      const file = event.target.files[0];
-                      if (file) {
-                        setImage(file);
-                        setImageURL(URL.createObjectURL(file));
-                      }
-                    }}
-                  >
-                    Select
-                  </FormFileUpload>
+                  <MediaUploader image={imageURL} setImage={setImageURL} />
+
                   <input
                     type="hidden"
                     name="sidebar_background"
                     value={imageURL}
                   />
-                  {imageURL && <img src={imageURL} alt="Preview" width="100" />}
                 </td>
               </tr>
               <tr>
@@ -557,42 +547,68 @@ const Style = () => {
 
               <tr>
                 <th>
-                  <label htmlFor="form_patternsd">Width (%)</label>
+                  <label htmlFor="sidebar_width">Width (%)</label>
                 </th>
                 <td>
                   <input
-                    name="form_patternsd"
-                    type="text"
-                    id="form_patternsd"
+                    name="sidebar_width"
+                    type="number"
+                    id="sidebar_width"
+                    placeholder="Example: 50"
+                    defaultValue={data?.data?.sidebar_width || ""}
+                    onChange={(e) =>
+                      setData({
+                        ...data,
+                        data: {
+                          ...data.data,
+                          sidebar_width: e.target.value,
+                        },
+                      })
+                    }
                   />
                 </td>
               </tr>
 
               <tr>
                 <th>
-                  <label htmlFor="form_patternOverlay">Overlay Color</label>
+                  <label htmlFor="sidebar_overlay_color">Overlay Color</label>
                 </th>
                 <td>
                   <input
                     type="color"
-                    value={"#000000"}
-                    name="form_patternOverlay"
-                    id=""
+                    value={sidebarOverlayColor}
+                    name="sidebar_overlay_color"
+                    id="sidebar_overlay_color"
+                    onChange={(e) => setSidebarOverlayColor(e.target.value)} // Update state on change
                   />
                 </td>
               </tr>
 
               <tr>
                 <th>
-                  <label htmlFor="form_patternform_patternOverlay">
+                  <label htmlFor="sidebar_overlay_opacity">
                     Overlay Opacity
                   </label>
                 </th>
                 <td>
                   <input
-                    name="form_patternform_patternOverlay"
-                    type="text"
-                    id="form_patternform_patternOverlay"
+                    name="sidebar_overlay_opacity"
+                    type="number"
+                    id="sidebar_overlay_opacity"
+                    placeholder="Example: 0.5"
+                    step="any" // Allows decimal values
+                    min="-1" // Minimum value allowed
+                    max="1" // Optional: maximum value
+                    defaultValue={data?.data?.sidebar_overlay_opacity || ""}
+                    onChange={(e) =>
+                      setData({
+                        ...data,
+                        data: {
+                          ...data.data,
+                          sidebar_overlay_opacity: e.target.value,
+                        },
+                      })
+                    }
                   />
                 </td>
               </tr>

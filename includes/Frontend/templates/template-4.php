@@ -2,7 +2,7 @@
 $data = get_option( 'login_prime_save_settings', []);
 
 $is_register = isset($_GET['register']) && $_GET['register'] === 'true';
-
+$datastyle = get_option( 'login_prime_style_settings', []);
 ?>
 
 <div class="login-prime-container">
@@ -11,9 +11,11 @@ $is_register = isset($_GET['register']) && $_GET['register'] === 'true';
       <h1>
         <?php echo $is_register ? (isset($data['registration_form_header_text']) && ($data['registration_form_header_text'] !="")  ? $data['registration_form_header_text'] : 'Registration') : (isset($data['login_form_header_text']) && ($data['login_form_header_text'] !="")  ? $data['login_form_header_text'] : 'Login'); ?>
       </h1>
+      <?php if (!$is_register): ?>
       <p class="login-sub-title">
-        Enter your Credentials to access your account
+      <?php echo isset($data['login_form_subheader_text']) && ($data['login_form_subheader_text'] !="") ? $data['login_form_subheader_text'] : 'Enter your Credentials to access your account'; ?>
       </p>
+      <?php endif; ?>
 
 <?php if ($is_register): ?>
           <form>
@@ -111,7 +113,22 @@ $is_register = isset($_GET['register']) && $_GET['register'] === 'true';
 
 
   <section class="image-section">
-    <img src="<?php echo LOGIN_PRIME_URL  ?>includes/Frontend/templates/images/img.png" alt="Decorative Flowers" />
+
+
+  <?php
+  $sidebar_bg = isset($datastyle['sidebar_background']) ? esc_url($datastyle['sidebar_background']) : '';
+
+  if (!empty($sidebar_bg)) : ?>
+      <img src="<?php echo $sidebar_bg; ?>" alt="Sidebar Background" />
+  <?php else : ?>
+      <img src="<?php echo esc_url(LOGIN_PRIME_URL . 'includes/Frontend/templates/images/img.png'); ?>" alt="Decorative Flowers" />
+     
+  <?php endif; ?>
+  <div class="overlay"></div> <!-- Overlay div here -->
+
+
+
+    
   </section>
 
 

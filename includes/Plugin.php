@@ -29,6 +29,7 @@ class Plugin {
 
     public function init_login_prime() {
         new Assets();
+        AuthHandler::init();
         if (is_admin()) {
             new Admin();
             new Ajax();

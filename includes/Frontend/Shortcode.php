@@ -41,6 +41,18 @@ namespace LoginPrime\Includes\Frontend;
 
             --sidebar-position: " . (isset($dynamic_css['sidebar_position']) ? $dynamic_css['sidebar_position'] : 'right') . ";
 
+              --sidebar-bg-color: " . (isset($dynamic_css['sidebar_bg_color']) ? $dynamic_css['sidebar_bg_color'] : '#000000') . ";
+
+              --sidebar-overlay-color: " . (isset($dynamic_css['sidebar_overlay_color']) ? $dynamic_css['sidebar_overlay_color'] : '#000000') . ";
+
+            --sidebar-overlay-opacity: " . (isset($dynamic_css['sidebar_overlay_opacity']) && ($dynamic_css['sidebar_overlay_opacity'] !="") ? $dynamic_css['sidebar_overlay_opacity'] : '.5') . ";
+
+            --sidebar-width: " . (isset($dynamic_css['sidebar_width']) && ($dynamic_css['sidebar_width'] !="") ? $dynamic_css['sidebar_width']."%" : '50%') . ";
+
+              
+
+            
+
             
 
             

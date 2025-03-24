@@ -74,7 +74,7 @@ const Setting = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {
-          setPages(data.data); // Set pages in state
+          setPages(data?.data); // Set pages in state
         } else {
           console.error("Error fetching pages:", data.message);
         }

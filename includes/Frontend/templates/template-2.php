@@ -21,13 +21,16 @@ $is_register = isset($_GET['register']) && $_GET['register'] === 'true';
 
 <?php if ($is_register): ?>
  
-    <form class="lp-form">
-      <input type="text" placeholder="First Name" class="lp-input-field">
-      <input type="text" placeholder="Last Name" class="lp-input-field">
-      <input type="text" placeholder="@username" class="lp-input-field">
-      <input type="email" placeholder="Email" class="lp-input-field">
-      <input type="password" placeholder="Password" class="lp-input-field">
-      <input type="password" placeholder="Confirm Password" class="lp-input-field">
+    <form class="lp-form" method="post" action="">
+      <input type="hidden" name="lp_form_type" value="register" />
+      <?php wp_nonce_field('lp_register_action', 'lp_register_nonce'); ?>
+
+      <input type="text" name="first_name" placeholder="First Name" class="lp-input-field" required>
+      <input type="text" name="last_name"  placeholder="Last Name" class="lp-input-field" required>
+      <input type="text" name="user_name" placeholder="@username" class="lp-input-field" required>
+      <input type="email"  name="user_email"  placeholder="Email" class="lp-input-field" required>
+      <input type="password" name="user_password"  placeholder="Password" class="lp-input-field" required>
+      <input type="password" name="confirm_password"  placeholder="Confirm Password" class="lp-input-field" required>
       <div class="lp-terms">
         <input type="checkbox" id="terms">
         <label for="terms">I agree to the <a href="#">terms & policy</a></label>
@@ -39,15 +42,19 @@ $is_register = isset($_GET['register']) && $_GET['register'] === 'true';
   <?php else: ?>
 
 
-  <form class="lp-form">
+  <form method="post" action="" class="lp-form">
+  <?php wp_nonce_field('lp_login_action', 'lp_login_nonce'); ?>
+  <input type="hidden" name="lp_form_type" value="login" />
     <input
       type="text"
+      name="user_name" 
       placeholder="<?php echo isset($data['username_placeholder_text']) && $data['username_placeholder_text'] != "" ? $data['username_placeholder_text'] : 'Email Or Username'; ?>"
       class="lp-input-field"
+      required
     />
-    <input type="password" placeholder="<?php echo isset($data['password_placeholder_text']) && $data['password_placeholder_text'] != "" ? $data['password_placeholder_text'] : 'Password'; ?>" class="lp-input-field" />
+    <input type="password" name="user_password" placeholder="<?php echo isset($data['password_placeholder_text']) && $data['password_placeholder_text'] != "" ? $data['password_placeholder_text'] : 'Password'; ?>" class="lp-input-field" required />
     <a href="#" class="lp-forgot-password"><?php echo isset($data['reset_password_button_text']) && ($data['reset_password_button_text'] !="") ? $data['reset_password_button_text'] : 'Forget password'; ?></a>
-    <button type="submit" class="lp-btn"><?php echo isset($data['login_button_text']) && ($data['login_button_text'] !="")  ? $data['login_button_text'] : 'Login'; ?></button>
+    <button type="submit" name="user_remember"  class="lp-btn"><?php echo isset($data['login_button_text']) && ($data['login_button_text'] !="")  ? $data['login_button_text'] : 'Login'; ?></button>
   </form>
   <p class="lp-register-text">Not a member? <a href="?register=true">Register now</a></p>
 

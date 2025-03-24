@@ -40,49 +40,48 @@ $is_register = isset($_GET['register']) && $_GET['register'] === 'true';
         <?php wp_nonce_field('lp_register_action', 'lp_register_nonce'); ?>
           <!-- firstname -->
           <div>
-            <label for="">Firstname</label>
+            <label for="first_name">Firstname</label>
             <div class="form-group">
               <img src="<?php echo LOGIN_PRIME_URL  ?>includes/Frontend/templates/images/Vector.png" alt="Email Icon" />
-              <input type="text" name="first_name" placeholder="Firstname" required />
+              <input type="text" id="first_name" name="first_name" placeholder="Firstname" required />
               </div>
           </div>
           <!-- lasttname -->
           <div>
-            <label for="">Lastname</label>
+            <label for="last_name">Lastname</label>
             <div class="form-group">
               <img src="<?php echo LOGIN_PRIME_URL  ?>includes/Frontend/templates/images/Vector.png" alt="Email Icon" />
-              <input type="text" name="last_name" placeholder="Lastname" required />
+              <input type="text" name="last_name" id="last_name" placeholder="Lastname" required />
               </div>
           </div>
           <!-- Username -->
           <div>
-            <label for="">Username</label>
+            <label for="user_name">Username</label>
             <div class="form-group">
               <img src="<?php echo LOGIN_PRIME_URL  ?>includes/Frontend/templates/images/Vector.png" alt="Email Icon" />
-              <input type="text" name="user_name" placeholder="Username" required />
+              <input type="text" name="user_name" id="user_name" placeholder="Username" required />
               </div>
           </div>
 
           <div>
-            <label for="">Email</label>
+            <label for="user_email">Email</label>
             <div class="form-group">
               <img src="<?php echo LOGIN_PRIME_URL  ?>includes/Frontend/templates/images/Vector.png" alt="Email Icon" />
-              <input type="email" name="user_email" placeholder="example@gmail.com" required />
-
+              <input type="email" name="user_email"  id="user_email" placeholder="example@gmail.com" required />
             </div>
           </div>
           <div>
-            <label for="">Password</label>
+            <label for="user_password">Password</label>
             <div class="form-group">
               <img src="<?php echo LOGIN_PRIME_URL  ?>includes/Frontend/templates/images/password-img.png" alt="Password Icon" />
-              <input type="password" name="user_password" placeholder="Password" required />
+              <input type="password" name="user_password" id="user_password" placeholder="Password" required />
               </div>
           </div>
           <div>
-            <label for="">Confirm Password</label>
+            <label for="confirm_password">Confirm Password</label>
             <div class="form-group">
               <img src="<?php echo LOGIN_PRIME_URL  ?>includes/Frontend/templates/images/password-img.png" alt="Password Icon" />
-              <input type="password" name="confirm_password" placeholder="Confirm Password" required />            </div>
+              <input type="password" name="confirm_password" id="confirm_password" placeholder="Confirm Password" required />            </div>
           </div>
           <div class="form-options">
             <label> <input type="checkbox" /> I agree with the terms and conditions</label>
@@ -102,21 +101,21 @@ $is_register = isset($_GET['register']) && $_GET['register'] === 'true';
     <?php wp_nonce_field('lp_login_action', 'lp_login_nonce'); ?>
     <input type="hidden" name="lp_form_type" value="login" />
       <div>
-        <label for=""><?php echo isset($data['username_label_text']) && $data['username_label_text'] != "" ? $data['username_label_text'] : 'Email'; ?></label>
+        <label for="user_name"><?php echo isset($data['username_label_text']) && $data['username_label_text'] != "" ? $data['username_label_text'] : 'Email'; ?></label>
         <div class="form-group">
           <img src="<?php echo LOGIN_PRIME_URL  ?>includes/Frontend/templates/images/Vector.png" alt="Email Icon" />
-          <input name="user_name"  type="text" placeholder="<?php echo isset($data['username_placeholder_text']) && $data['username_placeholder_text'] != "" ? $data['username_placeholder_text'] : 'Email Or Username'; ?>" required />
+          <input name="user_name" id="user_name"  type="text" placeholder="<?php echo isset($data['username_placeholder_text']) && $data['username_placeholder_text'] != "" ? $data['username_placeholder_text'] : 'Email Or Username'; ?>" required />
         </div>
       </div>
       <div>
-        <label for=""><?php echo isset($data['password_label_text']) && $data['password_label_text'] != "" ? $data['password_label_text'] : 'Password'; ?></label>
+        <label for="user_password"><?php echo isset($data['password_label_text']) && $data['password_label_text'] != "" ? $data['password_label_text'] : 'Password'; ?></label>
         <div class="form-group">
           <img src="<?php echo LOGIN_PRIME_URL  ?>includes/Frontend/templates/images/password-img.png" alt="Password Icon" />
-          <input name="user_password" type="password" placeholder="<?php echo isset($data['password_placeholder_text']) && $data['password_placeholder_text'] != "" ? $data['password_placeholder_text'] : 'Password'; ?>" required />
+          <input name="user_password" id="user_password"  type="password" placeholder="<?php echo isset($data['password_placeholder_text']) && $data['password_placeholder_text'] != "" ? $data['password_placeholder_text'] : 'Password'; ?>" required />
         </div>
       </div>
       <div class="form-options">
-        <label> <input name="user_remember" type="checkbox" /> Remember me </label>
+        <label for="user_remember"> <input name="user_remember" id="user_remember"  type="checkbox" /> Remember me </label>
         <a href="#"><?php echo isset($data['reset_password_button_text']) && ($data['reset_password_button_text'] !="") ? $data['reset_password_button_text'] : 'Forget password'; ?></a>
       </div>
       <button type="submit" class="submit-button"><?php echo isset($data['login_button_text']) && ($data['login_button_text'] !="")  ? $data['login_button_text'] : 'Login'; ?></button>

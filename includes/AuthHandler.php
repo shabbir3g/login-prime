@@ -2,20 +2,46 @@
 
 namespace LoginPrime\Includes;
 
+
+
 class AuthHandler
 {
+
+    // ✅ Declare the static property first
+    //protected static $settings = [];
+
+    protected static $loginSlug = ''; // Store slug here
+    protected static $registerSlug = ''; // Store slug here
+
     public static function init()
     {
         add_action('init', [self::class, 'handleForm']);
 
-        echo "Hello Login Prime";
-        // die();
+        $settings = get_option('login_prime_save_settings', []);
+
+        if (!empty($settings['login_redirect'])) {
+            $page = get_post($settings['login_redirect']);
+
+            if ($page && !is_wp_error($page)) {
+                self::$loginSlug = $page->post_name; // Save slug to class property
+            }
+        }
+
+        if (!empty($settings['register_redirect'])) {
+            $page = get_post($settings['register_redirect']);
+
+            if ($page && !is_wp_error($page)) {
+                self::$registerSlug = $page->post_name; // Save slug to class property
+            }
+        }
+        
     
     }
 
  
     public static function handleForm()
     {
+
         if ($_SERVER['REQUEST_METHOD'] !== 'POST') return;
 
         if (isset($_POST['lp_form_type']) && $_POST['lp_form_type'] === 'login') {
@@ -35,6 +61,8 @@ class AuthHandler
 
             $user = wp_signon($creds, false);
 
+            $page = get_post($page_id);
+
             if (is_wp_error($user)) {
                 wp_redirect(home_url('/login/?register=false&error=login_failed'));
                 exit;
@@ -42,7 +70,7 @@ class AuthHandler
 
             wp_set_current_user($user->ID);
             wp_set_auth_cookie($user->ID);
-            wp_redirect(home_url('/dashboard/')); // Or any target page
+            wp_redirect(home_url(self::$loginSlug)); // Or any target page
             exit;
         }
 
@@ -79,7 +107,7 @@ class AuthHandler
 
                 wp_set_current_user($user_id);
                 wp_set_auth_cookie($user_id);
-                wp_redirect(home_url('/dashboard/'));
+                wp_redirect(home_url(self::$registerSlug));
                 exit;
             } else {
                 wp_redirect(home_url('/login/?register=true&error=registration_failed'));

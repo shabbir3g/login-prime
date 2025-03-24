@@ -11,7 +11,11 @@ class Setting{
         add_action('wp_ajax_login_prime_save_settings', [$this, 'login_prime_save_settings']);
         add_action('wp_ajax_login_prime_get_settings', [$this, 'login_prime_get_settings']);
         add_action('wp_ajax_get_all_user_roles', [$this, 'get_all_user_roles']);
+        add_action('wp_ajax_nopriv_get_all_user_roles', [$this, 'get_all_user_roles']);
         add_action('wp_ajax_get_all_pages', [$this, 'get_all_pages_callback']);
+        add_action('wp_ajax_nopriv_get_all_pages', [$this, 'get_all_pages_callback']);
+
+
 
        
     }
@@ -73,17 +77,32 @@ class Setting{
     }
 
     function get_all_pages_callback() {
-        $pages = get_pages(); // Fetch all pages
-        $pages_array = [];
+        // $pages = get_pages(); // Fetch all pages
+        // $pages_array = [];
     
-        foreach ($pages as $page) {
-            $pages_array[] = [
-                'ID' => $page->ID,
-                'title' => $page->post_title
+        // foreach ($pages as $page) {
+        //     $pages_array[] = [
+        //         'ID' => $page->ID,
+        //         'title' => $page->post_title
+        //     ];
+        // }
+
+        $items = get_posts([
+            'post_type' => ['page', 'post'], // ← Include both pages and posts
+            'post_status' => 'publish',
+            'numberposts' => -1,
+        ]);
+    
+        $result = array_map(function($item) {
+            return [
+                'ID' => $item->ID,
+                'title' => $item->post_title,
+                'type' => $item->post_type // optional: useful for labeling
             ];
-        }
+        }, $items);
     
-        wp_send_json_success($pages_array);
+        wp_send_json_success($result);
+    
     }
 
 

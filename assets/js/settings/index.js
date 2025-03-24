@@ -1188,7 +1188,7 @@ const Setting = () => {
     // Fetch pages from WordPress
     fetch(`${LoginPrime.ajaxurl}?action=get_all_pages`).then(res => res.json()).then(data => {
       if (data.success) {
-        setPages(data.data); // Set pages in state
+        setPages(data?.data); // Set pages in state
       } else {
         console.error("Error fetching pages:", data.message);
       }

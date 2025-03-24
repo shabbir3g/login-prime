@@ -22,37 +22,41 @@ $is_register = isset($_GET['register']) && $_GET['register'] === 'true';
 
     <?php if ($is_register): ?>
 
-        <form>
+      <form  method="post" action="">
+      <input type="hidden" name="lp_form_type" value="register" />
+      <?php wp_nonce_field('lp_register_action', 'lp_register_nonce'); ?>
         <div class="form-group">
-          <label for="firstname">Firstname</label>
-          <input type="text" id="firstname" placeholder="Your firstname" />
+          <label for="first_name">Firstname</label>
+          <input type="text" name="first_name" id="first_name" placeholder="Your firstname" required />
         </div>
         <div class="form-group">
-          <label for="lastname">Lastname</label>
-          <input type="text" id="lastname" placeholder="Your lastname" />
+          <label for="last_name">Lastname</label>
+          <input type="text" name="last_name" id="last_name" placeholder="Your lastname" required />
         </div>
         <div class="form-group">
-          <label for="username">Username</label>
-          <input type="text" id="username" placeholder="@username" />
+          <label for="user_name">Username</label>
+          <input type="text" name="user_name" id="user_name" placeholder="@username" required />
         </div>
         <div class="form-group">
-          <label for="email">Email</label>
-          <input type="email" id="email" placeholder="youremail@gmail.com" />
+          <label for="user_email">Email</label>
+          <input type="email" name="user_email" id="user_email" placeholder="youremail@gmail.com" required />
         </div>
         <div class="form-group password-toggle">
-          <label for="password">Password</label>
+          <label for="user_password">Password</label>
           <input
             type="password"
-            id="password"
-            placeholder="Enter your password"
+            name="user_password"  
+            id="user_password"
+            placeholder="Enter your password" required
           />
         </div>
         <div class="form-group password-toggle">
-          <label for="confirm-password">Confirm Password</label>
+          <label for="confirm_password">Confirm Password</label>
           <input
             type="password"
-            id="confirm-password"
-            placeholder="Enter your password"
+            name="confirm_password"
+            id="confirm_password"
+            placeholder="Enter your password" required
           />
         </div>
         <div class="terms">
@@ -79,18 +83,20 @@ $is_register = isset($_GET['register']) && $_GET['register'] === 'true';
     <?php else: ?>
 
 
-    <form>
+    <form method="post" action="" >
+    <?php wp_nonce_field('lp_login_action', 'lp_login_nonce'); ?>
+    <input type="hidden" name="lp_form_type" value="login" />
         <div class="form-group">
-            <label for="email">
+            <label for="user_name">
                 <?php echo isset($data['username_label_text']) && $data['username_label_text'] != "" ? $data['username_label_text'] : 'Email'; ?>
             </label>
-            <input type="email" id="email" placeholder="<?php echo isset($data['username_placeholder_text']) && $data['username_placeholder_text'] != "" ? $data['username_placeholder_text'] : 'Email Or Username'; ?>">
+            <input  type="text"  name="user_name"  id="user_name" placeholder="<?php echo isset($data['username_placeholder_text']) && $data['username_placeholder_text'] != "" ? $data['username_placeholder_text'] : 'Email Or Username'; ?>">
         </div>
         <div class="form-group">
-            <label for="password">
+            <label for="user_password">
                 <?php echo isset($data['password_label_text']) && $data['password_label_text'] != "" ? $data['password_label_text'] : 'Password'; ?>
             </label>
-            <input type="password" id="password" placeholder="<?php echo isset($data['password_placeholder_text']) && $data['password_placeholder_text'] != "" ? $data['password_placeholder_text'] : 'Password'; ?>">
+            <input type="password" name="user_password" id="user_password" placeholder="<?php echo isset($data['password_placeholder_text']) && $data['password_placeholder_text'] != "" ? $data['password_placeholder_text'] : 'Password'; ?>">
         </div>
         <div class="form-actions">
             <a href="#">

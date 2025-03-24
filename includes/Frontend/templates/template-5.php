@@ -34,48 +34,54 @@ $datastyle = get_option( 'login_prime_style_settings', []);
           </div>
 
           <?php if ($is_register): ?>
-            <form>
-              <label for="">Firstname</label>
+            <form method="post" action="">
+              <label for="first_name">Firstname</label>
               <input
                 type="text"
-                id=""
+                name="first_name"
+                id="first_name"
                 placeholder="Your first name"
                 required
               />
-              <label for="">Lastname</label>
+              <label for="last_name">Lastname</label>
               <input
                 type="text"
-                id=""
+                name="last_name"
+                id="last_name"
                 placeholder="Your last name"
                 required
               />
 
-              <label for="">Username</label>
+              <label for="user_name">Username</label>
               <input
                 type="text"
-                id=""
+                name="user_name"
+                id="user_name"
                 placeholder="@username"
                 required
               />
 
-              <label for="email">Email</label>
+              <label for="user_email">Email</label>
               <input
                 type="email"
-                id="email"
+                name="user_email"
+                id="user_email"
                 placeholder="Example@email.com"
                 required
               />
-              <label for="password">Password</label>
+              <label for="user_password">Password</label>
               <input
                 type="password"
-                id="password"
+                name="user_password"
+                id="user_password"
                 placeholder="At least 8 characters"
                 required
               />
-              <label for="password">Confirm Password</label>
+              <label for="confirm_password">Confirm Password</label>
               <input
                 type="password"
-                id=""
+                name="confirm_password"
+                id="confirm_password"
                 placeholder="Confirm Password"
                 required
               />
@@ -99,29 +105,33 @@ $datastyle = get_option( 'login_prime_style_settings', []);
 
           <?php else: ?>
 
-          <form class="lp-demo-5-from">
-            <label for="email">
+          <form method="post" action="" class="lp-demo-5-from">
+          <?php wp_nonce_field('lp_login_action', 'lp_login_nonce'); ?>
+          <input type="hidden" name="lp_form_type" value="login" />
+            <label for="user_name">
               <?php echo isset($data['username_label_text']) && $data['username_label_text'] != "" ? $data['username_label_text'] : 'Email'; ?>
             </label>
             <input
-              type="email"
-              id="email"
+              type="text"
+              name="user_name"
+              id="user_name"
               placeholder="<?php echo isset($data['username_placeholder_text']) && $data['username_placeholder_text'] != "" ? $data['username_placeholder_text'] : 'Email Or Username'; ?>"
               required
             />
-            <label for="password">
+            <label for="user_password">
               <?php echo isset($data['password_label_text']) && $data['password_label_text'] != "" ? $data['password_label_text'] : 'Password'; ?>
             </label>
             <input
               type="password"
-              id="password"
+              name="user_password"
+              id="user_password"
               placeholder="<?php echo isset($data['password_placeholder_text']) && $data['password_placeholder_text'] != "" ? $data['password_placeholder_text'] : 'At least 8 characters'; ?>"
               required
             />
             <div class="checkbox-prime-container">
                 <div class="checkbox-prime-wrapper">
-                <input class="remember-me-checkbox" type="checkbox" />
-                <span>Remember me</span>
+                <input id="user_remember" name="user_remember" class="remember-me-checkbox" type="checkbox" />
+                <label for="user_remember">Remember me</label>
               </div>
               <div style="width: 100%">
                 <a href="#" class="forgot-password"><?php echo isset($data['reset_password_button_text']) && ($data['reset_password_button_text'] !="") ? $data['reset_password_button_text'] : 'Forget password'; ?></a>

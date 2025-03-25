@@ -12,6 +12,8 @@ class AuthHandler
 
     protected static $loginSlug = ''; // Store slug here
     protected static $registerSlug = ''; // Store slug here
+    protected static $defaultUserRole = 'subscriber';
+    protected static $autoLogin = false;
 
     public static function init()
     {
@@ -34,6 +36,16 @@ class AuthHandler
                 self::$registerSlug = $page->post_name; // Save slug to class property
             }
         }
+
+        if (!empty($settings['user_role'])) {
+            self::$defaultUserRole = sanitize_key($settings['user_role']);
+        }
+        
+        self::$autoLogin = !empty($settings['auto_login_user_on_signup']);
+
+
+       
+     
         
     
     }
@@ -75,6 +87,15 @@ class AuthHandler
         }
 
         if (isset($_POST['lp_form_type']) && $_POST['lp_form_type'] === 'register') {
+
+
+            $settings = get_option('login_prime_save_settings', []);
+            if (empty($settings['enable_registration'])) {
+                wp_redirect(home_url('/login/?register=false&error=registration_disabled'));
+                exit;
+            }
+
+
             if (!isset($_POST['lp_register_nonce']) || !wp_verify_nonce($_POST['lp_register_nonce'], 'lp_register_action')) {
                 return;
             }
@@ -105,8 +126,20 @@ class AuthHandler
                     'last_name' => $last_name,
                 ]);
 
-                wp_set_current_user($user_id);
-                wp_set_auth_cookie($user_id);
+                  // 👇 Assign role
+                $user = new \WP_User($user_id);
+                $user->set_role(self::$defaultUserRole);
+
+                  // 👇 Conditionally auto login
+                if (self::$autoLogin) {
+                    wp_set_current_user($user_id);
+                    wp_set_auth_cookie($user_id);
+                }
+
+                // wp_set_current_user($user_id);
+                // wp_set_auth_cookie($user_id);
+
+
                 wp_redirect(home_url(self::$registerSlug));
                 exit;
             } else {

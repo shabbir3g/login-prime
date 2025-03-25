@@ -1,8 +1,13 @@
 <?php 
 $data = get_option( 'login_prime_save_settings', []);
-
-$is_register = isset($_GET['register']) && $_GET['register'] === 'true';
 $datastyle = get_option( 'login_prime_style_settings', []);
+
+
+$registration_enabled = isset($data['enable_registration']) && $data['enable_registration'];
+
+$is_register = isset($_GET['register']) && $_GET['register'] === 'true' && $registration_enabled;
+
+
 ?>
 
 <div class="login-prime-container">
@@ -17,7 +22,7 @@ $datastyle = get_option( 'login_prime_style_settings', []);
       </p>
       <?php endif; ?>
 
-        <?php if ($is_register): ?>
+        <?php if ($is_register && $registration_enabled): ?>
             <form  method="post" action="">
             <input type="hidden" name="lp_form_type" value="register" />
             <?php wp_nonce_field('lp_register_action', 'lp_register_nonce'); ?>
@@ -106,11 +111,12 @@ $datastyle = get_option( 'login_prime_style_settings', []);
           Facebook
         </div>
       </div>
+      <?php if ($registration_enabled): ?>
       <p>
         Don't have an account?
         <a href="?register=true">Sign up</a>
       </p>
-    
+      <?php endif; ?>
 
   <?php endif; ?>
 

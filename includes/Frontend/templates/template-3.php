@@ -1,7 +1,9 @@
 <?php 
 $data = get_option( 'login_prime_save_settings', []);
 
-$is_register = isset($_GET['register']) && $_GET['register'] === 'true';
+$registration_enabled = isset($data['enable_registration']) && $data['enable_registration'];
+
+$is_register = isset($_GET['register']) && $_GET['register'] === 'true' && $registration_enabled;
 
 ?>
 <div class="lp-3rd-form-container">
@@ -20,7 +22,7 @@ $is_register = isset($_GET['register']) && $_GET['register'] === 'true';
     </div>
     <div class="divider">Or</div>
 
-    <?php if ($is_register): ?>
+    <?php if ($is_register && $registration_enabled): ?>
 
       <form  method="post" action="">
       <input type="hidden" name="lp_form_type" value="register" />
@@ -107,10 +109,13 @@ $is_register = isset($_GET['register']) && $_GET['register'] === 'true';
             <?php echo isset($data['login_button_text']) && ($data['login_button_text'] !="")  ? $data['login_button_text'] : 'Login'; ?>
         </button>
     </form>
+    <?php if ($registration_enabled): ?>
     <div class="signup">
         Don’t Have An Account? <a href="?register=true">Sign Up</a>
     </div>
+    <?php endif; ?>
 
+    
     <?php endif; ?>
 
 </div>

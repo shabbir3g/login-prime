@@ -1,7 +1,9 @@
 <?php 
 $data = get_option( 'login_prime_save_settings', []);
 
-$is_register = isset($_GET['register']) && $_GET['register'] === 'true';
+$registration_enabled = isset($data['enable_registration']) && $data['enable_registration'];
+
+$is_register = isset($_GET['register']) && $_GET['register'] === 'true'  && $registration_enabled;
 
 ?>
 <div class="lp-main-container">
@@ -19,7 +21,7 @@ $is_register = isset($_GET['register']) && $_GET['register'] === 'true';
     </a>
 </div>
 
-<?php if ($is_register): ?>
+<?php if ($is_register && $registration_enabled): ?>
  
     <form class="lp-form" method="post" action="">
       <input type="hidden" name="lp_form_type" value="register" />
@@ -56,7 +58,10 @@ $is_register = isset($_GET['register']) && $_GET['register'] === 'true';
     <a href="#" class="lp-forgot-password"><?php echo isset($data['reset_password_button_text']) && ($data['reset_password_button_text'] !="") ? $data['reset_password_button_text'] : 'Forget password'; ?></a>
     <button type="submit" name="user_remember"  class="lp-btn"><?php echo isset($data['login_button_text']) && ($data['login_button_text'] !="")  ? $data['login_button_text'] : 'Login'; ?></button>
   </form>
+  <?php if ($registration_enabled): ?>
   <p class="lp-register-text">Not a member? <a href="?register=true">Register now</a></p>
+  <?php endif; ?>
 
+  
 <?php endif; ?>
 </div>

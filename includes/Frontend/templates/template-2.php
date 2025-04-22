@@ -11,7 +11,7 @@ $is_register = isset($_GET['register']) && $_GET['register'] === 'true'  && $reg
 <h2 class="lp-title">
 <?php echo $is_register ? (isset($data['registration_form_header_text']) && ($data['registration_form_header_text'] !="")  ? $data['registration_form_header_text'] : 'Registration') : (isset($data['login_form_header_text']) && ($data['login_form_header_text'] !="")  ? $data['login_form_header_text'] : 'Login'); ?>
 </h2>
-
+<?php if ($registration_enabled): ?>
 <div class="lp-tabs">
     <a class="lp-tab <?php echo !$is_register ? 'active' : ''; ?>" href="?register=false">
       <?php echo isset($data['login_tab_text']) && ($data['login_tab_text'] !="") ? $data['login_tab_text'] : 'Login'; ?>
@@ -20,6 +20,7 @@ $is_register = isset($_GET['register']) && $_GET['register'] === 'true'  && $reg
       <?php echo isset($data['register_tab_text']) && ($data['register_tab_text'] !="") ? $data['register_tab_text'] : 'Register'; ?>  
     </a>
 </div>
+<?php endif; ?>
 
 <?php if ($is_register && $registration_enabled): ?>
  

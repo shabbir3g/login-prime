@@ -109,7 +109,13 @@ button.closebtn:hover{
 }
 .sidebar-image {
     position: relative;
+    
 }
+.sidebar-image img {
+    height: 95%;
+    border: 5px solid #000;
+}
+
 .components-form-file-upload button {
     border: 1px solid #111;
 }

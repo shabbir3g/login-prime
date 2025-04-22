@@ -6,6 +6,8 @@ $registration_enabled = isset($data['enable_registration']) && $data['enable_reg
 
 $is_register = isset($_GET['register']) && $_GET['register'] === 'true'  && $registration_enabled;
 
+$is_reset = isset($_GET['reset_password']) && $_GET['reset_password'] === 'true';
+
 
 ?>
 
@@ -13,7 +15,15 @@ $is_register = isset($_GET['register']) && $_GET['register'] === 'true'  && $reg
 
 
 
+
+
   <div class="form-section">
+
+  <?php if (isset($_GET['status']) && $_GET['status'] === 'sent'): ?>
+    <div class="success-message">Password reset email sent. Check your inbox.</div>
+<?php elseif (isset($_GET['error']) && $_GET['error'] === 'user_not_found'): ?>
+    <div class="error-message">Email not found. Please try again.</div>
+<?php endif; ?>
         <h1>
         <?php echo $is_register ? (isset($data['registration_form_header_text']) && ($data['registration_form_header_text'] !="")  ? $data['registration_form_header_text'] : 'Registration') : (isset($data['login_form_header_text']) && ($data['login_form_header_text'] !="")  ? $data['login_form_header_text'] : 'Login'); ?>  
         <span><?php echo isset($data['login_form_subheader_text']) && ($data['login_form_subheader_text'] !="") ? $data['login_form_subheader_text'] : 'Welcome to Login Prime'; ?></span>
@@ -86,7 +96,7 @@ $is_register = isset($_GET['register']) && $_GET['register'] === 'true'  && $reg
           </div>
           <div class="form-options">
             <label> <input type="checkbox" /> I agree with the terms and conditions</label>
-            <a href="#">Forgot Password?</a>
+            <a href="?reset_password=true">Forgot Password?</a>
           </div>
           <button type="submit" class="submit-button">
           <?php echo isset($data['register_button_text']) && ($data['register_button_text'] !="") ? $data['register_button_text'] : 'Register'; ?>
@@ -95,6 +105,28 @@ $is_register = isset($_GET['register']) && $_GET['register'] === 'true'  && $reg
         <div class="register-link">
           Have an account? <a href="?register=false">login</a>
         </div>
+
+        <?php elseif ($is_reset): ?>
+          <!-- Show reset form here -->
+
+          <form method="post" action="">
+            <?php wp_nonce_field('lp_reset_password_action', 'lp_reset_password_nonce'); ?>
+            <input type="hidden" name="lp_form_type" value="reset_password" />
+
+            <div>
+                <label for="reset_user_email">Email Address</label>
+                <div class="form-group">
+                    <img src="<?php echo LOGIN_PRIME_URL  ?>includes/Frontend/templates/images/Vector.png" alt="Email Icon" />
+                    <input type="email" name="reset_user_email" id="reset_user_email" placeholder="Enter your email" required />
+                </div>
+            </div>
+
+            <button type="submit" class="submit-button">Reset Password</button>
+        </form>
+        <div class="register-link">
+            <a href="?register=false">Back to Login</a>
+        </div>
+
       <?php else: ?>
   <!-- Form Section -->
   
@@ -117,7 +149,7 @@ $is_register = isset($_GET['register']) && $_GET['register'] === 'true'  && $reg
       </div>
       <div class="form-options">
         <label for="user_remember"> <input name="user_remember" id="user_remember"  type="checkbox" /> Remember me </label>
-        <a href="#"><?php echo isset($data['reset_password_button_text']) && ($data['reset_password_button_text'] !="") ? $data['reset_password_button_text'] : 'Forget password'; ?></a>
+        <a href="?reset_password=true"><?php echo isset($data['reset_password_button_text']) && ($data['reset_password_button_text'] !="") ? $data['reset_password_button_text'] : 'Forget password'; ?></a>
       </div>
       <button type="submit" class="submit-button"><?php echo isset($data['login_button_text']) && ($data['login_button_text'] !="")  ? $data['login_button_text'] : 'Login'; ?></button>
     </form>

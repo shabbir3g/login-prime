@@ -46,106 +46,61 @@ const Info = () => {
         </div>
       )}
 
-      <form onSubmit={onSubmit}>
-        <div className="lp-settings-section lp-settings-setting-section">
-          <h2>Button Design Settings</h2>
-          <hr />
-          <table className="form-table">
-            <tbody>
-              {/* Enable Registration */}
+      <div className="lp-settings-section lp-settings-setting-section">
+        <h2>Info Settings</h2>
+        <hr />
+        <p>
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eligendi
+          amet labore dignissimos alias quos vel enim repudiandae, minus atque
+          dicta explicabo blanditiis quisquam. Aliquam, aut. Delectus vel odit
+          deserunt mollitia. Voluptatum earum ipsa rem quos soluta commodi neque
+          aliquam id necessitatibus, molestias quam tempora doloremque adipisci
+          inventore a. Earum et voluptatum magnam eveniet voluptas nemo odio
+          inventore natus enim aperiam! Suscipit odit pariatur fugiat possimus
+          voluptatibus dolorum nesciunt, tempora repellendus, minus laboriosam
+          similique incidunt quaerat aliquid modi est ea nostrum vitae quae
+          natus perferendis omnis dicta debitis placeat. Eum, tempora.
+        </p>
 
-              <tr>
-                <th>
-                  <label htmlFor="form_pattern">Design</label>
-                </th>
-                <td>
-                  <select
-                    name="form_pattern"
-                    id="form_pattern"
-                    className="widefat"
-                    defaultValue={formPattern} // ✅ Set selected value
-                    onChange={(e) => setFormPattern(e.target.value)} // ✅ Update state on change
-                  >
-                    <option value="">Custom</option>
-                    <option
-                      selected={formPattern === "template-1"}
-                      value="template-1"
-                    >
-                      Login and Registration Template 01
-                    </option>
-                    <option
-                      selected={formPattern === "template-2"}
-                      value="template-2"
-                    >
-                      Login and Registration Template 02
-                    </option>
-                  </select>
-                </td>
-              </tr>
-              <tr>
-                <th>
-                  <label htmlFor="form_pattern">Background Color</label>
-                </th>
-                <td>
-                  <input type="color" value={"#000000"} name="" id="" />
-                </td>
-              </tr>
-              <tr>
-                <th>
-                  <label htmlFor="form_pattern">Text Color</label>
-                </th>
-                <td>
-                  <input type="color" value={"#000000"} name="" id="" />
-                </td>
-              </tr>
-              <tr>
-                <th>
-                  <label htmlFor="form_pattern">Border </label>
-                </th>
-                <td>
-                  <input
-                    name="login_tab_text"
-                    type="text"
-                    id="login_tab_text"
-                    className="widefat"
-                    placeholder="Ex. 2px solid #5c5c5c"
-                  />
-                </td>
-              </tr>
-              <tr>
-                <th>
-                  <label htmlFor="form_pattern">Height (px) </label>
-                </th>
-                <td>
-                  <input
-                    name="login_tab_text"
-                    type="text"
-                    id="login_tab_text"
-                  />
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+        <p>
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eligendi
+          amet labore dignissimos alias quos vel enim repudiandae, minus atque
+          dicta explicabo blanditiis quisquam. Aliquam, aut. Delectus vel odit
+          deserunt mollitia. Voluptatum earum ipsa rem quos soluta commodi neque
+          aliquam id necessitatibus, molestias quam tempora doloremque adipisci
+          inventore a. Earum et voluptatum magnam eveniet voluptas nemo odio
+          inventore natus enim aperiam! Suscipit odit pariatur fugiat possimus
+          voluptatibus dolorum nesciunt, tempora repellendus, minus laboriosam
+          similique incidunt quaerat aliquid modi est ea nostrum vitae quae
+          natus perferendis omnis dicta debitis placeat. Eum, tempora.
+        </p>
 
-        <div className="lp-settings-submit">
-          <table className="form-table">
-            <tbody>
-              <tr>
-                <th></th>
-                <td>
-                  <button
-                    className="components-button is-primary"
-                    type="submit"
-                  >
-                    Save
-                  </button>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </form>
+        <p>
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eligendi
+          amet labore dignissimos alias quos vel enim repudiandae, minus atque
+          dicta explicabo blanditiis quisquam. Aliquam, aut. Delectus vel odit
+          deserunt mollitia. Voluptatum earum ipsa rem quos soluta commodi neque
+          aliquam id necessitatibus, molestias quam tempora doloremque adipisci
+          inventore a. Earum et voluptatum magnam eveniet voluptas nemo odio
+          inventore natus enim aperiam! Suscipit odit pariatur fugiat possimus
+          voluptatibus dolorum nesciunt, tempora repellendus, minus laboriosam
+          similique incidunt quaerat aliquid modi est ea nostrum vitae quae
+          natus perferendis omnis dicta debitis placeat. Eum, tempora.
+        </p>
+
+        <p>
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eligendi
+          amet labore dignissimos alias quos vel enim repudiandae, minus atque
+          dicta explicabo blanditiis quisquam. Aliquam, aut. Delectus vel odit
+          deserunt mollitia. Voluptatum earum ipsa rem quos soluta commodi neque
+          aliquam id necessitatibus, molestias quam tempora doloremque adipisci
+          inventore a. Earum et voluptatum magnam eveniet voluptas nemo odio
+          inventore natus enim aperiam! Suscipit odit pariatur fugiat possimus
+          voluptatibus dolorum nesciunt, tempora repellendus, minus laboriosam
+          similique incidunt quaerat aliquid modi est ea nostrum vitae quae
+          natus perferendis omnis dicta debitis placeat. Eum, tempora.
+        </p>
+      </div>
     </div>
   );
 };

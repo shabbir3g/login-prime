@@ -12,470 +12,396 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "react/jsx-runtime");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "react/jsx-runtime");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__);
 
-
+// import React, { useEffect, useState } from "react";
+// import { FormToggle, Notice } from "@wordpress/components";
 
 const AddOns = () => {
-  const [notice, setNotice] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
-    message: "",
-    type: ""
-  });
-  // Form Pattern
-  const [formPattern, setFormPattern] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("");
-  const onSubmit = event => {
-    event.preventDefault();
-    let formData = new FormData(event.target);
+  // const [notice, setNotice] = useState({ message: "", type: "" });
+  // // Form Pattern
+  // const [formPattern, setFormPattern] = useState("");
 
-    // Form Pattern
-    formData.append("form_pattern", formPattern);
-    fetch(LoginPrime.ajaxurl, {
-      method: "POST",
-      body: formData
-    }).then(res => res.json()) // Directly parse JSON if response is correct
-    .then(data => {
-      if (data.success) {
-        setNotice({
-          message: "Settings saved successfully!",
-          type: "success"
-        });
-      } else {
-        setNotice({
-          message: "Error: " + data.message,
-          type: "error"
-        });
-      }
-    }).catch(error => {
-      console.error("AJAX Error:", error);
-      setNotice({
-        message: "Something went wrong!",
-        type: "error"
-      });
-    });
-  };
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-    className: "settings-container",
-    children: [notice.message && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-      className: "lp-settings-notification",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Notice, {
-        status: notice.type // "success" or "error"
-        ,
-        onRemove: () => setNotice({
-          message: "",
-          type: ""
-        }) // Dismiss notice
-        ,
-        children: notice.message
-      })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("form", {
-      onSubmit: onSubmit,
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-        className: "lp-settings-section lp-settings-setting-section",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h2", {
-          children: "Membership"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("hr", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("table", {
-          className: "form-table",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tbody", {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tr", {
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
-                  htmlFor: "form_pattern",
-                  children: "Design"
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("select", {
-                  name: "form_pattern",
-                  id: "form_pattern",
-                  className: "widefat",
-                  defaultValue: formPattern // ✅ Set selected value
-                  ,
-                  onChange: e => setFormPattern(e.target.value) // ✅ Update state on change
-                  ,
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
-                    value: "",
-                    children: "Custom"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
-                    selected: formPattern === "template-1",
-                    value: "template-1",
-                    children: "Login and Registration Template 01"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
-                    selected: formPattern === "template-2",
-                    value: "template-2",
-                    children: "Login and Registration Template 02"
-                  })]
-                })
-              })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tr", {
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
-                  htmlFor: "form_pattern",
-                  children: "Background Color"
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
-                  type: "color",
-                  value: "#000000",
-                  name: "",
-                  id: ""
-                })
-              })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tr", {
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
-                  htmlFor: "form_pattern",
-                  children: "Text Color"
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
-                  type: "color",
-                  value: "#000000",
-                  name: "",
-                  id: ""
-                })
-              })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tr", {
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
-                  htmlFor: "form_pattern",
-                  children: "Border "
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
-                  name: "login_tab_text",
-                  type: "text",
-                  id: "login_tab_text",
-                  className: "widefat",
-                  placeholder: "Ex. 2px solid #5c5c5c"
-                })
-              })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tr", {
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
-                  htmlFor: "form_pattern",
-                  children: "Height (px) "
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
-                  name: "login_tab_text",
-                  type: "text",
-                  id: "login_tab_text"
-                })
-              })]
-            })]
-          })
-        })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-        className: "lp-settings-section lp-settings-setting-section",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h2", {
-          children: "Verification"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("hr", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("table", {
-          className: "form-table",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tbody", {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tr", {
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
-                  htmlFor: "form_pattern",
-                  children: "Tab background"
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
-                  type: "color",
-                  value: "#000000",
-                  name: "",
-                  id: ""
-                })
-              })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tr", {
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
-                  htmlFor: "form_pattern",
-                  children: "Tab Text"
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
-                  type: "color",
-                  value: "#000000",
-                  name: "",
-                  id: ""
-                })
-              })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tr", {
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
-                  htmlFor: "form_pattern",
-                  children: "Active Tab Background"
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
-                  type: "color",
-                  value: "#000000",
-                  name: "",
-                  id: ""
-                })
-              })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tr", {
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
-                  htmlFor: "form_pattern",
-                  children: "Active Tab Text"
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
-                  type: "color",
-                  value: "#000000",
-                  name: "",
-                  id: ""
-                })
-              })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tr", {
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
-                  htmlFor: "form_pattern",
-                  children: "Font Size (px)"
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
-                  name: "login_tab_text",
-                  type: "text",
-                  id: "login_tab_text"
-                })
-              })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tr", {
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
-                  htmlFor: "form_pattern",
-                  children: "Padding "
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
-                  name: "login_tab_text",
-                  type: "text",
-                  id: "login_tab_text",
-                  className: "widefat",
-                  placeholder: "Ex. 10px 10px"
-                })
-              })]
-            })]
-          })
-        })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-        className: "lp-settings-section lp-settings-setting-section",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h2", {
-          children: "Default Login Page"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("hr", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("table", {
-          className: "form-table",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tbody", {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tr", {
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
-                  htmlFor: "form_pattern",
-                  children: "Background"
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
-                  type: "color",
-                  value: "#000000",
-                  name: "",
-                  id: ""
-                })
-              })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tr", {
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
-                  htmlFor: "form_pattern",
-                  children: "Text"
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
-                  type: "color",
-                  value: "#000000",
-                  name: "",
-                  id: ""
-                })
-              })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tr", {
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
-                  htmlFor: "form_pattern",
-                  children: "Image"
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
-                  type: "file",
-                  name: "",
-                  id: ""
-                })
-              })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tr", {
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
-                  htmlFor: "form_pattern",
-                  children: "Position"
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("select", {
-                  name: "form_pattern",
-                  id: "form_pattern",
-                  className: "widefat",
-                  defaultValue: formPattern // ✅ Set selected value
-                  ,
-                  onChange: e => setFormPattern(e.target.value) // ✅ Update state on change
-                  ,
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
-                    selected: formPattern === "template-1",
-                    value: "template-1",
-                    children: "Left"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
-                    selected: formPattern === "template-2",
-                    value: "template-2",
-                    children: "Right"
-                  })]
-                })
-              })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tr", {
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
-                  htmlFor: "form_pattern",
-                  children: "Width (%)"
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
-                  name: "login_tab_text",
-                  type: "text",
-                  id: "login_tab_text"
-                })
-              })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tr", {
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
-                  htmlFor: "form_pattern",
-                  children: "Overlay Color"
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
-                  type: "color",
-                  value: "#000000",
-                  name: "",
-                  id: ""
-                })
-              })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tr", {
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
-                  htmlFor: "form_pattern",
-                  children: "Overlay Opacity"
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
-                  name: "login_tab_text",
-                  type: "text",
-                  id: "login_tab_text"
-                })
-              })]
-            })]
-          })
-        })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-        className: "lp-settings-section lp-settings-setting-section",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h2", {
-          children: "Custom User Role"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("hr", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("table", {
-          className: "form-table",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tbody", {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tr", {
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
-                  htmlFor: "form_pattern",
-                  children: "Background"
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
-                  type: "color",
-                  value: "#000000",
-                  name: "",
-                  id: ""
-                })
-              })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tr", {
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
-                  htmlFor: "form_pattern",
-                  children: "Text"
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
-                  type: "color",
-                  value: "#000000",
-                  name: "",
-                  id: ""
-                })
-              })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tr", {
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
-                  htmlFor: "form_pattern",
-                  children: "Image"
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
-                  type: "file",
-                  name: "",
-                  id: ""
-                })
-              })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tr", {
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
-                  htmlFor: "form_pattern",
-                  children: "Position"
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("select", {
-                  name: "form_pattern",
-                  id: "form_pattern",
-                  className: "widefat",
-                  defaultValue: formPattern // ✅ Set selected value
-                  ,
-                  onChange: e => setFormPattern(e.target.value) // ✅ Update state on change
-                  ,
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
-                    selected: formPattern === "template-1",
-                    value: "template-1",
-                    children: "Left"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
-                    selected: formPattern === "template-2",
-                    value: "template-2",
-                    children: "Right"
-                  })]
-                })
-              })]
-            })]
-          })
-        })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-        className: "lp-settings-submit",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("table", {
-          className: "form-table",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("tbody", {
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tr", {
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
-                  className: "components-button is-primary",
-                  type: "submit",
-                  children: "Save"
-                })
-              })]
-            })
-          })
-        })
-      })]
-    })]
-  });
+  // const onSubmit = (event) => {
+  //   event.preventDefault();
+  //   let formData = new FormData(event.target);
+
+  //   // Form Pattern
+  //   formData.append("form_pattern", formPattern);
+
+  //   fetch(LoginPrime.ajaxurl, {
+  //     method: "POST",
+  //     body: formData,
+  //   })
+  //     .then((res) => res.json()) // Directly parse JSON if response is correct
+  //     .then((data) => {
+  //       if (data.success) {
+  //         setNotice({
+  //           message: "Settings saved successfully!",
+  //           type: "success",
+  //         });
+  //       } else {
+  //         setNotice({ message: "Error: " + data.message, type: "error" });
+  //       }
+  //     })
+  //     .catch((error) => {
+  //       console.error("AJAX Error:", error);
+  //       setNotice({ message: "Something went wrong!", type: "error" });
+  //     });
+  // };
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+    className: "settings-container lp-settings-section lp-settings-setting-section",
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h1", {
+      style: {
+        textAlign: "center",
+        fontSize: "80px"
+      },
+      children: "Coming soon"
+    })
+  })
+  // <div className="settings-container">
+  //   {notice.message && (
+  //     <div className="lp-settings-notification">
+  //       <Notice
+  //         status={notice.type} // "success" or "error"
+  //         onRemove={() => setNotice({ message: "", type: "" })} // Dismiss notice
+  //       >
+  //         {notice.message}
+  //       </Notice>
+  //     </div>
+  //   )}
+
+  //   <form onSubmit={onSubmit}>
+  //     <div className="lp-settings-section lp-settings-setting-section">
+  //       <h2>Membership</h2>
+  //       <hr />
+  //       <table className="form-table">
+  //         <tbody>
+  //           {/* Enable Registration */}
+
+  //           <tr>
+  //             <th>
+  //               <label htmlFor="form_pattern">Design</label>
+  //             </th>
+  //             <td>
+  //               <select
+  //                 name="form_pattern"
+  //                 id="form_pattern"
+  //                 className="widefat"
+  //                 defaultValue={formPattern} // ✅ Set selected value
+  //                 onChange={(e) => setFormPattern(e.target.value)} // ✅ Update state on change
+  //               >
+  //                 <option value="">Custom</option>
+  //                 <option
+  //                   selected={formPattern === "template-1"}
+  //                   value="template-1"
+  //                 >
+  //                   Login and Registration Template 01
+  //                 </option>
+  //                 <option
+  //                   selected={formPattern === "template-2"}
+  //                   value="template-2"
+  //                 >
+  //                   Login and Registration Template 02
+  //                 </option>
+  //               </select>
+  //             </td>
+  //           </tr>
+  //           <tr>
+  //             <th>
+  //               <label htmlFor="form_pattern">Background Color</label>
+  //             </th>
+  //             <td>
+  //               <input type="color" value={"#000000"} name="" id="" />
+  //             </td>
+  //           </tr>
+  //           <tr>
+  //             <th>
+  //               <label htmlFor="form_pattern">Text Color</label>
+  //             </th>
+  //             <td>
+  //               <input type="color" value={"#000000"} name="" id="" />
+  //             </td>
+  //           </tr>
+  //           <tr>
+  //             <th>
+  //               <label htmlFor="form_pattern">Border </label>
+  //             </th>
+  //             <td>
+  //               <input
+  //                 name="login_tab_text"
+  //                 type="text"
+  //                 id="login_tab_text"
+  //                 className="widefat"
+  //                 placeholder="Ex. 2px solid #5c5c5c"
+  //               />
+  //             </td>
+  //           </tr>
+  //           <tr>
+  //             <th>
+  //               <label htmlFor="form_pattern">Height (px) </label>
+  //             </th>
+  //             <td>
+  //               <input
+  //                 name="login_tab_text"
+  //                 type="text"
+  //                 id="login_tab_text"
+  //               />
+  //             </td>
+  //           </tr>
+  //         </tbody>
+  //       </table>
+  //     </div>
+
+  //     <div className="lp-settings-section lp-settings-setting-section">
+  //       <h2>Verification</h2>
+  //       <hr />
+  //       <table className="form-table">
+  //         <tbody>
+  //           {/* Enable Registration */}
+
+  //           <tr>
+  //             <th>
+  //               <label htmlFor="form_pattern">Tab background</label>
+  //             </th>
+  //             <td>
+  //               <input type="color" value={"#000000"} name="" id="" />
+  //             </td>
+  //           </tr>
+  //           <tr>
+  //             <th>
+  //               <label htmlFor="form_pattern">Tab Text</label>
+  //             </th>
+  //             <td>
+  //               <input type="color" value={"#000000"} name="" id="" />
+  //             </td>
+  //           </tr>
+  //           <tr>
+  //             <th>
+  //               <label htmlFor="form_pattern">Active Tab Background</label>
+  //             </th>
+  //             <td>
+  //               <input type="color" value={"#000000"} name="" id="" />
+  //             </td>
+  //           </tr>
+  //           <tr>
+  //             <th>
+  //               <label htmlFor="form_pattern">Active Tab Text</label>
+  //             </th>
+  //             <td>
+  //               <input type="color" value={"#000000"} name="" id="" />
+  //             </td>
+  //           </tr>
+
+  //           <tr>
+  //             <th>
+  //               <label htmlFor="form_pattern">Font Size (px)</label>
+  //             </th>
+  //             <td>
+  //               <input
+  //                 name="login_tab_text"
+  //                 type="text"
+  //                 id="login_tab_text"
+  //               />
+  //             </td>
+  //           </tr>
+  //           <tr>
+  //             <th>
+  //               <label htmlFor="form_pattern">Padding </label>
+  //             </th>
+  //             <td>
+  //               <input
+  //                 name="login_tab_text"
+  //                 type="text"
+  //                 id="login_tab_text"
+  //                 className="widefat"
+  //                 placeholder="Ex. 10px 10px"
+  //               />
+  //             </td>
+  //           </tr>
+  //         </tbody>
+  //       </table>
+  //     </div>
+
+  //     <div className="lp-settings-section lp-settings-setting-section">
+  //       <h2>Default Login Page</h2>
+  //       <hr />
+  //       <table className="form-table">
+  //         <tbody>
+  //           {/* Enable Registration */}
+
+  //           <tr>
+  //             <th>
+  //               <label htmlFor="form_pattern">Background</label>
+  //             </th>
+  //             <td>
+  //               <input type="color" value={"#000000"} name="" id="" />
+  //             </td>
+  //           </tr>
+  //           <tr>
+  //             <th>
+  //               <label htmlFor="form_pattern">Text</label>
+  //             </th>
+  //             <td>
+  //               <input type="color" value={"#000000"} name="" id="" />
+  //             </td>
+  //           </tr>
+  //           <tr>
+  //             <th>
+  //               <label htmlFor="form_pattern">Image</label>
+  //             </th>
+  //             <td>
+  //               <input type="file" name="" id="" />
+  //             </td>
+  //           </tr>
+  //           <tr>
+  //             <th>
+  //               <label htmlFor="form_pattern">Position</label>
+  //             </th>
+  //             <td>
+  //               <select
+  //                 name="form_pattern"
+  //                 id="form_pattern"
+  //                 className="widefat"
+  //                 defaultValue={formPattern} // ✅ Set selected value
+  //                 onChange={(e) => setFormPattern(e.target.value)} // ✅ Update state on change
+  //               >
+  //                 <option
+  //                   selected={formPattern === "template-1"}
+  //                   value="template-1"
+  //                 >
+  //                   Left
+  //                 </option>
+  //                 <option
+  //                   selected={formPattern === "template-2"}
+  //                   value="template-2"
+  //                 >
+  //                   Right
+  //                 </option>
+  //               </select>
+  //             </td>
+  //           </tr>
+
+  //           <tr>
+  //             <th>
+  //               <label htmlFor="form_pattern">Width (%)</label>
+  //             </th>
+  //             <td>
+  //               <input
+  //                 name="login_tab_text"
+  //                 type="text"
+  //                 id="login_tab_text"
+  //               />
+  //             </td>
+  //           </tr>
+
+  //           <tr>
+  //             <th>
+  //               <label htmlFor="form_pattern">Overlay Color</label>
+  //             </th>
+  //             <td>
+  //               <input type="color" value={"#000000"} name="" id="" />
+  //             </td>
+  //           </tr>
+
+  //           <tr>
+  //             <th>
+  //               <label htmlFor="form_pattern">Overlay Opacity</label>
+  //             </th>
+  //             <td>
+  //               <input
+  //                 name="login_tab_text"
+  //                 type="text"
+  //                 id="login_tab_text"
+  //               />
+  //             </td>
+  //           </tr>
+  //         </tbody>
+  //       </table>
+  //     </div>
+
+  //     <div className="lp-settings-section lp-settings-setting-section">
+  //       <h2>Custom User Role</h2>
+  //       <hr />
+  //       <table className="form-table">
+  //         <tbody>
+  //           {/* Enable Registration */}
+
+  //           <tr>
+  //             <th>
+  //               <label htmlFor="form_pattern">Background</label>
+  //             </th>
+  //             <td>
+  //               <input type="color" value={"#000000"} name="" id="" />
+  //             </td>
+  //           </tr>
+  //           <tr>
+  //             <th>
+  //               <label htmlFor="form_pattern">Text</label>
+  //             </th>
+  //             <td>
+  //               <input type="color" value={"#000000"} name="" id="" />
+  //             </td>
+  //           </tr>
+  //           <tr>
+  //             <th>
+  //               <label htmlFor="form_pattern">Image</label>
+  //             </th>
+  //             <td>
+  //               <input type="file" name="" id="" />
+  //             </td>
+  //           </tr>
+  //           <tr>
+  //             <th>
+  //               <label htmlFor="form_pattern">Position</label>
+  //             </th>
+  //             <td>
+  //               <select
+  //                 name="form_pattern"
+  //                 id="form_pattern"
+  //                 className="widefat"
+  //                 defaultValue={formPattern} // ✅ Set selected value
+  //                 onChange={(e) => setFormPattern(e.target.value)} // ✅ Update state on change
+  //               >
+  //                 <option
+  //                   selected={formPattern === "template-1"}
+  //                   value="template-1"
+  //                 >
+  //                   Left
+  //                 </option>
+  //                 <option
+  //                   selected={formPattern === "template-2"}
+  //                   value="template-2"
+  //                 >
+  //                   Right
+  //                 </option>
+  //               </select>
+  //             </td>
+  //           </tr>
+  //         </tbody>
+  //       </table>
+  //     </div>
+  //     <div className="lp-settings-submit">
+  //       <table className="form-table">
+  //         <tbody>
+  //           <tr>
+  //             <th></th>
+  //             <td>
+  //               <button
+  //                 className="components-button is-primary"
+  //                 type="submit"
+  //               >
+  //                 Save
+  //               </button>
+  //             </td>
+  //           </tr>
+  //         </tbody>
+  //       </table>
+  //     </div>
+  //   </form>
+  // </div>
+  ;
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (AddOns);
 
@@ -506,7 +432,7 @@ const Advanced = () => {
     type: ""
   });
   // Form Pattern
-  const [formPattern, setFormPattern] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("");
+  const [enableSocialLogin, setEnableSocialLogin] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
   const onSubmit = event => {
     event.preventDefault();
     let formData = new FormData(event.target);
@@ -556,190 +482,25 @@ const Advanced = () => {
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
         className: "lp-settings-section lp-settings-setting-section",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h2", {
-          children: "Change Default Login Page"
+          children: "Advanced Settings"
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("hr", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("table", {
           className: "form-table",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tbody", {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tr", {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("tbody", {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tr", {
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
-                  htmlFor: "form_pattern",
-                  children: "Design"
+                  htmlFor: "enable_social_login",
+                  children: "Enable Social login"
                 })
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("select", {
-                  name: "form_pattern",
-                  id: "form_pattern",
-                  className: "widefat",
-                  defaultValue: formPattern // ✅ Set selected value
-                  ,
-                  onChange: e => setFormPattern(e.target.value) // ✅ Update state on change
-                  ,
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
-                    value: "",
-                    children: "Custom"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
-                    selected: formPattern === "template-1",
-                    value: "template-1",
-                    children: "Login and Registration Template 01"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
-                    selected: formPattern === "template-2",
-                    value: "template-2",
-                    children: "Login and Registration Template 02"
-                  })]
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.FormToggle, {
+                  id: "enable_social_login",
+                  name: "enable_social_login",
+                  checked: enableSocialLogin,
+                  onChange: () => setEnableSocialLogin(!enableSocialLogin)
                 })
               })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tr", {
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
-                  htmlFor: "form_pattern",
-                  children: "Background Color"
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
-                  type: "color",
-                  value: "#000000",
-                  name: "",
-                  id: ""
-                })
-              })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tr", {
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
-                  htmlFor: "form_pattern",
-                  children: "Text Color"
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
-                  type: "color",
-                  value: "#000000",
-                  name: "",
-                  id: ""
-                })
-              })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tr", {
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
-                  htmlFor: "form_pattern",
-                  children: "Border "
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
-                  name: "login_tab_text",
-                  type: "text",
-                  id: "login_tab_text",
-                  className: "widefat",
-                  placeholder: "Ex. 2px solid #5c5c5c"
-                })
-              })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tr", {
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
-                  htmlFor: "form_pattern",
-                  children: "Height (px) "
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
-                  name: "login_tab_text",
-                  type: "text",
-                  id: "login_tab_text"
-                })
-              })]
-            })]
-          })
-        })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-        className: "lp-settings-section lp-settings-setting-section",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h2", {
-          children: "Custom Registration Field"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("hr", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("table", {
-          className: "form-table",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tbody", {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tr", {
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
-                  htmlFor: "form_pattern",
-                  children: "Tab background"
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
-                  type: "color",
-                  value: "#000000",
-                  name: "",
-                  id: ""
-                })
-              })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tr", {
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
-                  htmlFor: "form_pattern",
-                  children: "Tab Text"
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
-                  type: "color",
-                  value: "#000000",
-                  name: "",
-                  id: ""
-                })
-              })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tr", {
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
-                  htmlFor: "form_pattern",
-                  children: "Active Tab Background"
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
-                  type: "color",
-                  value: "#000000",
-                  name: "",
-                  id: ""
-                })
-              })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tr", {
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
-                  htmlFor: "form_pattern",
-                  children: "Active Tab Text"
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
-                  type: "color",
-                  value: "#000000",
-                  name: "",
-                  id: ""
-                })
-              })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tr", {
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
-                  htmlFor: "form_pattern",
-                  children: "Font Size (px)"
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
-                  name: "login_tab_text",
-                  type: "text",
-                  id: "login_tab_text"
-                })
-              })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tr", {
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
-                  htmlFor: "form_pattern",
-                  children: "Padding "
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
-                  name: "login_tab_text",
-                  type: "text",
-                  id: "login_tab_text",
-                  className: "widefat",
-                  placeholder: "Ex. 10px 10px"
-                })
-              })]
-            })]
+            })
           })
         })]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
@@ -892,119 +653,18 @@ const Info = () => {
         ,
         children: notice.message
       })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("form", {
-      onSubmit: onSubmit,
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-        className: "lp-settings-section lp-settings-setting-section",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h2", {
-          children: "Button Design Settings"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("hr", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("table", {
-          className: "form-table",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tbody", {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tr", {
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
-                  htmlFor: "form_pattern",
-                  children: "Design"
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("select", {
-                  name: "form_pattern",
-                  id: "form_pattern",
-                  className: "widefat",
-                  defaultValue: formPattern // ✅ Set selected value
-                  ,
-                  onChange: e => setFormPattern(e.target.value) // ✅ Update state on change
-                  ,
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
-                    value: "",
-                    children: "Custom"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
-                    selected: formPattern === "template-1",
-                    value: "template-1",
-                    children: "Login and Registration Template 01"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
-                    selected: formPattern === "template-2",
-                    value: "template-2",
-                    children: "Login and Registration Template 02"
-                  })]
-                })
-              })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tr", {
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
-                  htmlFor: "form_pattern",
-                  children: "Background Color"
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
-                  type: "color",
-                  value: "#000000",
-                  name: "",
-                  id: ""
-                })
-              })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tr", {
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
-                  htmlFor: "form_pattern",
-                  children: "Text Color"
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
-                  type: "color",
-                  value: "#000000",
-                  name: "",
-                  id: ""
-                })
-              })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tr", {
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
-                  htmlFor: "form_pattern",
-                  children: "Border "
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
-                  name: "login_tab_text",
-                  type: "text",
-                  id: "login_tab_text",
-                  className: "widefat",
-                  placeholder: "Ex. 2px solid #5c5c5c"
-                })
-              })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tr", {
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
-                  htmlFor: "form_pattern",
-                  children: "Height (px) "
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
-                  name: "login_tab_text",
-                  type: "text",
-                  id: "login_tab_text"
-                })
-              })]
-            })]
-          })
-        })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-        className: "lp-settings-submit",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("table", {
-          className: "form-table",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("tbody", {
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tr", {
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
-                  className: "components-button is-primary",
-                  type: "submit",
-                  children: "Save"
-                })
-              })]
-            })
-          })
-        })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+      className: "lp-settings-section lp-settings-setting-section",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h2", {
+        children: "Info Settings"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("hr", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
+        children: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eligendi amet labore dignissimos alias quos vel enim repudiandae, minus atque dicta explicabo blanditiis quisquam. Aliquam, aut. Delectus vel odit deserunt mollitia. Voluptatum earum ipsa rem quos soluta commodi neque aliquam id necessitatibus, molestias quam tempora doloremque adipisci inventore a. Earum et voluptatum magnam eveniet voluptas nemo odio inventore natus enim aperiam! Suscipit odit pariatur fugiat possimus voluptatibus dolorum nesciunt, tempora repellendus, minus laboriosam similique incidunt quaerat aliquid modi est ea nostrum vitae quae natus perferendis omnis dicta debitis placeat. Eum, tempora."
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
+        children: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eligendi amet labore dignissimos alias quos vel enim repudiandae, minus atque dicta explicabo blanditiis quisquam. Aliquam, aut. Delectus vel odit deserunt mollitia. Voluptatum earum ipsa rem quos soluta commodi neque aliquam id necessitatibus, molestias quam tempora doloremque adipisci inventore a. Earum et voluptatum magnam eveniet voluptas nemo odio inventore natus enim aperiam! Suscipit odit pariatur fugiat possimus voluptatibus dolorum nesciunt, tempora repellendus, minus laboriosam similique incidunt quaerat aliquid modi est ea nostrum vitae quae natus perferendis omnis dicta debitis placeat. Eum, tempora."
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
+        children: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eligendi amet labore dignissimos alias quos vel enim repudiandae, minus atque dicta explicabo blanditiis quisquam. Aliquam, aut. Delectus vel odit deserunt mollitia. Voluptatum earum ipsa rem quos soluta commodi neque aliquam id necessitatibus, molestias quam tempora doloremque adipisci inventore a. Earum et voluptatum magnam eveniet voluptas nemo odio inventore natus enim aperiam! Suscipit odit pariatur fugiat possimus voluptatibus dolorum nesciunt, tempora repellendus, minus laboriosam similique incidunt quaerat aliquid modi est ea nostrum vitae quae natus perferendis omnis dicta debitis placeat. Eum, tempora."
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
+        children: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eligendi amet labore dignissimos alias quos vel enim repudiandae, minus atque dicta explicabo blanditiis quisquam. Aliquam, aut. Delectus vel odit deserunt mollitia. Voluptatum earum ipsa rem quos soluta commodi neque aliquam id necessitatibus, molestias quam tempora doloremque adipisci inventore a. Earum et voluptatum magnam eveniet voluptas nemo odio inventore natus enim aperiam! Suscipit odit pariatur fugiat possimus voluptatibus dolorum nesciunt, tempora repellendus, minus laboriosam similique incidunt quaerat aliquid modi est ea nostrum vitae quae natus perferendis omnis dicta debitis placeat. Eum, tempora."
       })]
     })]
   });
@@ -1986,23 +1646,15 @@ const Style = () => {
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
                     selected: formPattern === "template-1",
                     value: "template-1",
-                    children: "Login and Registration Template 01"
+                    children: "Form With Sidebar Template"
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
                     selected: formPattern === "template-2",
                     value: "template-2",
-                    children: "Login and Registration Template 02"
+                    children: "Form Without Tabs"
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
                     selected: formPattern === "template-3",
                     value: "template-3",
-                    children: "Login and Registration Template 03"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
-                    selected: formPattern === "template-4",
-                    value: "template-4",
-                    children: "Login and Registration Template 04"
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
-                    selected: formPattern === "template-5",
-                    value: "template-5",
-                    children: "Login and Registration Template 05"
+                    children: "Form with Links"
                   })]
                 })
               })]
@@ -2020,6 +1672,229 @@ const Style = () => {
                   id: "btn_bg_color",
                   onChange: e => setBtnBgColor(e.target.value) // Update state on change
                 })
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("tr", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("th", {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
+                  htmlFor: "btn_text_color",
+                  children: "Text Color"
+                })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
+                  type: "color",
+                  value: btnTextColor,
+                  name: "btn_text_color",
+                  id: "btn_text_color",
+                  onChange: e => setBtnTextColor(e.target.value) // Update state on change
+                })
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("tr", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("th", {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
+                  htmlFor: "hover_btn_bg",
+                  children: "Hover Background"
+                })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
+                  type: "color",
+                  value: hoverBtnBg,
+                  name: "hover_btn_bg",
+                  id: "hover_btn_bg",
+                  onChange: e => setHoverBtnBg(e.target.value) // Update state on change
+                })
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("tr", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("th", {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
+                  htmlFor: "hover_btn_text",
+                  children: "Hover Text Color"
+                })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
+                  type: "color",
+                  value: hoverBtnTextColor,
+                  name: "hover_btn_text_color",
+                  id: "hover_btn_text_color",
+                  onChange: e => setHoverBtnTextColor(e.target.value) // Update state on change
+                })
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("tr", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("th", {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
+                  htmlFor: "btn_border_width",
+                  children: "Border Width (px)"
+                })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
+                  name: "btn_border_width",
+                  type: "number",
+                  placeholder: "Example: 2",
+                  id: "btn_border_width",
+                  defaultValue: data?.data?.btn_border_width || "",
+                  onChange: e => setData({
+                    ...data,
+                    data: {
+                      ...data.data,
+                      btn_border_width: e.target.value
+                    }
+                  })
+                })
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("tr", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("th", {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
+                  htmlFor: "btn_border_type",
+                  children: "Border Style"
+                })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("select", {
+                  name: "btn_border_type",
+                  id: "btn_border_type",
+                  className: "widefat",
+                  defaultValue: btnBorderType // ✅ Set selected value
+                  ,
+                  onChange: e => setBtnBorderType(e.target.value) // ✅ Update state on change
+                  ,
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
+                    selected: btnBorderType === "none",
+                    value: "none",
+                    children: "None"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
+                    selected: btnBorderType === "solid",
+                    value: "solid",
+                    children: "Solid"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
+                    selected: btnBorderType === "dotted",
+                    value: "dotted",
+                    children: "Dotted"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
+                    selected: btnBorderType === "dashed",
+                    value: "dashed",
+                    children: "Dashed"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
+                    selected: btnBorderType === "double",
+                    value: "double",
+                    children: "Double"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
+                    selected: btnBorderType === "groove",
+                    value: "groove",
+                    children: "Groove"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
+                    selected: btnBorderType === "ridge",
+                    value: "ridge",
+                    children: "Ridge"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
+                    selected: btnBorderType === "inset",
+                    value: "inset",
+                    children: "Inset"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
+                    selected: btnBorderType === "outset",
+                    value: "outset",
+                    children: "Outset"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
+                    selected: btnBorderType === "hidden",
+                    value: "hidden",
+                    children: "Hidden"
+                  })]
+                })
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("tr", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("th", {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
+                  htmlFor: "btn_border_color",
+                  children: "Border Color "
+                })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
+                  type: "color",
+                  value: btnBorderColor,
+                  name: "btn_border_color",
+                  id: "btn_border_color",
+                  onChange: e => setBtnBorderColor(e.target.value) // Update state on change
+                })
+              })]
+            })]
+          })
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+        className: "lp-settings-section lp-settings-setting-section",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h2", {
+          children: "Input Design Settings"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("hr", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("table", {
+          className: "form-table",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("tbody", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("tr", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("th", {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
+                  htmlFor: "input_height",
+                  children: "Input Height (In px)"
+                })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
+                  name: "input_height",
+                  type: "number"
+                  // className="widefat"
+                  ,
+                  id: "input_height",
+                  placeholder: "Ex: 80",
+                  defaultValue: data?.data?.input_height || "",
+                  onChange: e => setData({
+                    ...data,
+                    data: {
+                      ...data.data,
+                      input_height: e.target.value
+                    }
+                  })
+                })
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("tr", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("th", {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
+                  htmlFor: "input_width",
+                  children: "Input Width (In %)"
+                })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
+                  name: "input_width",
+                  type: "number"
+                  // className="widefat"
+                  ,
+                  id: "input_width",
+                  placeholder: "Ex: 80",
+                  defaultValue: data?.data?.input_width || "",
+                  onChange: e => setData({
+                    ...data,
+                    data: {
+                      ...data.data,
+                      input_width: e.target.value
+                    }
+                  })
+                })
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("tr", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("th", {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
+                  htmlFor: "input_padding",
+                  children: "Input sPadding "
+                })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("td", {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
+                  name: "input_padding",
+                  type: "text",
+                  className: "widefat",
+                  id: "input_padding",
+                  placeholder: "Ex: 10px 10px",
+                  defaultValue: data?.data?.input_padding || "",
+                  onChange: e => setData({
+                    ...data,
+                    data: {
+                      ...data.data,
+                      input_padding: e.target.value
+                    }
+                  })
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
+                  children: "First value for top-bottom and second value for left-right"
+                })]
               })]
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("tr", {
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("th", {
@@ -2259,10 +2134,11 @@ const Style = () => {
                   htmlFor: "header_tab_padding",
                   children: "Padding "
                 })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("td", {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("td", {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
                   name: "header_tab_padding",
                   type: "text",
+                  className: "widefat",
                   id: "header_tab_padding",
                   placeholder: "Ex: 10px 10px",
                   defaultValue: data?.data?.header_tab_padding || "",
@@ -2273,7 +2149,9 @@ const Style = () => {
                       header_tab_padding: e.target.value
                     }
                   })
-                })
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
+                  children: "First value for top-bottom and second value for left-right"
+                })]
               })]
             })]
           })

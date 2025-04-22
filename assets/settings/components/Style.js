@@ -177,21 +177,21 @@ const Style = () => {
                       selected={formPattern === "template-1"}
                       value="template-1"
                     >
-                      Login and Registration Template 01
+                      Form With Sidebar Template
                     </option>
                     <option
                       selected={formPattern === "template-2"}
                       value="template-2"
                     >
-                      Login and Registration Template 02
+                      Form Without Tabs
                     </option>
                     <option
                       selected={formPattern === "template-3"}
                       value="template-3"
                     >
-                      Login and Registration Template 03
+                      Form with Links
                     </option>
-                    <option
+                    {/* <option
                       selected={formPattern === "template-4"}
                       value="template-4"
                     >
@@ -202,7 +202,7 @@ const Style = () => {
                       value="template-5"
                     >
                       Login and Registration Template 05
-                    </option>
+                    </option> */}
                   </select>
                 </td>
               </tr>
@@ -218,6 +218,232 @@ const Style = () => {
                     id="btn_bg_color"
                     onChange={(e) => setBtnBgColor(e.target.value)} // Update state on change
                   />
+                </td>
+              </tr>
+              <tr>
+                <th>
+                  <label htmlFor="btn_text_color">Text Color</label>
+                </th>
+                <td>
+                  <input
+                    type="color"
+                    value={btnTextColor}
+                    name="btn_text_color"
+                    id="btn_text_color"
+                    onChange={(e) => setBtnTextColor(e.target.value)} // Update state on change
+                  />
+                </td>
+              </tr>
+              <tr>
+                <th>
+                  <label htmlFor="hover_btn_bg">Hover Background</label>
+                </th>
+                <td>
+                  <input
+                    type="color"
+                    value={hoverBtnBg}
+                    name="hover_btn_bg"
+                    id="hover_btn_bg"
+                    onChange={(e) => setHoverBtnBg(e.target.value)} // Update state on change
+                  />
+                </td>
+              </tr>
+              <tr>
+                <th>
+                  <label htmlFor="hover_btn_text">Hover Text Color</label>
+                </th>
+                <td>
+                  <input
+                    type="color"
+                    value={hoverBtnTextColor}
+                    name="hover_btn_text_color"
+                    id="hover_btn_text_color"
+                    onChange={(e) => setHoverBtnTextColor(e.target.value)} // Update state on change
+                  />
+                </td>
+              </tr>
+              <tr>
+                <th>
+                  <label htmlFor="btn_border_width">Border Width (px)</label>
+                </th>
+                <td>
+                  <input
+                    name="btn_border_width"
+                    type="number"
+                    placeholder="Example: 2"
+                    id="btn_border_width"
+                    defaultValue={data?.data?.btn_border_width || ""}
+                    onChange={(e) =>
+                      setData({
+                        ...data,
+                        data: {
+                          ...data.data,
+                          btn_border_width: e.target.value,
+                        },
+                      })
+                    }
+                  />
+                </td>
+              </tr>
+              <tr>
+                <th>
+                  <label htmlFor="btn_border_type">Border Style</label>
+                </th>
+                <td>
+                  <select
+                    name="btn_border_type"
+                    id="btn_border_type"
+                    className="widefat"
+                    defaultValue={btnBorderType} // ✅ Set selected value
+                    onChange={(e) => setBtnBorderType(e.target.value)} // ✅ Update state on change
+                  >
+                    <option selected={btnBorderType === "none"} value="none">
+                      None
+                    </option>
+                    <option selected={btnBorderType === "solid"} value="solid">
+                      Solid
+                    </option>
+                    <option
+                      selected={btnBorderType === "dotted"}
+                      value="dotted"
+                    >
+                      Dotted
+                    </option>
+                    <option
+                      selected={btnBorderType === "dashed"}
+                      value="dashed"
+                    >
+                      Dashed
+                    </option>
+                    <option
+                      selected={btnBorderType === "double"}
+                      value="double"
+                    >
+                      Double
+                    </option>
+                    <option
+                      selected={btnBorderType === "groove"}
+                      value="groove"
+                    >
+                      Groove
+                    </option>
+                    <option selected={btnBorderType === "ridge"} value="ridge">
+                      Ridge
+                    </option>
+                    <option selected={btnBorderType === "inset"} value="inset">
+                      Inset
+                    </option>
+                    <option
+                      selected={btnBorderType === "outset"}
+                      value="outset"
+                    >
+                      Outset
+                    </option>
+                    <option
+                      selected={btnBorderType === "hidden"}
+                      value="hidden"
+                    >
+                      Hidden
+                    </option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <th>
+                  <label htmlFor="btn_border_color">Border Color </label>
+                </th>
+                <td>
+                  <input
+                    type="color"
+                    value={btnBorderColor}
+                    name="btn_border_color"
+                    id="btn_border_color"
+                    onChange={(e) => setBtnBorderColor(e.target.value)} // Update state on change
+                  />
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div className="lp-settings-section lp-settings-setting-section">
+          <h2>Input Design Settings</h2>
+          <hr />
+          <table className="form-table">
+            <tbody>
+              <tr>
+                <th>
+                  <label htmlFor="input_height">Input Height (In px)</label>
+                </th>
+                <td>
+                  <input
+                    name="input_height"
+                    type="number"
+                    // className="widefat"
+                    id="input_height"
+                    placeholder="Ex: 80"
+                    defaultValue={data?.data?.input_height || ""}
+                    onChange={(e) =>
+                      setData({
+                        ...data,
+                        data: {
+                          ...data.data,
+                          input_height: e.target.value,
+                        },
+                      })
+                    }
+                  />
+                </td>
+              </tr>
+              <tr>
+                <th>
+                  <label htmlFor="input_width">Input Width (In %)</label>
+                </th>
+                <td>
+                  <input
+                    name="input_width"
+                    type="number"
+                    // className="widefat"
+                    id="input_width"
+                    placeholder="Ex: 80"
+                    defaultValue={data?.data?.input_width || ""}
+                    onChange={(e) =>
+                      setData({
+                        ...data,
+                        data: {
+                          ...data.data,
+                          input_width: e.target.value,
+                        },
+                      })
+                    }
+                  />
+                </td>
+              </tr>
+              <tr>
+                <th>
+                  <label htmlFor="input_padding">Input sPadding </label>
+                </th>
+                <td>
+                  <input
+                    name="input_padding"
+                    type="text"
+                    className="widefat"
+                    id="input_padding"
+                    placeholder="Ex: 10px 10px"
+                    defaultValue={data?.data?.input_padding || ""}
+                    onChange={(e) =>
+                      setData({
+                        ...data,
+                        data: {
+                          ...data.data,
+                          input_padding: e.target.value,
+                        },
+                      })
+                    }
+                  />
+                  <p>
+                    First value for top-bottom and second value for left-right
+                  </p>
                 </td>
               </tr>
               <tr>
@@ -465,6 +691,7 @@ const Style = () => {
                   <input
                     name="header_tab_padding"
                     type="text"
+                    className="widefat"
                     id="header_tab_padding"
                     placeholder="Ex: 10px 10px"
                     defaultValue={data?.data?.header_tab_padding || ""}
@@ -478,6 +705,9 @@ const Style = () => {
                       })
                     }
                   />
+                  <p>
+                    First value for top-bottom and second value for left-right
+                  </p>
                 </td>
               </tr>
             </tbody>

@@ -147,5 +147,33 @@ class AuthHandler
                 exit;
             }
         }
+
+
+        if (isset($_POST['lp_form_type']) && $_POST['lp_form_type'] === 'reset_password') {
+            if (!isset($_POST['lp_reset_password_nonce']) || !wp_verify_nonce($_POST['lp_reset_password_nonce'], 'lp_reset_password_action')) {
+                return;
+            }
+        
+            $user_email = sanitize_email($_POST['reset_user_email']);
+            $user = get_user_by('email', $user_email);
+        
+            if ($user) {
+                // Send reset link
+                $reset_key = get_password_reset_key($user);
+                $reset_url = network_site_url("wp-login.php?action=rp&key=$reset_key&login=" . rawurlencode($user->user_login), 'login');
+        
+                wp_mail(
+                    $user_email,
+                    'Password Reset Request',
+                    "Hi " . $user->display_name . ",\n\nClick the following link to reset your password:\n\n" . $reset_url
+                );
+        
+                wp_redirect(home_url('/login/?reset_password=true&status=sent'));
+                exit;
+            } else {
+                wp_redirect(home_url('/login/?reset_password=true&error=user_not_found'));
+                exit;
+            }
+        }
     }
 }

@@ -4,7 +4,7 @@ import { FormToggle, Notice } from "@wordpress/components";
 const Advanced = () => {
   const [notice, setNotice] = useState({ message: "", type: "" });
   // Form Pattern
-  const [formPattern, setFormPattern] = useState("");
+  const [enableSocialLogin, setEnableSocialLogin] = useState(false);
 
   const onSubmit = (event) => {
     event.preventDefault();
@@ -48,79 +48,22 @@ const Advanced = () => {
 
       <form onSubmit={onSubmit}>
         <div className="lp-settings-section lp-settings-setting-section">
-          <h2>Change Default Login Page</h2>
+          <h2>Advanced Settings</h2>
           <hr />
           <table className="form-table">
             <tbody>
-              {/* Enable Registration */}
-
               <tr>
                 <th>
-                  <label htmlFor="form_pattern">Design</label>
+                  <label htmlFor="enable_social_login">
+                    Enable Social login
+                  </label>
                 </th>
                 <td>
-                  <select
-                    name="form_pattern"
-                    id="form_pattern"
-                    className="widefat"
-                    defaultValue={formPattern} // ✅ Set selected value
-                    onChange={(e) => setFormPattern(e.target.value)} // ✅ Update state on change
-                  >
-                    <option value="">Custom</option>
-                    <option
-                      selected={formPattern === "template-1"}
-                      value="template-1"
-                    >
-                      Login and Registration Template 01
-                    </option>
-                    <option
-                      selected={formPattern === "template-2"}
-                      value="template-2"
-                    >
-                      Login and Registration Template 02
-                    </option>
-                  </select>
-                </td>
-              </tr>
-              <tr>
-                <th>
-                  <label htmlFor="form_pattern">Background Color</label>
-                </th>
-                <td>
-                  <input type="color" value={"#000000"} name="" id="" />
-                </td>
-              </tr>
-              <tr>
-                <th>
-                  <label htmlFor="form_pattern">Text Color</label>
-                </th>
-                <td>
-                  <input type="color" value={"#000000"} name="" id="" />
-                </td>
-              </tr>
-              <tr>
-                <th>
-                  <label htmlFor="form_pattern">Border </label>
-                </th>
-                <td>
-                  <input
-                    name="login_tab_text"
-                    type="text"
-                    id="login_tab_text"
-                    className="widefat"
-                    placeholder="Ex. 2px solid #5c5c5c"
-                  />
-                </td>
-              </tr>
-              <tr>
-                <th>
-                  <label htmlFor="form_pattern">Height (px) </label>
-                </th>
-                <td>
-                  <input
-                    name="login_tab_text"
-                    type="text"
-                    id="login_tab_text"
+                  <FormToggle
+                    id="enable_social_login"
+                    name="enable_social_login"
+                    checked={enableSocialLogin}
+                    onChange={() => setEnableSocialLogin(!enableSocialLogin)}
                   />
                 </td>
               </tr>
@@ -128,75 +71,6 @@ const Advanced = () => {
           </table>
         </div>
 
-        <div className="lp-settings-section lp-settings-setting-section">
-          <h2>Custom Registration Field</h2>
-          <hr />
-          <table className="form-table">
-            <tbody>
-              {/* Enable Registration */}
-
-              <tr>
-                <th>
-                  <label htmlFor="form_pattern">Tab background</label>
-                </th>
-                <td>
-                  <input type="color" value={"#000000"} name="" id="" />
-                </td>
-              </tr>
-              <tr>
-                <th>
-                  <label htmlFor="form_pattern">Tab Text</label>
-                </th>
-                <td>
-                  <input type="color" value={"#000000"} name="" id="" />
-                </td>
-              </tr>
-              <tr>
-                <th>
-                  <label htmlFor="form_pattern">Active Tab Background</label>
-                </th>
-                <td>
-                  <input type="color" value={"#000000"} name="" id="" />
-                </td>
-              </tr>
-              <tr>
-                <th>
-                  <label htmlFor="form_pattern">Active Tab Text</label>
-                </th>
-                <td>
-                  <input type="color" value={"#000000"} name="" id="" />
-                </td>
-              </tr>
-
-              <tr>
-                <th>
-                  <label htmlFor="form_pattern">Font Size (px)</label>
-                </th>
-                <td>
-                  <input
-                    name="login_tab_text"
-                    type="text"
-                    id="login_tab_text"
-                  />
-                </td>
-              </tr>
-              <tr>
-                <th>
-                  <label htmlFor="form_pattern">Padding </label>
-                </th>
-                <td>
-                  <input
-                    name="login_tab_text"
-                    type="text"
-                    id="login_tab_text"
-                    className="widefat"
-                    placeholder="Ex. 10px 10px"
-                  />
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
         <div className="lp-settings-submit">
           <table className="form-table">
             <tbody>

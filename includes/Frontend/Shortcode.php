@@ -104,11 +104,13 @@ namespace LoginPrime\Includes\Frontend;
             $template = 'template-2.php';
         } elseif ($data['form_pattern'] == 'template-3') {
             $template = 'template-3.php';
-        } elseif ($data['form_pattern'] == 'template-4') {
-            $template = 'template-4.php';
-        } elseif ($data['form_pattern'] == 'template-5') {
-            $template = 'template-5.php';
-        }else {
+        } 
+        // elseif ($data['form_pattern'] == 'template-4') {
+        //     $template = 'template-4.php';
+        // } elseif ($data['form_pattern'] == 'template-5') {
+        //     $template = 'template-5.php';
+        // }
+        else {
             $template = 'template-1.php'; // Default template if nothing matches
         }
         // Get template path

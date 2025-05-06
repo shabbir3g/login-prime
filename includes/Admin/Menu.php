@@ -34,6 +34,8 @@ class Menu{
         wp_localize_script( "login-prime-settings", "LoginPrime", [
             'ajaxurl' => admin_url( 'admin-ajax.php' ),
             'nonce' => wp_create_nonce( 'login-prime-nonce' ),
+            'version' => LOGIN_PRIME_VERSION,
+            
            
         ]);
         wp_enqueue_style('wp-components');

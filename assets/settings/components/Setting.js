@@ -199,49 +199,77 @@ const Setting = () => {
       )} */}
 
       <form onSubmit={onSubmit}>
-        <div className="lp-settings-section lp-settings-setting-section">
-          <h2>Settings</h2>
-          <hr />
-          <table className="form-table">
-            <tbody>
-              {/* Enable Registration */}
-              <tr>
-                <th>
-                  <label htmlFor="enable_registration">
-                    Enable Registration
+        <div className="settings-container">
+          <div className="settings-card">
+            <div className="card-header">
+              <div className="icon">🔧</div>
+              <h2>Core Settings</h2>
+            </div>
+
+            <div className="settings-grid">
+              <div className="setting-item">
+                <div className="setting-info">
+                  <h3>
+                    <label htmlFor="enable_registration">
+                      <span
+                        className={`status-indicator status-${
+                          enableRegistration ? "active" : "inactive"
+                        }`}
+                      ></span>
+                      Enable Registration
+                    </label>
+                    <span className="badge">Popular</span>
+                  </h3>
+                  <p>Allow new users to register accounts on your website</p>
+                </div>
+                <div className="toggle-container">
+                  <label className="toggle-switch">
+                    <input
+                      type="checkbox"
+                      id="enable_registration"
+                      name="enable_registration"
+                      checked={enableRegistration}
+                      onChange={() =>
+                        setEnableRegistration(!enableRegistration)
+                      }
+                    />
+                    <span className="toggle-slider"></span>
                   </label>
-                </th>
-                <td>
-                  <FormToggle
-                    id="enable_registration"
-                    name="enable_registration"
-                    checked={enableRegistration}
-                    onChange={() => setEnableRegistration(!enableRegistration)}
-                  />
-                </td>
-              </tr>
+                </div>
+              </div>
 
-              {/* Enable Darkmode */}
-              <tr>
-                <th>
-                  <label htmlFor="enable_darkmode">Enable Darkmode</label>
-                </th>
-                <td>
-                  <FormToggle
-                    id="enable_darkmode"
-                    name="enable_darkmode"
-                    checked={enableDarkmode}
-                    onChange={() => setEnableDarkmode(!enableDarkmode)}
-                  />
-                </td>
-              </tr>
+              <div className="setting-item">
+                <div className="setting-info">
+                  <h3>
+                    <span
+                      className={`status-indicator status-${
+                        enableDarkmode ? "active" : "inactive"
+                      }`}
+                    ></span>
+                    <label htmlFor="enable_darkmode">Enable Darkmode</label>
+                  </h3>
+                  <p>Enable dark color scheme for all login interfaces</p>
+                </div>
+                <div className="toggle-container">
+                  <label className="toggle-switch">
+                    <input
+                      type="checkbox"
+                      id="enable_darkmode"
+                      name="enable_darkmode"
+                      checked={enableDarkmode}
+                      onChange={() => setEnableDarkmode(!enableDarkmode)}
+                    />
+                    <span className="toggle-slider"></span>
+                  </label>
+                </div>
+              </div>
 
-              {/* User Role */}
-              <tr>
-                <th>
-                  <label htmlFor="user_role">User Role</label>
-                </th>
-                <td>
+              <div className="setting-item">
+                <div className="setting-info">
+                  <h3>Default User Role</h3>
+                  <p>Initial permissions assigned to newly registered users</p>
+                </div>
+                <div className="select-container">
                   <select
                     name="user_role"
                     id="user_role"
@@ -265,112 +293,88 @@ const Setting = () => {
                         );
                       })}
                   </select>
-                </td>
-              </tr>
+                </div>
+              </div>
 
-              <tr>
-                <th>
-                  <label htmlFor="auto_login_user_on_signup">
-                    Auto Login User on Sign Up
+              <div className="setting-item">
+                <div className="setting-info">
+                  <h3>
+                    <label htmlFor="auto_login_user_on_signup">
+                      <span
+                        className={`status-indicator status-${
+                          autoLoginUserSignUp ? "active" : "inactive"
+                        }`}
+                      ></span>
+                      Auto-Login
+                    </label>
+                  </h3>
+                  <p>Automatically authenticate users after registration</p>
+                </div>
+                <div className="toggle-container">
+                  <label className="toggle-switch">
+                    <input
+                      type="checkbox"
+                      id="auto_login_user_on_signup"
+                      name="auto_login_user_on_signup"
+                      checked={autoLoginUserSignUp}
+                      onChange={() =>
+                        setAutoLoginUserSignUp(!autoLoginUserSignUp)
+                      }
+                    />
+                    <span className="toggle-slider"></span>
                   </label>
-                </th>
-                <td>
-                  <FormToggle
-                    id="auto_login_user_on_signup"
-                    name="auto_login_user_on_signup"
-                    checked={autoLoginUserSignUp}
-                    onChange={() =>
-                      setAutoLoginUserSignUp(!autoLoginUserSignUp)
-                    }
-                  />
-                </td>
-              </tr>
+                </div>
+              </div>
 
-              <tr>
-                <th>
-                  <label htmlFor="handle_reset_password">
-                    Handle Reset Password
+              <div className="setting-item">
+                <div className="setting-info">
+                  <h3>
+                    <label htmlFor="handle_reset_password">
+                      <span
+                        className={`status-indicator status-${
+                          handleResetPassword ? "active" : "inactive"
+                        }`}
+                      ></span>
+                      Password Recovery
+                    </label>
+                  </h3>
+                  <p>Allow users to reset forgotten passwords</p>
+                </div>
+                <div className="toggle-container">
+                  <label className="toggle-switch">
+                    <input
+                      type="checkbox"
+                      id="handle_reset_password"
+                      name="handle_reset_password"
+                      checked={handleResetPassword}
+                      onChange={() =>
+                        setHandleResetPassword(!handleResetPassword)
+                      }
+                    />
+                    <span className="toggle-slider"></span>
                   </label>
-                </th>
-                <td>
-                  <FormToggle
-                    id="handle_reset_password"
-                    name="handle_reset_password"
-                    checked={handleResetPassword}
-                    onChange={() =>
-                      setHandleResetPassword(!handleResetPassword)
-                    }
-                  />
-                </td>
-              </tr>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="settings-card">
+            <div className="card-header">
+              <div className="icon">↗️</div>
+              <h2>Navigation Settings</h2>
+            </div>
 
-              {/* <tr>
-                <th>
-                  <label htmlFor="form_pattern">Form Pattern</label>
-                </th>
-                <td>
-                  <select
-                    name="form_pattern"
-                    id="form_pattern"
-                    className="widefat"
-                    defaultValue={formPattern} // ✅ Set selected value
-                    onChange={(e) => setFormPattern(e.target.value)} // ✅ Update state on change
-                  >
-                    <option value="">
-                      Separate Login and Registration Forms
-                    </option>
-                    <option
-                      selected={formPattern === "template-1"}
-                      value="template-1"
-                    >
-                      Login and Registration Template 01
-                    </option>
-                    <option
-                      selected={formPattern === "template-2"}
-                      value="template-2"
-                    >
-                      Login and Registration Template 02
-                    </option>
-                    <option
-                      selected={formPattern === "template-3"}
-                      value="template-3"
-                    >
-                      Login and Registration Template 03
-                    </option>
-                    <option
-                      selected={formPattern === "template-4"}
-                      value="template-4"
-                    >
-                      Login and Registration Template 04
-                    </option>
-                    <option
-                      selected={formPattern === "template-5"}
-                      value="template-5"
-                    >
-                      Login and Registration Template 05
-                    </option>
-                  </select>
-                </td>
-              </tr> */}
-            </tbody>
-          </table>
-        </div>
-
-        <div className="lp-settings-section lp-settings-setting-section">
-          <h2>Redirects</h2>
-          <hr />
-          <table className="form-table">
-            <tbody>
-              {/* Enable Registration */}
-              <tr>
-                <th>
-                  <label htmlFor="login_redirect">Login Redirect</label>
-                </th>
-                <td>
+            <div className="settings-grid">
+              <div className="setting-item">
+                <div className="setting-info">
+                  <h3>
+                    <label htmlFor="login_redirect">Login Redirect</label>
+                  </h3>
+                  <p>Destination after successful authentication</p>
+                </div>
+                <div className="select-container">
                   <select
                     name="login_redirect"
                     id="login_redirect"
-                    className="widefat"
                     value={loginRedirect}
                     onChange={(e) => setLoginRedirect(e.target.value)}
                   >
@@ -382,13 +386,14 @@ const Setting = () => {
                       </option>
                     ))}
                   </select>
-                </td>
-              </tr>
-              <tr>
-                <th>
-                  <label htmlFor="register_redirect">Register Redirect</label>
-                </th>
-                <td>
+                </div>
+              </div>
+              <div className="setting-item">
+                <div className="setting-info">
+                  <h3>Register Redirect</h3>
+                  <p>Destination after successful Registration</p>
+                </div>
+                <div className="select-container">
                   <select
                     name="register_redirect"
                     id="register_redirect"
@@ -403,13 +408,15 @@ const Setting = () => {
                       </option>
                     ))}
                   </select>
-                </td>
-              </tr>
-              <tr>
-                <th>
-                  <label htmlFor="logout_redirect">Logout Redirect</label>
-                </th>
-                <td>
+                </div>
+              </div>
+
+              <div className="setting-item">
+                <div className="setting-info">
+                  <h3>Logout Redirect</h3>
+                  <p>Destination after successful Logout</p>
+                </div>
+                <div className="select-container">
                   <select
                     name="logout_redirect"
                     id="logout_redirect"
@@ -424,31 +431,36 @@ const Setting = () => {
                       </option>
                     ))}
                   </select>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+                </div>
+              </div>
+            </div>
+          </div>
 
-        <div className="lp-settings-section lp-settings-setting-section">
-          <h2>Texts</h2>
-          <p>Leave text empty to remove element</p>
-          <hr />
-          <table className="form-table">
-            <tbody>
-              <tr>
-                <th>
-                  <label htmlFor="login_form_header_text">
-                    Login Form Header Text
-                  </label>
-                </th>
-                <td>
+          <div className="settings-card">
+            <div className="card-header">
+              <div className="icon">
+                <span class="dashicons dashicons-media-text"></span>
+              </div>
+              <h2>Texts Settings</h2>
+            </div>
+
+            <div className="settings-grid">
+              <div className="setting-item">
+                <div className="setting-info">
+                  <h3>
+                    <label htmlFor="login_form_header_text">
+                      Login Form Header Text
+                    </label>
+                  </h3>
+                  <p>Enter header login form text.</p>
+                </div>
+                <div className="text-container">
                   <input
                     name="login_form_header_text"
                     type="text"
                     id="login_form_header_text"
                     className="widefat"
-                    placeholder="Enter header login form text. Example: Login"
+                    placeholder="Example: Login"
                     defaultValue={data?.data?.login_form_header_text || ""}
                     onChange={(e) =>
                       setData({
@@ -460,21 +472,25 @@ const Setting = () => {
                       })
                     }
                   />
-                </td>
-              </tr>
-              <tr>
-                <th>
-                  <label htmlFor="login_form_subheader_text">
-                    Login Form Sub Header Text
-                  </label>
-                </th>
-                <td>
+                </div>
+              </div>
+
+              <div className="setting-item">
+                <div className="setting-info">
+                  <h3>
+                    <label htmlFor="login_form_subheader_text">
+                      Login Form Sub Header Text
+                    </label>
+                  </h3>
+                  <p>Enter sub header login form text</p>
+                </div>
+                <div className="text-container">
                   <input
                     name="login_form_subheader_text"
                     type="text"
                     id="login_form_subheader_text"
                     className="widefat"
-                    placeholder="Enter sub header login form text. Example: Welcome to the Login Prime"
+                    placeholder="Example: Welcome to the Login Prime"
                     defaultValue={data?.data?.login_form_subheader_text || ""}
                     onChange={(e) =>
                       setData({
@@ -486,21 +502,25 @@ const Setting = () => {
                       })
                     }
                   />
-                </td>
-              </tr>
-              <tr>
-                <th>
-                  <label htmlFor="registration_form_header_text">
-                    Registration Form Header Text
-                  </label>
-                </th>
-                <td>
+                </div>
+              </div>
+
+              <div className="setting-item">
+                <div className="setting-info">
+                  <h3>
+                    <label htmlFor="registration_form_header_text">
+                      Registration Form Header Text
+                    </label>
+                  </h3>
+                  <p>Enter registration form header text</p>
+                </div>
+                <div className="text-container">
                   <input
                     name="registration_form_header_text"
                     type="text"
                     id="registration_form_header_text"
                     className="widefat"
-                    placeholder="Enter registration form header text. Example: Sign up"
+                    placeholder="Example: Sign up"
                     defaultValue={
                       data?.data?.registration_form_header_text || ""
                     }
@@ -514,19 +534,23 @@ const Setting = () => {
                       })
                     }
                   />
-                </td>
-              </tr>
-              <tr>
-                <th>
-                  <label htmlFor="login_tab_text">Login Tab Text</label>
-                </th>
-                <td>
+                </div>
+              </div>
+
+              <div className="setting-item">
+                <div className="setting-info">
+                  <h3>
+                    <label htmlFor="login_tab_text">Login Tab Text</label>
+                  </h3>
+                  <p>Enter text for login tab. </p>
+                </div>
+                <div className="text-container">
                   <input
                     name="login_tab_text"
                     type="text"
                     id="login_tab_text"
                     className="widefat"
-                    placeholder="Enter text for login tab. Example: Login"
+                    placeholder="Example: Login"
                     defaultValue={data?.data?.login_tab_text || ""}
                     onChange={(e) =>
                       setData({
@@ -535,19 +559,23 @@ const Setting = () => {
                       })
                     }
                   />
-                </td>
-              </tr>
-              <tr>
-                <th>
-                  <label htmlFor="register_tab_text">Register Tab Text</label>
-                </th>
-                <td>
+                </div>
+              </div>
+
+              <div className="setting-item">
+                <div className="setting-info">
+                  <h3>
+                    <label htmlFor="register_tab_text">Register Tab Text</label>
+                  </h3>
+                  <p>Enter text for register tab</p>
+                </div>
+                <div className="text-container">
                   <input
                     name="register_tab_text"
                     type="text"
                     id="register_tab_text"
                     className="widefat"
-                    placeholder="Enter text for register tab. Example: Register"
+                    placeholder="Example: Register"
                     defaultValue={data?.data?.register_tab_text || ""}
                     onChange={(e) =>
                       setData({
@@ -559,19 +587,23 @@ const Setting = () => {
                       })
                     }
                   />
-                </td>
-              </tr>
-              <tr>
-                <th>
-                  <label htmlFor="login_button_text">Login Button Text</label>
-                </th>
-                <td>
+                </div>
+              </div>
+
+              <div className="setting-item">
+                <div className="setting-info">
+                  <h3>
+                    <label htmlFor="login_button_text">Login Button Text</label>
+                  </h3>
+                  <p>Enter login button text</p>
+                </div>
+                <div className="text-container">
                   <input
                     name="login_button_text"
                     type="text"
                     id="login_button_text"
                     className="widefat"
-                    placeholder="Enter login button text. Example: Sign In"
+                    placeholder="Example: Sign In"
                     defaultValue={data?.data?.login_button_text || ""}
                     onChange={(e) =>
                       setData({
@@ -583,21 +615,25 @@ const Setting = () => {
                       })
                     }
                   />
-                </td>
-              </tr>
-              <tr>
-                <th>
-                  <label htmlFor="register_button_text">
-                    Register Button Text
-                  </label>
-                </th>
-                <td>
+                </div>
+              </div>
+
+              <div className="setting-item">
+                <div className="setting-info">
+                  <h3>
+                    <label htmlFor="register_button_text">
+                      Register Button Text
+                    </label>
+                  </h3>
+                  <p>Enter register button text</p>
+                </div>
+                <div className="text-container">
                   <input
                     name="register_button_text"
                     type="text"
                     id="register_button_text"
                     className="widefat"
-                    placeholder="Enter register button text. Example: Sign Up"
+                    placeholder="Example: Sign Up"
                     defaultValue={data?.data?.register_button_text || ""}
                     onChange={(e) =>
                       setData({
@@ -609,21 +645,25 @@ const Setting = () => {
                       })
                     }
                   />
-                </td>
-              </tr>
-              <tr>
-                <th>
-                  <label htmlFor="reset_password_button_text">
-                    Reset Password Link Text
-                  </label>
-                </th>
-                <td>
+                </div>
+              </div>
+
+              <div className="setting-item">
+                <div className="setting-info">
+                  <h3>
+                    <label htmlFor="reset_password_button_text">
+                      Reset Password Link Text
+                    </label>
+                  </h3>
+                  <p>Enter reset password Link text</p>
+                </div>
+                <div className="text-container">
                   <input
                     name="reset_password_button_text"
                     type="text"
                     id="reset_password_button_text"
                     className="widefat"
-                    placeholder="Enter reset password Link text. Example: Forgot Password?"
+                    placeholder="Example: Forgot Password?"
                     defaultValue={data?.data?.reset_password_button_text || ""}
                     onChange={(e) =>
                       setData({
@@ -635,30 +675,36 @@ const Setting = () => {
                       })
                     }
                   />
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+                </div>
+              </div>
+            </div>
+          </div>
 
-        <div className="lp-settings-section lp-settings-setting-section">
-          <h2>Login Tab</h2>
-          <hr />
-          <table className="form-table">
-            <tbody>
-              <tr>
-                <th>
-                  <label htmlFor="username_label_text">
-                    Username/Email - Label Text
-                  </label>
-                </th>
-                <td>
+          <div className="settings-card">
+            <div className="card-header">
+              <div className="icon">
+                <span class="dashicons dashicons-image-rotate-right"></span>
+              </div>
+              <h2>Login Tab Settings</h2>
+            </div>
+
+            <div className="settings-grid">
+              <div className="setting-item">
+                <div className="setting-info">
+                  <h3>
+                    <label htmlFor="username_label_text">
+                      Username/Email - Label Text
+                    </label>
+                  </h3>
+                  <p>Enter Username/Email field</p>
+                </div>
+                <div className="text-container">
                   <input
                     name="username_label_text"
                     type="text"
                     id="username_label_text"
                     className="widefat"
-                    placeholder="Enter Username/Email field. Example: Email or Username"
+                    placeholder="Example: Email or Username"
                     defaultValue={data?.data?.username_label_text || ""}
                     onChange={(e) =>
                       setData({
@@ -670,21 +716,25 @@ const Setting = () => {
                       })
                     }
                   />
-                </td>
-              </tr>
-              <tr>
-                <th>
-                  <label htmlFor="username_placeholder_text">
-                    Username/Email - Placeholder Text
-                  </label>
-                </th>
-                <td>
+                </div>
+              </div>
+
+              <div className="setting-item">
+                <div className="setting-info">
+                  <h3>
+                    <label htmlFor="username_placeholder_text">
+                      Username/Email - Placeholder Text
+                    </label>
+                  </h3>
+                  <p>Enter placeholder Text For Username/Email input. </p>
+                </div>
+                <div className="text-container">
                   <input
                     name="username_placeholder_text"
                     type="text"
                     id="username_placeholder_text"
                     className="widefat"
-                    placeholder="Enter placeholder Text For Username/Email input. Example: example@mail.com"
+                    placeholder="Example: example@mail.com"
                     defaultValue={data?.data?.username_placeholder_text || ""}
                     onChange={(e) =>
                       setData({
@@ -696,21 +746,25 @@ const Setting = () => {
                       })
                     }
                   />
-                </td>
-              </tr>
-              <tr>
-                <th>
-                  <label htmlFor="password_label_text">
-                    Password - Label Text
-                  </label>
-                </th>
-                <td>
+                </div>
+              </div>
+
+              <div className="setting-item">
+                <div className="setting-info">
+                  <h3>
+                    <label htmlFor="password_label_text">
+                      Password - Label Text
+                    </label>
+                  </h3>
+                  <p>Enter password field label. </p>
+                </div>
+                <div className="text-container">
                   <input
                     name="password_label_text"
                     type="text"
                     id="password_label_text"
                     className="widefat"
-                    placeholder="Enter password field label. Example: Password"
+                    placeholder="Example: Password"
                     defaultValue={data?.data?.password_label_text || ""}
                     onChange={(e) =>
                       setData({
@@ -722,21 +776,25 @@ const Setting = () => {
                       })
                     }
                   />
-                </td>
-              </tr>
-              <tr>
-                <th>
-                  <label htmlFor="password_placeholder_text">
-                    Password - Placeholder Text
-                  </label>
-                </th>
-                <td>
+                </div>
+              </div>
+
+              <div className="setting-item">
+                <div className="setting-info">
+                  <h3>
+                    <label htmlFor="password_placeholder_text">
+                      Password - Placeholder Text
+                    </label>
+                  </h3>
+                  <p>Enter placeholder for password input</p>
+                </div>
+                <div className="text-container">
                   <input
                     name="password_placeholder_text"
                     type="text"
                     id="password_placeholder_text"
                     className="widefat"
-                    placeholder="Enter placeholder for password input. Example: At least 8 characters"
+                    placeholder="Example: At least 8 characters"
                     defaultValue={data?.data?.password_placeholder_text || ""}
                     onChange={(e) =>
                       setData({
@@ -748,22 +806,37 @@ const Setting = () => {
                       })
                     }
                   />
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        {notice.message && (
-          <div className="lp-settings-notification">
-            <Notice
-              status={notice.type} // "success" or "error"
-              onRemove={() => setNotice({ message: "", type: "" })} // Dismiss notice
-            >
-              {notice.message}
-            </Notice>
+                </div>
+              </div>
+            </div>
           </div>
-        )}
-        <div className="lp-settings-submit">
+
+          {notice.message && (
+            <div className="lp-settings-notification">
+              <Notice
+                status={notice.type} // "success" or "error"
+                onRemove={() => setNotice({ message: "", type: "" })} // Dismiss notice
+              >
+                {notice.message}
+              </Notice>
+            </div>
+          )}
+
+          <div className="action-buttons">
+            <button type="submit" className="btn btn-primary">
+              Save Changes
+            </button>
+            <button
+              type="button"
+              className="btn btn-outline"
+              onClick={resetForm}
+            >
+              Restore Defaults
+            </button>
+          </div>
+        </div>
+
+        {/* <div className="lp-settings-submit">
           <table className="form-table">
             <tbody>
               <tr>
@@ -786,7 +859,7 @@ const Setting = () => {
               </tr>
             </tbody>
           </table>
-        </div>
+        </div> */}
       </form>
     </div>
   );

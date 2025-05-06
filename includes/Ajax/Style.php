@@ -49,8 +49,17 @@ class Style{
             'hover_btn_bg' => isset($_POST['hover_btn_bg']) ? sanitize_text_field($_POST['hover_btn_bg']) : "#111111",
             'hover_btn_text_color' => isset($_POST['hover_btn_text_color']) ? sanitize_text_field($_POST['hover_btn_text_color']) : "#ffffff",
             'btn_border_width' => isset($_POST['btn_border_width']) ? sanitize_text_field($_POST['btn_border_width']) : "",
+
             'btn_border_type' => isset($_POST['btn_border_type']) ? sanitize_text_field($_POST['btn_border_type']) : "",
             'btn_border_color' => isset($_POST['btn_border_color']) ? sanitize_text_field($_POST['btn_border_color']) : "#000000",
+
+            
+            'input_height' => isset($_POST['input_height']) ? sanitize_text_field($_POST['input_height']) : "",
+            'input_width' => isset($_POST['input_width']) ? sanitize_text_field($_POST['input_width']) : "",
+            'input_padding' => isset($_POST['input_padding']) ? sanitize_text_field($_POST['input_padding']) : "",
+            'input_border_width' => isset($_POST['input_border_width']) ? sanitize_text_field($_POST['input_border_width']) : "",
+            'input_border_type' => isset($_POST['input_border_type']) ? sanitize_text_field($_POST['input_border_type']) : "",
+            'input_border_color' => isset($_POST['input_border_color']) ? sanitize_text_field($_POST['input_border_color']) : "#000000",
             'header_tab_bg' => isset($_POST['header_tab_bg']) ? sanitize_text_field($_POST['header_tab_bg']) : "#ffffff",
             'header_tab_text' => isset($_POST['header_tab_text']) ? sanitize_text_field($_POST['header_tab_text']) : "#000000",
             'header_active_tab_bg' => isset($_POST['header_active_tab_bg']) ? sanitize_text_field($_POST['header_active_tab_bg']) : "#000000",

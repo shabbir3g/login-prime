@@ -33,60 +33,83 @@ const Advanced = () => {
         setNotice({ message: "Something went wrong!", type: "error" });
       });
   };
+
+  const resetForm = () => {
+    setEnableSocialLogin(false);
+
+    setNotice({
+      message:
+        "All data has been reset. Please click the ‘Save’ button to preserve your changes.",
+      type: "info",
+    });
+  };
   return (
     <div className="settings-container">
-      {notice.message && (
-        <div className="lp-settings-notification">
-          <Notice
-            status={notice.type} // "success" or "error"
-            onRemove={() => setNotice({ message: "", type: "" })} // Dismiss notice
-          >
-            {notice.message}
-          </Notice>
-        </div>
-      )}
-
       <form onSubmit={onSubmit}>
-        <div className="lp-settings-section lp-settings-setting-section">
-          <h2>Advanced Settings</h2>
-          <hr />
-          <table className="form-table">
-            <tbody>
-              <tr>
-                <th>
-                  <label htmlFor="enable_social_login">
-                    Enable Social login
-                  </label>
-                </th>
-                <td>
-                  <FormToggle
-                    id="enable_social_login"
-                    name="enable_social_login"
-                    checked={enableSocialLogin}
-                    onChange={() => setEnableSocialLogin(!enableSocialLogin)}
-                  />
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+        <div className="settings-container">
+          <div className="settings-card">
+            <div className="card-header">
+              <div className="icon">
+                <span class="dashicons dashicons-editor-unlink"></span>
+              </div>
+              <h2>Button Design Settings</h2>
+            </div>
 
-        <div className="lp-settings-submit">
-          <table className="form-table">
-            <tbody>
-              <tr>
-                <th></th>
-                <td>
-                  <button
-                    className="components-button is-primary"
-                    type="submit"
-                  >
-                    Save
-                  </button>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+            <div className="settings-grid">
+              <div className="setting-item">
+                <div className="setting-info">
+                  <h3>
+                    <label htmlFor="enable_social_login">
+                      <span
+                        className={`status-indicator status-${
+                          enableSocialLogin ? "active" : "inactive"
+                        }`}
+                      ></span>
+                      Enable Social login
+                    </label>
+                    <span className="badge">Popular</span>
+                  </h3>
+                  <p>Allow new users to register accounts on your website</p>
+                </div>
+                <div className="toggle-container">
+                  <label className="toggle-switch">
+                    <input
+                      type="checkbox"
+                      id="enable_social_login"
+                      name="enable_social_login"
+                      checked={setEnableSocialLogin}
+                      onChange={() => setEnableSocialLogin(!enableSocialLogin)}
+                    />
+                    <span className="toggle-slider"></span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {notice.message && (
+            <div className="lp-settings-notification">
+              <Notice
+                status={notice.type} // "success" or "error"
+                onRemove={() => setNotice({ message: "", type: "" })} // Dismiss notice
+              >
+                {notice.message}
+              </Notice>
+            </div>
+          )}
+
+          <div className="action-buttons">
+            <button type="submit" className="btn btn-primary">
+              Save Changes
+            </button>
+            <button
+              type="button"
+              className="btn btn-outline"
+              onClick={resetForm}
+            >
+              Restore Defaults
+            </button>
+          </div>
         </div>
       </form>
     </div>

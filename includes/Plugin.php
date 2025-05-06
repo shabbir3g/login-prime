@@ -5,6 +5,8 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
+require_once( ABSPATH.'wp-admin/includes/plugin.php');
+
 class Plugin {
     private static $instance;
 
@@ -20,8 +22,13 @@ class Plugin {
         return self::$instance;
     }
 
+
+
     private function define_constants() {
-        define('LOGIN_PRIME_VERSION', '1.0.0');
+       
+        $plugin_data = get_plugin_data( __FILE__ );
+        $plugin_version = $plugin_data['Version'];
+        define('LOGIN_PRIME_VERSION', $plugin_version);
         define('LOGIN_PRIME_PATH', plugin_dir_path(__DIR__));
         define('LOGIN_PRIME_URL', plugin_dir_url(__DIR__));
         define('LOGIN_PRIME_ASSETS', LOGIN_PRIME_URL . 'assets');

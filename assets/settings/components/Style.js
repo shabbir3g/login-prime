@@ -13,6 +13,10 @@ const Style = () => {
   const [hoverBtnTextColor, setHoverBtnTextColor] = useState("#ffffff");
   const [btnBorderType, setBtnBorderType] = useState("none");
   const [btnBorderColor, setBtnBorderColor] = useState("#6a5af9");
+
+  const [inputBorderType, setInputBorderType] = useState("none");
+  const [inputBorderColor, setInputBorderColor] = useState("#6a5af9");
+
   const [headerTabBg, setHeaderTabBg] = useState("#ffffff");
   const [headerTabText, setHeaderTabText] = useState("#000000");
   const [headerActiveTabBg, setHeaderActiveTabBg] = useState("#000000");
@@ -33,6 +37,10 @@ const Style = () => {
     data: {
       form_pattern: "",
       btn_border_width: "",
+      input_height: "",
+      input_width: "",
+      input_padding: "",
+      input_border_width: "",
       header_front_size: "",
       header_tab_padding: "",
       sidebar_background: "",
@@ -48,7 +56,9 @@ const Style = () => {
     setHoverBtnBg("#111111");
     setHoverBtnTextColor("#ffffff");
     setBtnBorderColor("#000000");
+    setInputBorderColor("");
     setBtnBorderType("");
+    setInputBorderType("");
     setHeaderTabBg("#ffffff");
     setHeaderTabText("#000000");
     setHeaderActiveTabBg("#000000");
@@ -61,6 +71,10 @@ const Style = () => {
       data: {
         form_pattern: "",
         btn_border_width: "",
+        input_height: "",
+        input_width: "",
+        input_padding: "",
+        input_border_width: "",
         header_front_size: "16",
         header_tab_padding: "10px 0",
         sidebar_background: "",
@@ -90,7 +104,10 @@ const Style = () => {
         setHoverBtnTextColor(responseData?.data?.hover_btn_text_color || "");
         // Button Border Type
         setBtnBorderType(responseData?.data?.btn_border_type || "");
+        setInputBorderType(responseData?.data?.input_border_type || "");
+
         setBtnBorderColor(responseData?.data?.btn_border_color || "");
+        setInputBorderColor(responseData?.data?.input_border_color || "");
         setHeaderTabBg(responseData?.data?.header_tab_bg || "");
         setHeaderTabText(responseData?.data?.header_tab_text || "");
         setHeaderActiveTabBg(responseData?.data?.header_active_tab_bg || "");
@@ -151,18 +168,25 @@ const Style = () => {
       <ToastContainer position="bottom-right" autoClose={3000} />
 
       <form onSubmit={onStyleSubmit}>
-        <div className="lp-settings-section lp-settings-setting-section">
-          <h2>Button Design Settings</h2>
-          <hr />
-          <table className="form-table">
-            <tbody>
-              {/* Enable Registration */}
+        <div className="settings-container">
+          <div className="settings-card">
+            <div className="card-header">
+              <div className="icon">
+                <span class="dashicons dashicons-editor-unlink"></span>
+              </div>
+              <h2>Button Design Settings</h2>
+            </div>
 
-              <tr>
-                <th>
-                  <label htmlFor="form_pattern">Form Pattern</label>
-                </th>
-                <td>
+            <div className="settings-grid">
+              <div className="setting-item">
+                <div className="setting-info">
+                  <h3>
+                    <label htmlFor="form_pattern">Form Pattern</label>
+                    <span className="badge">Popular</span>
+                  </h3>
+                  <p>Select how your form pattern will be styled</p>
+                </div>
+                <div className="select-container">
                   <select
                     name="form_pattern"
                     id="form_pattern"
@@ -191,26 +215,18 @@ const Style = () => {
                     >
                       Form with Links
                     </option>
-                    {/* <option
-                      selected={formPattern === "template-4"}
-                      value="template-4"
-                    >
-                      Login and Registration Template 04
-                    </option>
-                    <option
-                      selected={formPattern === "template-5"}
-                      value="template-5"
-                    >
-                      Login and Registration Template 05
-                    </option> */}
                   </select>
-                </td>
-              </tr>
-              <tr>
-                <th>
-                  <label htmlFor="btn_bg_color">Background Color</label>
-                </th>
-                <td>
+                </div>
+              </div>
+
+              <div className="setting-item">
+                <div className="setting-info">
+                  <h3>
+                    <label htmlFor="btn_bg_color">Background Color</label>
+                  </h3>
+                  <p>Choose the background color for the button style.</p>
+                </div>
+                <div className="color-container">
                   <input
                     type="color"
                     value={btnBgColor}
@@ -218,13 +234,17 @@ const Style = () => {
                     id="btn_bg_color"
                     onChange={(e) => setBtnBgColor(e.target.value)} // Update state on change
                   />
-                </td>
-              </tr>
-              <tr>
-                <th>
-                  <label htmlFor="btn_text_color">Text Color</label>
-                </th>
-                <td>
+                </div>
+              </div>
+
+              <div className="setting-item">
+                <div className="setting-info">
+                  <h3>
+                    <label htmlFor="btn_text_color">Text Color</label>
+                  </h3>
+                  <p>Set the color of the button text.</p>
+                </div>
+                <div className="color-container">
                   <input
                     type="color"
                     value={btnTextColor}
@@ -232,13 +252,19 @@ const Style = () => {
                     id="btn_text_color"
                     onChange={(e) => setBtnTextColor(e.target.value)} // Update state on change
                   />
-                </td>
-              </tr>
-              <tr>
-                <th>
-                  <label htmlFor="hover_btn_bg">Hover Background</label>
-                </th>
-                <td>
+                </div>
+              </div>
+
+              <div className="setting-item">
+                <div className="setting-info">
+                  <h3>
+                    <label htmlFor="hover_btn_bg">Hover Background</label>
+                  </h3>
+                  <p>
+                    Choose a background color for the button when hovered over
+                  </p>
+                </div>
+                <div className="color-container">
                   <input
                     type="color"
                     value={hoverBtnBg}
@@ -246,13 +272,19 @@ const Style = () => {
                     id="hover_btn_bg"
                     onChange={(e) => setHoverBtnBg(e.target.value)} // Update state on change
                   />
-                </td>
-              </tr>
-              <tr>
-                <th>
-                  <label htmlFor="hover_btn_text">Hover Text Color</label>
-                </th>
-                <td>
+                </div>
+              </div>
+
+              <div className="setting-item">
+                <div className="setting-info">
+                  <h3>
+                    <label htmlFor="hover_btn_text_color">
+                      Hover Text Color
+                    </label>
+                  </h3>
+                  <p>Select the text color when the button is hovered</p>
+                </div>
+                <div className="color-container">
                   <input
                     type="color"
                     value={hoverBtnTextColor}
@@ -260,13 +292,20 @@ const Style = () => {
                     id="hover_btn_text_color"
                     onChange={(e) => setHoverBtnTextColor(e.target.value)} // Update state on change
                   />
-                </td>
-              </tr>
-              <tr>
-                <th>
-                  <label htmlFor="btn_border_width">Border Width (px)</label>
-                </th>
-                <td>
+                </div>
+              </div>
+
+              <div className="setting-item">
+                <div className="setting-info">
+                  <h3>
+                    <label htmlFor="btn_border_width">Border Width (px)</label>
+                  </h3>
+                  <p>
+                    Enter a numeric value for the border thickness in pixels
+                    (e.g., 2).
+                  </p>
+                </div>
+                <div className="number-container">
                   <input
                     name="btn_border_width"
                     type="number"
@@ -283,13 +322,20 @@ const Style = () => {
                       })
                     }
                   />
-                </td>
-              </tr>
-              <tr>
-                <th>
-                  <label htmlFor="btn_border_type">Border Style</label>
-                </th>
-                <td>
+                </div>
+              </div>
+
+              <div className="setting-item">
+                <div className="setting-info">
+                  <h3>
+                    <label htmlFor="btn_border_type">Border Style</label>
+                  </h3>
+                  <p>
+                    Select a style for the button border (e.g., solid, dashed,
+                    none).
+                  </p>
+                </div>
+                <div className="select-container">
                   <select
                     name="btn_border_type"
                     id="btn_border_type"
@@ -346,13 +392,17 @@ const Style = () => {
                       Hidden
                     </option>
                   </select>
-                </td>
-              </tr>
-              <tr>
-                <th>
-                  <label htmlFor="btn_border_color">Border Color </label>
-                </th>
-                <td>
+                </div>
+              </div>
+
+              <div className="setting-item">
+                <div className="setting-info">
+                  <h3>
+                    <label htmlFor="btn_border_color">Border Color</label>
+                  </h3>
+                  <p>Choose a color for the button border.</p>
+                </div>
+                <div className="color-container">
                   <input
                     type="color"
                     value={btnBorderColor}
@@ -360,28 +410,35 @@ const Style = () => {
                     id="btn_border_color"
                     onChange={(e) => setBtnBorderColor(e.target.value)} // Update state on change
                   />
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+                </div>
+              </div>
+            </div>
+          </div>
 
-        <div className="lp-settings-section lp-settings-setting-section">
-          <h2>Input Design Settings</h2>
-          <hr />
-          <table className="form-table">
-            <tbody>
-              <tr>
-                <th>
-                  <label htmlFor="input_height">Input Height (In px)</label>
-                </th>
-                <td>
+          <div className="settings-card">
+            <div className="card-header">
+              <div className="icon">
+                <span class="dashicons dashicons-editor-kitchensink"></span>
+              </div>
+              <h2>Input Design Style</h2>
+            </div>
+
+            <div className="settings-grid">
+              <div className="setting-item">
+                <div className="setting-info">
+                  <h3>
+                    <label htmlFor="input_height">Input Height (px) </label>
+                  </h3>
+                  <p>
+                    Enter the height of the input field in pixels (e.g., 80).
+                  </p>
+                </div>
+                <div className="number-container">
                   <input
                     name="input_height"
                     type="number"
-                    // className="widefat"
-                    id="input_height"
                     placeholder="Ex: 80"
+                    id="input_height"
                     defaultValue={data?.data?.input_height || ""}
                     onChange={(e) =>
                       setData({
@@ -393,13 +450,20 @@ const Style = () => {
                       })
                     }
                   />
-                </td>
-              </tr>
-              <tr>
-                <th>
-                  <label htmlFor="input_width">Input Width (In %)</label>
-                </th>
-                <td>
+                </div>
+              </div>
+
+              <div className="setting-item">
+                <div className="setting-info">
+                  <h3>
+                    <label htmlFor="input_width">Input Width (In %)</label>
+                  </h3>
+                  <p>
+                    Define the width of the input field as a percentage of its
+                    container (e.g., 80).
+                  </p>
+                </div>
+                <div className="number-container">
                   <input
                     name="input_width"
                     type="number"
@@ -417,13 +481,19 @@ const Style = () => {
                       })
                     }
                   />
-                </td>
-              </tr>
-              <tr>
-                <th>
-                  <label htmlFor="input_padding">Input sPadding </label>
-                </th>
-                <td>
+                </div>
+              </div>
+              <div className="setting-item">
+                <div className="setting-info">
+                  <h3>
+                    <label htmlFor="input_padding">Input Padding</label>
+                  </h3>
+                  <p>
+                    Use two values: the first for top-bottom and the second for
+                    left-right padding (e.g., 10px 10px).
+                  </p>
+                </div>
+                <div className="number-container">
                   <input
                     name="input_padding"
                     type="text"
@@ -441,16 +511,17 @@ const Style = () => {
                       })
                     }
                   />
-                  <p>
-                    First value for top-bottom and second value for left-right
-                  </p>
-                </td>
-              </tr>
-              <tr>
-                <th>
-                  <label htmlFor="btn_text_color">Text Color</label>
-                </th>
-                <td>
+                </div>
+              </div>
+
+              <div className="setting-item">
+                <div className="setting-info">
+                  <h3>
+                    <label htmlFor="btn_text_color">Text Color</label>
+                  </h3>
+                  <p>Choose the color for the text inside the input field.</p>
+                </div>
+                <div className="color-container">
                   <input
                     type="color"
                     value={btnTextColor}
@@ -458,13 +529,20 @@ const Style = () => {
                     id="btn_text_color"
                     onChange={(e) => setBtnTextColor(e.target.value)} // Update state on change
                   />
-                </td>
-              </tr>
-              <tr>
-                <th>
-                  <label htmlFor="hover_btn_bg">Hover Background</label>
-                </th>
-                <td>
+                </div>
+              </div>
+
+              <div className="setting-item">
+                <div className="setting-info">
+                  <h3>
+                    <label htmlFor="hover_btn_bg">Hover Background</label>
+                  </h3>
+                  <p>
+                    Select the background color that appears when the input is
+                    hovered over.
+                  </p>
+                </div>
+                <div className="color-container">
                   <input
                     type="color"
                     value={hoverBtnBg}
@@ -472,13 +550,19 @@ const Style = () => {
                     id="hover_btn_bg"
                     onChange={(e) => setHoverBtnBg(e.target.value)} // Update state on change
                   />
-                </td>
-              </tr>
-              <tr>
-                <th>
-                  <label htmlFor="hover_btn_text">Hover Text Color</label>
-                </th>
-                <td>
+                </div>
+              </div>
+
+              <div className="setting-item">
+                <div className="setting-info">
+                  <h3>
+                    <label htmlFor="hover_btn_text_color">
+                      Hover Text Color
+                    </label>
+                  </h3>
+                  <p>Set the text color when the input is hovered over.</p>
+                </div>
+                <div className="color-container">
                   <input
                     type="color"
                     value={hoverBtnTextColor}
@@ -486,124 +570,158 @@ const Style = () => {
                     id="hover_btn_text_color"
                     onChange={(e) => setHoverBtnTextColor(e.target.value)} // Update state on change
                   />
-                </td>
-              </tr>
-              <tr>
-                <th>
-                  <label htmlFor="btn_border_width">Border Width (px)</label>
-                </th>
-                <td>
+                </div>
+              </div>
+              <div className="setting-item">
+                <div className="setting-info">
+                  <h3>
+                    <label htmlFor="input_border_width">
+                      Border Width (px)
+                    </label>
+                  </h3>
+                  <p>
+                    Enter a numeric value for the border thickness in pixels
+                    (e.g., 2).
+                  </p>
+                </div>
+                <div className="number-container">
                   <input
-                    name="btn_border_width"
+                    name="input_border_width"
                     type="number"
                     placeholder="Example: 2"
-                    id="btn_border_width"
-                    defaultValue={data?.data?.btn_border_width || ""}
+                    id="input_border_width"
+                    defaultValue={data?.data?.input_border_width || ""}
                     onChange={(e) =>
                       setData({
                         ...data,
                         data: {
                           ...data.data,
-                          btn_border_width: e.target.value,
+                          input_border_width: e.target.value,
                         },
                       })
                     }
                   />
-                </td>
-              </tr>
-              <tr>
-                <th>
-                  <label htmlFor="btn_border_type">Border Style</label>
-                </th>
-                <td>
+                </div>
+              </div>
+
+              <div className="setting-item">
+                <div className="setting-info">
+                  <h3>
+                    <label htmlFor="input_border_type">Border Style</label>
+                  </h3>
+                  <p>
+                    Select a style for the button border (e.g., solid, dashed,
+                    none).
+                  </p>
+                </div>
+                <div className="select-container">
                   <select
-                    name="btn_border_type"
-                    id="btn_border_type"
+                    name="input_border_type"
+                    id="input_border_type"
                     className="widefat"
-                    defaultValue={btnBorderType} // ✅ Set selected value
-                    onChange={(e) => setBtnBorderType(e.target.value)} // ✅ Update state on change
+                    defaultValue={inputBorderType} // ✅ Set selected value
+                    onChange={(e) => setInputBorderType(e.target.value)} // ✅ Update state on change
                   >
-                    <option selected={btnBorderType === "none"} value="none">
+                    <option selected={inputBorderType === "none"} value="none">
                       None
                     </option>
-                    <option selected={btnBorderType === "solid"} value="solid">
+                    <option
+                      selected={inputBorderType === "solid"}
+                      value="solid"
+                    >
                       Solid
                     </option>
                     <option
-                      selected={btnBorderType === "dotted"}
+                      selected={inputBorderType === "dotted"}
                       value="dotted"
                     >
                       Dotted
                     </option>
                     <option
-                      selected={btnBorderType === "dashed"}
+                      selected={inputBorderType === "dashed"}
                       value="dashed"
                     >
                       Dashed
                     </option>
                     <option
-                      selected={btnBorderType === "double"}
+                      selected={inputBorderType === "double"}
                       value="double"
                     >
                       Double
                     </option>
                     <option
-                      selected={btnBorderType === "groove"}
+                      selected={inputBorderType === "groove"}
                       value="groove"
                     >
                       Groove
                     </option>
-                    <option selected={btnBorderType === "ridge"} value="ridge">
+                    <option
+                      selected={inputBorderType === "ridge"}
+                      value="ridge"
+                    >
                       Ridge
                     </option>
-                    <option selected={btnBorderType === "inset"} value="inset">
+                    <option
+                      selected={inputBorderType === "inset"}
+                      value="inset"
+                    >
                       Inset
                     </option>
                     <option
-                      selected={btnBorderType === "outset"}
+                      selected={inputBorderType === "outset"}
                       value="outset"
                     >
                       Outset
                     </option>
                     <option
-                      selected={btnBorderType === "hidden"}
+                      selected={inputBorderType === "hidden"}
                       value="hidden"
                     >
                       Hidden
                     </option>
                   </select>
-                </td>
-              </tr>
-              <tr>
-                <th>
-                  <label htmlFor="btn_border_color">Border Color </label>
-                </th>
-                <td>
+                </div>
+              </div>
+              <div className="setting-item">
+                <div className="setting-info">
+                  <h3>
+                    <label htmlFor="input_border_color">Border Color</label>
+                  </h3>
+                  <p>Choose a color for the button border.</p>
+                </div>
+                <div className="color-container">
                   <input
                     type="color"
-                    value={btnBorderColor}
-                    name="btn_border_color"
-                    id="btn_border_color"
-                    onChange={(e) => setBtnBorderColor(e.target.value)} // Update state on change
+                    value={inputBorderColor}
+                    name="input_border_color"
+                    id="input_border_color"
+                    onChange={(e) => setInputBorderColor(e.target.value)} // Update state on change
                   />
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+                </div>
+              </div>
+            </div>
+          </div>
 
-        <div className="lp-settings-section lp-settings-setting-section">
-          <h2>Header Tab Setting</h2>
-          <hr />
-          <table className="form-table">
-            <tbody>
-              {/* Enable Registration */}
+          <div className="settings-card">
+            <div className="card-header">
+              <div className="icon">
+                <span
+                  class="dashicons dashicons-schedule
+"
+                ></span>
+              </div>
+              <h2>Header Tab Setting</h2>
+            </div>
 
-              <tr>
-                <th>
-                  <label htmlFor="header_tab_bg">Tab background</label>
-                </th>
-                <td>
+            <div className="settings-grid">
+              <div className="setting-item">
+                <div className="setting-info">
+                  <h3>
+                    <label htmlFor="header_tab_bg">Tab background</label>
+                  </h3>
+                  <p>Choose the background color for tabs.</p>
+                </div>
+                <div className="color-container">
                   <input
                     type="color"
                     value={headerTabBg}
@@ -611,13 +729,16 @@ const Style = () => {
                     id="header_tab_bg"
                     onChange={(e) => setHeaderTabBg(e.target.value)} // Update state on change
                   />
-                </td>
-              </tr>
-              <tr>
-                <th>
-                  <label htmlFor="header_tab_text">Tab Text</label>
-                </th>
-                <td>
+                </div>
+              </div>
+              <div className="setting-item">
+                <div className="setting-info">
+                  <h3>
+                    <label htmlFor="header_tab_text">Tab Text</label>
+                  </h3>
+                  <p>Select the text color for tabs</p>
+                </div>
+                <div className="color-container">
                   <input
                     type="color"
                     value={headerTabText}
@@ -625,15 +746,18 @@ const Style = () => {
                     id="header_tab_text"
                     onChange={(e) => setHeaderTabText(e.target.value)} // Update state on change
                   />
-                </td>
-              </tr>
-              <tr>
-                <th>
-                  <label htmlFor="header_active_tab_bg">
-                    Active Tab Background
-                  </label>
-                </th>
-                <td>
+                </div>
+              </div>
+              <div className="setting-item">
+                <div className="setting-info">
+                  <h3>
+                    <label htmlFor="header_active_tab_bg">
+                      Active Tab Background
+                    </label>
+                  </h3>
+                  <p>Choose the background color for the active tab.</p>
+                </div>
+                <div className="color-container">
                   <input
                     type="color"
                     value={headerActiveTabBg}
@@ -641,15 +765,18 @@ const Style = () => {
                     id="header_active_tab_bg"
                     onChange={(e) => setHeaderActiveTabBg(e.target.value)} // Update state on change
                   />
-                </td>
-              </tr>
-              <tr>
-                <th>
-                  <label htmlFor="header_active_tab_text">
-                    Active Tab Text
-                  </label>
-                </th>
-                <td>
+                </div>
+              </div>
+              <div className="setting-item">
+                <div className="setting-info">
+                  <h3>
+                    <label htmlFor="header_active_tab_text">
+                      Active Tab Text
+                    </label>
+                  </h3>
+                  <p>Set the text color for the active tab.</p>
+                </div>
+                <div className="color-container">
                   <input
                     type="color"
                     value={headerActiveTabText}
@@ -657,14 +784,16 @@ const Style = () => {
                     id="header_active_tab_text"
                     onChange={(e) => setHeaderActiveTabText(e.target.value)} // Update state on change
                   />
-                </td>
-              </tr>
-
-              <tr>
-                <th>
-                  <label htmlFor="header_front_size">Font Size (px)</label>
-                </th>
-                <td>
+                </div>
+              </div>
+              <div className="setting-item">
+                <div className="setting-info">
+                  <h3>
+                    <label htmlFor="header_front_size">Font Size (px)</label>
+                  </h3>
+                  <p>Enter the font size for tab text in pixels (e.g., 20).</p>
+                </div>
+                <div className="number-container">
                   <input
                     name="header_front_size"
                     type="number"
@@ -681,13 +810,19 @@ const Style = () => {
                       })
                     }
                   />
-                </td>
-              </tr>
-              <tr>
-                <th>
-                  <label htmlFor="header_tab_padding">Padding </label>
-                </th>
-                <td>
+                </div>
+              </div>
+              <div className="setting-item">
+                <div className="setting-info">
+                  <h3>
+                    <label htmlFor="header_tab_padding">Padding </label>
+                  </h3>
+                  <p>
+                    Define space inside the tab using top-bottom and left-right
+                    values (e.g., 12px 13px).
+                  </p>
+                </div>
+                <div className="number-container">
                   <input
                     name="header_tab_padding"
                     type="text"
@@ -705,27 +840,28 @@ const Style = () => {
                       })
                     }
                   />
-                  <p>
-                    First value for top-bottom and second value for left-right
-                  </p>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+                </div>
+              </div>
+            </div>
+          </div>
 
-        <div className="lp-settings-section lp-settings-setting-section">
-          <h2>Sidebar Settings</h2>
-          <hr />
-          <table className="form-table">
-            <tbody>
-              {/* Enable Registration */}
+          <div className="settings-card">
+            <div className="card-header">
+              <div className="icon">
+                <span class="dashicons dashicons-table-col-before"></span>
+              </div>
+              <h2>Sidebar Style Settings</h2>
+            </div>
 
-              <tr>
-                <th>
-                  <label htmlFor="sidebar_bg_color">Background</label>
-                </th>
-                <td>
+            <div className="settings-grid">
+              <div className="setting-item">
+                <div className="setting-info">
+                  <h3>
+                    <label htmlFor="sidebar_bg_color">Background</label>
+                  </h3>
+                  <p>Select a background color for the sidebar</p>
+                </div>
+                <div className="color-container">
                   <input
                     type="color"
                     value={sidebarBgColor}
@@ -733,13 +869,17 @@ const Style = () => {
                     id="sidebar_bg_color"
                     onChange={(e) => setSidebarBgColor(e.target.value)} // Update state on change
                   />
-                </td>
-              </tr>
-              <tr>
-                <th>
-                  <label htmlFor="form_patternasdfadsf">Image</label>
-                </th>
-                <td>
+                </div>
+              </div>
+
+              <div className="setting-item">
+                <div className="setting-info">
+                  <h3>
+                    <label htmlFor="form_patternasdfadsf">Image</label>
+                  </h3>
+                  <p>Optionally upload a background image for the sidebar.</p>
+                </div>
+                <div className="color-container">
                   <MediaUploader image={imageURL} setImage={setImageURL} />
 
                   <input
@@ -747,13 +887,20 @@ const Style = () => {
                     name="sidebar_background"
                     value={imageURL}
                   />
-                </td>
-              </tr>
-              <tr>
-                <th>
-                  <label htmlFor="sidebar_position">Position</label>
-                </th>
-                <td>
+                </div>
+              </div>
+
+              <div className="setting-item">
+                <div className="setting-info">
+                  <h3>
+                    <label htmlFor="sidebar_position">Position</label>
+                  </h3>
+                  <p>
+                    Choose the position of the sidebar on the screen (e.g., left
+                    or right).
+                  </p>
+                </div>
+                <div className="select-container">
                   <select
                     name="sidebar_position"
                     id="sidebar_position"
@@ -772,14 +919,20 @@ const Style = () => {
                       Right
                     </option>
                   </select>
-                </td>
-              </tr>
+                </div>
+              </div>
 
-              <tr>
-                <th>
-                  <label htmlFor="sidebar_width">Width (%)</label>
-                </th>
-                <td>
+              <div className="setting-item">
+                <div className="setting-info">
+                  <h3>
+                    <label htmlFor="sidebar_width">Width (%)</label>
+                  </h3>
+                  <p>
+                    Set the width of the sidebar as a percentage of the screen
+                    (e.g., 50).
+                  </p>
+                </div>
+                <div className="number-container">
                   <input
                     name="sidebar_width"
                     type="number"
@@ -796,14 +949,19 @@ const Style = () => {
                       })
                     }
                   />
-                </td>
-              </tr>
+                </div>
+              </div>
 
-              <tr>
-                <th>
-                  <label htmlFor="sidebar_overlay_color">Overlay Color</label>
-                </th>
-                <td>
+              <div className="setting-item">
+                <div className="setting-info">
+                  <h3>
+                    <label htmlFor="sidebar_overlay_color">Overlay Color</label>
+                  </h3>
+                  <p>
+                    Pick a color to overlay on the background image or color.
+                  </p>
+                </div>
+                <div className="color-container">
                   <input
                     type="color"
                     value={sidebarOverlayColor}
@@ -811,16 +969,22 @@ const Style = () => {
                     id="sidebar_overlay_color"
                     onChange={(e) => setSidebarOverlayColor(e.target.value)} // Update state on change
                   />
-                </td>
-              </tr>
+                </div>
+              </div>
 
-              <tr>
-                <th>
-                  <label htmlFor="sidebar_overlay_opacity">
-                    Overlay Opacity
-                  </label>
-                </th>
-                <td>
+              <div className="setting-item">
+                <div className="setting-info">
+                  <h3>
+                    <label htmlFor="sidebar_overlay_opacity">
+                      Overlay Opacity
+                    </label>
+                  </h3>
+                  <p>
+                    Set how transparent the overlay is (0 = fully transparent, 1
+                    = fully opaque)
+                  </p>
+                </div>
+                <div className="number-container">
                   <input
                     name="sidebar_overlay_opacity"
                     type="number"
@@ -840,11 +1004,36 @@ const Style = () => {
                       })
                     }
                   />
-                </td>
-              </tr>
-            </tbody>
-          </table>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {notice.message && (
+            <div className="lp-settings-notification">
+              <Notice
+                status={notice.type} // "success" or "error"
+                onRemove={() => setNotice({ message: "", type: "" })} // Dismiss notice
+              >
+                {notice.message}
+              </Notice>
+            </div>
+          )}
+
+          <div className="action-buttons">
+            <button type="submit" className="btn btn-primary">
+              Save Changes
+            </button>
+            <button
+              type="button"
+              className="btn btn-outline"
+              onClick={resetForm}
+            >
+              Restore Defaults
+            </button>
+          </div>
         </div>
+
         {notice.message && (
           <div className="lp-settings-notification">
             <Notice
@@ -855,31 +1044,6 @@ const Style = () => {
             </Notice>
           </div>
         )}
-
-        <div className="lp-settings-submit">
-          <table className="form-table">
-            <tbody>
-              <tr>
-                <th></th>
-                <td>
-                  <button
-                    type="button"
-                    className="components-button button-secondary"
-                    onClick={resetForm}
-                  >
-                    Reset
-                  </button>
-                  <button
-                    className="components-button is-primary"
-                    type="submit"
-                  >
-                    Save
-                  </button>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
       </form>
     </div>
   );
